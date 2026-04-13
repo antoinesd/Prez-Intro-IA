@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480" font-family="Inter,sans-serif">
+  <rect width="400" height="480" fill="#0d1e33" rx="12"/>
+  <!-- Silhouette / stylized portrait placeholder -->
+  <!-- Background radial glow -->
+  <radialGradient id="glow1" cx="50%" cy="45%" r="45%">
+    <stop offset="0%" stop-color="#1e5fa8" stop-opacity="0.4"/>
+    <stop offset="100%" stop-color="#0a1628" stop-opacity="0"/>
+  </radialGradient>
+  <ellipse cx="200" cy="210" rx="200" ry="220" fill="url(#glow1)"/>
+
+  <!-- Head silhouette -->
+  <ellipse cx="200" cy="140" rx="85" ry="100" fill="#1a3a5c"/>
+  <!-- Neck -->
+  <rect x="175" y="225" width="50" height="40" fill="#1a3a5c"/>
+  <!-- Shoulders -->
+  <ellipse cx="200" cy="300" rx="130" ry="70" fill="#162e50"/>
+  <!-- Face highlight -->
+  <ellipse cx="200" cy="130" rx="65" ry="78" fill="#1e4e80" opacity="0.6"/>
+  <!-- Eyes -->
+  <ellipse cx="175" cy="120" rx="10" ry="6" fill="#3d8ef0" opacity="0.8"/>
+  <ellipse cx="225" cy="120" rx="10" ry="6" fill="#3d8ef0" opacity="0.8"/>
+  <!-- Mouth -->
+  <path d="M 180 160 Q 200 175 220 160" stroke="#9bb0cc" stroke-width="2" fill="none"/>
+
+  <!-- Mathematical formula overlay (Turing machine) -->
+  <text x="200" y="390" fill="#3d8ef0" font-size="14" text-anchor="middle" opacity="0.8">δ : Q × Γ → Q × Γ × {L, R}</text>
+  <text x="200" y="415" fill="#9bb0cc" font-size="12" text-anchor="middle">Machine de Turing (1936)</text>
+
+  <!-- Label -->
+  <rect x="40" y="430" width="320" height="38" fill="#1e4e90" rx="6"/>
+  <text x="200" y="449" fill="#e8edf4" font-size="14" font-weight="700" text-anchor="middle">Alan Turing (1912–1954)</text>
+  <text x="200" y="463" fill="#9bb0cc" font-size="11" text-anchor="middle">Père de l'informatique et précurseur de l'IA</text>
+</svg>

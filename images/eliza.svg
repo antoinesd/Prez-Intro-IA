@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" font-family="'Courier New',monospace">
+  <rect width="600" height="400" fill="#001a00" rx="12"/>
+  <!-- Terminal border -->
+  <rect x="10" y="10" width="580" height="380" fill="#002200" rx="8" stroke="#00aa00" stroke-width="1.5"/>
+  <!-- Title bar -->
+  <rect x="10" y="10" width="580" height="28" fill="#003300" rx="8"/>
+  <text x="300" y="28" fill="#00cc00" font-size="13" text-anchor="middle">ELIZA — MIT, 1966 — Terminal MAD-SLIP</text>
+
+  <!-- Terminal text -->
+  <text x="30" y="68" fill="#00cc00" font-size="13">HOW DO YOU DO. PLEASE TELL ME YOUR PROBLEM.</text>
+  <text x="30" y="95" fill="#00aa00" font-size="13">I feel very sad because I failed my chemistry exam.</text>
+  <text x="30" y="122" fill="#00cc00" font-size="13">WHY DO YOU FEEL VERY SAD ?</text>
+  <text x="30" y="149" fill="#00aa00" font-size="13">I failed my chemistry exam and my professor is angry.</text>
+  <text x="30" y="176" fill="#00cc00" font-size="13">DOES IT PLEASE YOU TO BELIEVE YOUR PROFESSOR IS ANGRY ?</text>
+  <text x="30" y="203" fill="#00aa00" font-size="13">Maybe. I think I don't understand organic chemistry.</text>
+  <text x="30" y="230" fill="#00cc00" font-size="13">DO YOU REALLY THINK YOU DON'T UNDERSTAND ORGANIC</text>
+  <text x="30" y="247" fill="#00cc00" font-size="13">CHEMISTRY ?</text>
+  <text x="30" y="274" fill="#00aa00" font-size="13">Yes, the reaction mechanisms are too complex.</text>
+  <text x="30" y="301" fill="#00cc00" font-size="13">EARLIER YOU SAID YOUR PROFESSOR IS ANGRY.</text>
+  <text x="30" y="328" fill="#00cc00" font-size="13">HOW DOES THAT MAKE YOU FEEL ABOUT MECHANISMS ?</text>
+  <text x="30" y="355" fill="#00aa00" font-size="13">Confused...</text>
+  <!-- Cursor blink -->
+  <rect x="30" y="365" width="9" height="14" fill="#00cc00" opacity="0.9"/>
+
+  <!-- Comment -->
+  <text x="300" y="392" fill="#005500" font-size="10" text-anchor="middle">Pas d'IA : simple substitution de patterns. Pourtant, les utilisateurs lui faisaient confiance !</text>
+</svg>

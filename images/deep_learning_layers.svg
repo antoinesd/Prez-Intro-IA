@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 380" font-family="Inter,sans-serif">
+  <rect width="700" height="380" fill="#0a1628" rx="12"/>
+
+  <!-- Layer labels at top -->
+  <text x="60" y="28" fill="#9bb0cc" font-size="13" text-anchor="middle">Pixels</text>
+  <text x="180" y="28" fill="#9bb0cc" font-size="13" text-anchor="middle">Bords</text>
+  <text x="310" y="28" fill="#9bb0cc" font-size="13" text-anchor="middle">Textures</text>
+  <text x="445" y="28" fill="#9bb0cc" font-size="13" text-anchor="middle">Formes</text>
+  <text x="575" y="28" fill="#9bb0cc" font-size="13" text-anchor="middle">Objets</text>
+
+  <!-- Layer backgrounds -->
+  <rect x="25" y="38" width="70" height="300" fill="#1a3a5c" rx="8" opacity="0.6"/>
+  <rect x="145" y="58" width="70" height="260" fill="#1a3a5c" rx="8" opacity="0.6"/>
+  <rect x="275" y="78" width="70" height="220" fill="#1a3a5c" rx="8" opacity="0.6"/>
+  <rect x="410" y="98" width="70" height="180" fill="#1a3a5c" rx="8" opacity="0.6"/>
+  <rect x="545" y="118" width="60" height="140" fill="#1a3a5c" rx="8" opacity="0.6"/>
+
+  <!-- Neurons layer 1 (input) -->
+  <circle cx="60" cy="80" r="10" fill="#3d8ef0"/>
+  <circle cx="60" cy="115" r="10" fill="#3d8ef0"/>
+  <circle cx="60" cy="150" r="10" fill="#3d8ef0"/>
+  <circle cx="60" cy="185" r="10" fill="#3d8ef0"/>
+  <circle cx="60" cy="220" r="10" fill="#3d8ef0"/>
+  <circle cx="60" cy="255" r="10" fill="#3d8ef0"/>
+  <circle cx="60" cy="290" r="10" fill="#3d8ef0"/>
+  <circle cx="60" cy="325" r="10" fill="#3d8ef0"/>
+
+  <!-- Neurons layer 2 -->
+  <circle cx="180" cy="95" r="10" fill="#1e5fa8"/>
+  <circle cx="180" cy="135" r="10" fill="#1e5fa8"/>
+  <circle cx="180" cy="175" r="10" fill="#1e5fa8"/>
+  <circle cx="180" cy="215" r="10" fill="#1e5fa8"/>
+  <circle cx="180" cy="255" r="10" fill="#1e5fa8"/>
+  <circle cx="180" cy="295" r="10" fill="#1e5fa8"/>
+
+  <!-- Neurons layer 3 -->
+  <circle cx="310" cy="110" r="10" fill="#00b09b"/>
+  <circle cx="310" cy="155" r="10" fill="#00b09b"/>
+  <circle cx="310" cy="200" r="10" fill="#00b09b"/>
+  <circle cx="310" cy="245" r="10" fill="#00b09b"/>
+  <circle cx="310" cy="290" r="10" fill="#00b09b"/>
+
+  <!-- Neurons layer 4 -->
+  <circle cx="445" cy="130" r="10" fill="#f5c518"/>
+  <circle cx="445" cy="180" r="10" fill="#f5c518"/>
+  <circle cx="445" cy="230" r="10" fill="#f5c518"/>
+  <circle cx="445" cy="280" r="10" fill="#f5c518"/>
+
+  <!-- Neurons output -->
+  <circle cx="575" cy="155" r="11" fill="#e05050"/>
+  <circle cx="575" cy="200" r="11" fill="#e05050"/>
+  <circle cx="575" cy="245" r="11" fill="#e05050"/>
+
+  <!-- Connections (sample, faded) -->
+  <g stroke="#3d8ef0" stroke-width="0.4" opacity="0.25">
+    <line x1="70" y1="80" x2="170" y2="95"/>
+    <line x1="70" y1="80" x2="170" y2="135"/>
+    <line x1="70" y1="80" x2="170" y2="215"/>
+    <line x1="70" y1="150" x2="170" y2="95"/>
+    <line x1="70" y1="150" x2="170" y2="175"/>
+    <line x1="70" y1="150" x2="170" y2="255"/>
+    <line x1="70" y1="220" x2="170" y2="135"/>
+    <line x1="70" y1="220" x2="170" y2="215"/>
+    <line x1="70" y1="290" x2="170" y2="255"/>
+    <line x1="70" y1="290" x2="170" y2="295"/>
+    <line x1="190" y1="95" x2="300" y2="110"/>
+    <line x1="190" y1="135" x2="300" y2="155"/>
+    <line x1="190" y1="175" x2="300" y2="200"/>
+    <line x1="190" y1="215" x2="300" y2="155"/>
+    <line x1="190" y1="215" x2="300" y2="245"/>
+    <line x1="190" y1="255" x2="300" y2="200"/>
+    <line x1="190" y1="295" x2="300" y2="290"/>
+    <line x1="320" y1="110" x2="435" y2="130"/>
+    <line x1="320" y1="155" x2="435" y2="130"/>
+    <line x1="320" y1="155" x2="435" y2="180"/>
+    <line x1="320" y1="200" x2="435" y2="180"/>
+    <line x1="320" y1="200" x2="435" y2="230"/>
+    <line x1="320" y1="245" x2="435" y2="230"/>
+    <line x1="320" y1="290" x2="435" y2="280"/>
+    <line x1="455" y1="130" x2="564" y2="155"/>
+    <line x1="455" y1="130" x2="564" y2="200"/>
+    <line x1="455" y1="180" x2="564" y2="155"/>
+    <line x1="455" y1="230" x2="564" y2="200"/>
+    <line x1="455" y1="280" x2="564" y2="245"/>
+  </g>
+
+  <!-- Gradient arrow at bottom -->
+  <defs>
+    <linearGradient id="arrowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3d8ef0"/>
+      <stop offset="50%" stop-color="#00b09b"/>
+      <stop offset="100%" stop-color="#e05050"/>
+    </linearGradient>
+  </defs>
+  <line x1="25" y1="355" x2="605" y2="355" stroke="url(#arrowGrad)" stroke-width="3"/>
+  <polygon points="605,350 620,355 605,360" fill="#e05050"/>
+  <text x="315" y="372" fill="#9bb0cc" font-size="13" text-anchor="middle">Représentations de plus en plus abstraites →</text>
+</svg>

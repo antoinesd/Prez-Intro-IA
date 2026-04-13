@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 400" font-family="Inter,sans-serif">
+  <rect width="680" height="400" fill="#0a1628" rx="12"/>
+  <text x="340" y="28" fill="#e8edf4" font-size="16" font-weight="600" text-anchor="middle">Scaling Laws — la performance suit une loi puissance prévisible</text>
+
+  <!-- Axes -->
+  <line x1="80" y1="340" x2="640" y2="340" stroke="#3d8ef0" stroke-width="2"/>
+  <line x1="80" y1="340" x2="80" y2="50" stroke="#3d8ef0" stroke-width="2"/>
+
+  <!-- Axis labels -->
+  <text x="360" y="375" fill="#9bb0cc" font-size="14" text-anchor="middle">Compute (FLOPs) — échelle log</text>
+  <text x="25" y="200" fill="#9bb0cc" font-size="14" text-anchor="middle" transform="rotate(-90,25,200)">Loss (log)</text>
+
+  <!-- Log scale ticks X -->
+  <text x="140" y="355" fill="#9bb0cc" font-size="11" text-anchor="middle">10²⁰</text>
+  <text x="240" y="355" fill="#9bb0cc" font-size="11" text-anchor="middle">10²²</text>
+  <text x="340" y="355" fill="#9bb0cc" font-size="11" text-anchor="middle">10²³</text>
+  <text x="440" y="355" fill="#9bb0cc" font-size="11" text-anchor="middle">10²⁴</text>
+  <text x="560" y="355" fill="#9bb0cc" font-size="11" text-anchor="middle">10²⁵</text>
+
+  <!-- Log scale ticks Y -->
+  <text x="70" y="320" fill="#9bb0cc" font-size="11" text-anchor="end">3.5</text>
+  <text x="70" y="270" fill="#9bb0cc" font-size="11" text-anchor="end">3.0</text>
+  <text x="70" y="220" fill="#9bb0cc" font-size="11" text-anchor="end">2.5</text>
+  <text x="70" y="170" fill="#9bb0cc" font-size="11" text-anchor="end">2.0</text>
+  <text x="70" y="120" fill="#9bb0cc" font-size="11" text-anchor="end">1.5</text>
+  <text x="70" y="75" fill="#9bb0cc" font-size="11" text-anchor="end">1.0</text>
+
+  <!-- Grid lines -->
+  <line x1="80" y1="320" x2="640" y2="320" stroke="#1a2a3a" stroke-width="1"/>
+  <line x1="80" y1="270" x2="640" y2="270" stroke="#1a2a3a" stroke-width="1"/>
+  <line x1="80" y1="220" x2="640" y2="220" stroke="#1a2a3a" stroke-width="1"/>
+  <line x1="80" y1="170" x2="640" y2="170" stroke="#1a2a3a" stroke-width="1"/>
+  <line x1="80" y1="120" x2="640" y2="120" stroke="#1a2a3a" stroke-width="1"/>
+
+  <!-- Curves: different model sizes -->
+  <!-- Small model ~117M params -->
+  <polyline points="100,310 160,285 220,265 280,250 340,242 400,238 460,236 520,235 580,234" 
+            fill="none" stroke="#3d8ef0" stroke-width="2.5" opacity="0.7"/>
+  <!-- Medium model ~1.5B params -->
+  <polyline points="140,300 200,268 260,238 320,210 380,188 440,172 500,162 560,156 620,152" 
+            fill="none" stroke="#00b09b" stroke-width="2.5" opacity="0.9"/>
+  <!-- Large model ~175B params -->
+  <polyline points="200,285 260,248 320,210 380,172 440,142 500,118 560,100 620,86" 
+            fill="none" stroke="#f5c518" stroke-width="3" opacity="1"/>
+
+  <!-- Model annotations -->
+  <text x="495" y="230" fill="#3d8ef0" font-size="12">GPT-2 (117M)</text>
+  <text x="495" y="150" fill="#00b09b" font-size="12">GPT-3 (1.5B)</text>
+  <text x="495" y="92" fill="#f5c518" font-size="12">GPT-4 class (>100B)</text>
+
+  <!-- Key insight box -->
+  <rect x="95" y="55" width="340" height="50" fill="rgba(245,197,24,0.1)" rx="8" stroke="#f5c518" stroke-width="1.5"/>
+  <text x="265" y="76" fill="#f5c518" font-size="13" font-weight="600" text-anchor="middle">Loi puissance : L(C) ≈ (C₀ / C)^α</text>
+  <text x="265" y="95" fill="#9bb0cc" font-size="12" text-anchor="middle">Prévisible → peut planifier l'entraînement avant de le lancer</text>
+</svg>

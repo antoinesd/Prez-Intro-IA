@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 460" font-family="Inter,sans-serif">
+  <rect width="680" height="460" fill="#0a1628" rx="12"/>
+  <text x="340" y="30" fill="#e8edf4" font-size="17" font-weight="600" text-anchor="middle">Carte d'attention — "ses" s'appuie fortement sur "molécule"</text>
+
+  <!-- Color scale legend -->
+  <defs>
+    <linearGradient id="heatGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0a1628"/>
+      <stop offset="50%" stop-color="#1e5fa8"/>
+      <stop offset="100%" stop-color="#f5c518"/>
+    </linearGradient>
+  </defs>
+  <rect x="450" y="42" width="200" height="14" fill="url(#heatGrad)" rx="3"/>
+  <text x="450" y="70" fill="#9bb0cc" font-size="11">0.0 (faible)</text>
+  <text x="620" y="70" fill="#9bb0cc" font-size="11" text-anchor="end">1.0 (fort)</text>
+
+  <!-- Tokens on axes -->
+  <!-- Y axis (source) -->
+  <text x="90" y="105" fill="#9bb0cc" font-size="13" text-anchor="end">La</text>
+  <text x="90" y="145" fill="#f5c518" font-size="13" font-weight="700" text-anchor="end">molécule</text>
+  <text x="90" y="185" fill="#9bb0cc" font-size="13" text-anchor="end">de</text>
+  <text x="90" y="225" fill="#9bb0cc" font-size="13" text-anchor="end">benzène</text>
+  <text x="90" y="265" fill="#9bb0cc" font-size="13" text-anchor="end">est</text>
+  <text x="90" y="305" fill="#9bb0cc" font-size="13" text-anchor="end">aromatique</text>
+  <text x="90" y="345" fill="#9bb0cc" font-size="13" text-anchor="end">car</text>
+  <text x="90" y="385" fill="#3d8ef0" font-size="13" font-weight="700" text-anchor="end">ses</text>
+
+  <!-- X axis (target) -->
+  <text x="115" y="418" fill="#9bb0cc" font-size="12" text-anchor="middle" transform="rotate(-30,115,418)">La</text>
+  <text x="155" y="418" fill="#f5c518" font-size="12" font-weight="700" text-anchor="middle" transform="rotate(-30,155,418)">molécule</text>
+  <text x="195" y="418" fill="#9bb0cc" font-size="12" text-anchor="middle" transform="rotate(-30,195,418)">de</text>
+  <text x="235" y="418" fill="#9bb0cc" font-size="12" text-anchor="middle" transform="rotate(-30,235,418)">benzène</text>
+  <text x="275" y="418" fill="#9bb0cc" font-size="12" text-anchor="middle" transform="rotate(-30,275,418)">est</text>
+  <text x="315" y="418" fill="#9bb0cc" font-size="12" text-anchor="middle" transform="rotate(-30,315,418)">aromatique</text>
+  <text x="355" y="418" fill="#9bb0cc" font-size="12" text-anchor="middle" transform="rotate(-30,355,418)">car</text>
+  <text x="395" y="418" fill="#3d8ef0" font-size="12" font-weight="700" text-anchor="middle" transform="rotate(-30,395,418)">ses</text>
+
+  <!-- Heatmap cells: [row][col] where row=y-token, col=x-token -->
+  <!-- Row: La -->
+  <rect x="97" y="87" width="38" height="30" fill="#1a2a3a" rx="2"/>
+  <rect x="137" y="87" width="38" height="30" fill="#122840" rx="2"/>
+  <rect x="177" y="87" width="38" height="30" fill="#0d1e30" rx="2"/>
+  <rect x="217" y="87" width="38" height="30" fill="#0a1628" rx="2"/>
+  <rect x="257" y="87" width="38" height="30" fill="#0a1628" rx="2"/>
+  <rect x="297" y="87" width="38" height="30" fill="#0a1628" rx="2"/>
+  <rect x="337" y="87" width="38" height="30" fill="#0a1628" rx="2"/>
+  <rect x="377" y="87" width="38" height="30" fill="#0a1628" rx="2"/>
+  <!-- Row: molécule -->
+  <rect x="97" y="127" width="38" height="30" fill="#0f2035" rx="2"/>
+  <rect x="137" y="127" width="38" height="30" fill="#2d6aad" rx="2"/>
+  <rect x="177" y="127" width="38" height="30" fill="#1a4070" rx="2"/>
+  <rect x="217" y="127" width="38" height="30" fill="#102540" rx="2"/>
+  <rect x="257" y="127" width="38" height="30" fill="#0d1e30" rx="2"/>
+  <rect x="297" y="127" width="38" height="30" fill="#0a1628" rx="2"/>
+  <rect x="337" y="127" width="38" height="30" fill="#0a1628" rx="2"/>
+  <rect x="377" y="127" width="38" height="30" fill="#0a1628" rx="2"/>
+  <!-- Row: de -->
+  <rect x="97" y="167" width="38" height="30" fill="#0a1628" rx="2"/>
+  <rect x="137" y="167" width="38" height="30" fill="#0f2035" rx="2"/>
+  <rect x="177" y="167" width="38" height="30" fill="#1a4070" rx="2"/>
+  <rect x="217" y="167" width="38" height="30" fill="#0f2035" rx="2"/>
+  <rect x="257" y="167" width="38" height="30" fill="#0a1628" rx="2"/>
+  <rect x="297" y="167" width="38" height="30" fill="#0a1628" rx="2"/>
+  <rect x="337" y="167" width="38" height="30" fill="#0a1628" rx="2"/>
+  <rect x="377" y="167" width="38" height="30" fill="#0a1628" rx="2"/>
+  <!-- Row: benzène -->
+  <rect x="97" y="207" width="38" height="30" fill="#0a1628" rx="2"/>
+  <rect x="137" y="207" width="38" height="30" fill="#1e4e90" rx="2"/>
+  <rect x="177" y="207" width="38" height="30" fill="#102540" rx="2"/>
+  <rect x="217" y="207" width="38" height="30" fill="#3576c0" rx="2"/>
+  <rect x="257" y="207" width="38" height="30" fill="#0f2035" rx="2"/>
+  <rect x="297" y="207" width="38" height="30" fill="#0a1628" rx="2"/>
+  <rect x="337" y="207" width="38" height="30" fill="#0a1628" rx="2"/>
+  <rect x="377" y="207" width="38" height="30" fill="#122840" rx="2"/>
+  <!-- Row: est -->
+  <rect x="97" y="247" width="38" height="30" fill="#0a1628" rx="2"/>
+  <rect x="137" y="247" width="38" height="30" fill="#0a1628" rx="2"/>
+  <rect x="177" y="247" width="38" height="30" fill="#0a1628" rx="2"/>
+  <rect x="217" y="247" width="38" height="30" fill="#0a1628" rx="2"/>
+  <rect x="257" y="247" width="38" height="30" fill="#1a4070" rx="2"/>
+  <rect x="297" y="247" width="38" height="30" fill="#0f2035" rx="2"/>
+  <rect x="337" y="247" width="38" height="30" fill="#0a1628" rx="2"/>
+  <rect x="377" y="247" width="38" height="30" fill="#0a1628" rx="2"/>
+  <!-- Row: aromatique -->
+  <rect x="97" y="287" width="38" height="30" fill="#0a1628" rx="2"/>
+  <rect x="137" y="287" width="38" height="30" fill="#2058a0" rx="2"/>
+  <rect x="177" y="287" width="38" height="30" fill="#0f2035" rx="2"/>
+  <rect x="217" y="287" width="38" height="30" fill="#3576c0" rx="2"/>
+  <rect x="257" y="287" width="38" height="30" fill="#1a4070" rx="2"/>
+  <rect x="297" y="287" width="38" height="30" fill="#2d6aad" rx="2"/>
+  <rect x="337" y="287" width="38" height="30" fill="#0f2035" rx="2"/>
+  <rect x="377" y="287" width="38" height="30" fill="#0a1628" rx="2"/>
+  <!-- Row: car -->
+  <rect x="97" y="327" width="38" height="30" fill="#0a1628" rx="2"/>
+  <rect x="137" y="327" width="38" height="30" fill="#0a1628" rx="2"/>
+  <rect x="177" y="327" width="38" height="30" fill="#0a1628" rx="2"/>
+  <rect x="217" y="327" width="38" height="30" fill="#0a1628" rx="2"/>
+  <rect x="257" y="327" width="38" height="30" fill="#0a1628" rx="2"/>
+  <rect x="297" y="327" width="38" height="30" fill="#102540" rx="2"/>
+  <rect x="337" y="327" width="38" height="30" fill="#1a4070" rx="2"/>
+  <rect x="377" y="327" width="38" height="30" fill="#0a1628" rx="2"/>
+  <!-- Row: ses (strong attention on molécule!) -->
+  <rect x="97" y="367" width="38" height="30" fill="#122840" rx="2"/>
+  <rect x="137" y="367" width="38" height="30" fill="#e8a900" rx="2"/>  <!-- HIGH: ses→molécule -->
+  <rect x="177" y="367" width="38" height="30" fill="#1a4070" rx="2"/>
+  <rect x="217" y="367" width="38" height="30" fill="#2058a0" rx="2"/>
+  <rect x="257" y="367" width="38" height="30" fill="#0f2035" rx="2"/>
+  <rect x="297" y="367" width="38" height="30" fill="#0a1628" rx="2"/>
+  <rect x="337" y="367" width="38" height="30" fill="#0a1628" rx="2"/>
+  <rect x="377" y="367" width="38" height="30" fill="#2d6aad" rx="2"/>  <!-- ses→ses -->
+
+  <!-- Highlight frame for the key cell -->
+  <rect x="137" y="367" width="38" height="30" fill="none" stroke="#f5c518" stroke-width="2" rx="2"/>
+  <!-- Arrow annotation -->
+  <line x1="175" y1="382" x2="280" y2="355" stroke="#f5c518" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="285" y="350" fill="#f5c518" font-size="12">"ses" ← "molécule" : 0.87</text>
+</svg>
