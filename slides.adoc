@@ -19,8 +19,7 @@
 [.subtitle]
 Des systèmes experts aux modèles génératifs
 
-[.institution]
-Chimie ParisTech PSL
+image::images/chimie_paristech_logo.svg[Chimie ParisTech PSL, 380]
 
 [.conference-info]
 Conférence — 2024 · ~60 minutes
@@ -79,9 +78,10 @@ Il propose le **Test de Turing** : si un humain ne peut pas distinguer la machin
 → Non, mais il a structuré 70 ans de recherche.
 
 [.column]
-image::images/turing.svg[Alan Turing, 600]
+image::images/alan_turing.jpg[Alan Turing, 400]
 [.caption]
-Alan Turing (1912–1954) — père de l'informatique théorique
+Alan Turing (1912–1954) — père de l'informatique théorique +
+_(Wikimedia Commons / photographie de 1928)_
 --
 
 [NOTE.speaker]
@@ -177,6 +177,38 @@ La connaissance du monde ne peut pas être encodée à la main
 financement s'effondre, promesses non tenues
 --
 
+== 1997 — Deep Blue : les machines battent les champions
+
+[.columns]
+--
+[.column]
+=== Un tournant symbolique
+
+*11 mai 1997* : Deep Blue (IBM) bat Garry Kasparov au jeu d'échecs (3,5 – 2,5).
+
+*Ce que Deep Blue n'est PAS* :
+[.limitation-box]
+Deep Blue ne "pense" pas — il évalue 200 millions de positions/seconde avec des heuristiques codées à la main.
+
+*Mais le signal est clair* : les machines peuvent surpasser les humains dans des domaines formalisables.
+
+*1996-2016 — Succès de l'IA symbolique hybride* :
+- Reconnaissance de chèques bancaires (LeCun, 1998)
+- Spam filtering (Naive Bayes)
+- Moteurs de recommandation
+
+[.column]
+image::images/deep_blue.jpg[Deep Blue, 500]
+[.caption]
+IBM Deep Blue — premier programme à battre un champion du monde d'échecs en titre +
+_(© Wikimedia Commons / IBM)_
+--
+
+[NOTE.speaker]
+--
+Kasparov a été très perturbé par la "créativité" de Deep Blue lors de certains coups — des coups que le logiciel a joués parce qu'ils ne déclenchaient pas de pénalité dans sa fonction d'évaluation, pas parce qu'il "voyait" une stratégie à long terme. Ce malentendu sur la nature de l'IA est encore courant aujourd'hui.
+--
+
 == 1986-1995 — Le Machine Learning : laisser les données parler
 
 [.columns]
@@ -195,18 +227,18 @@ financement s'effondre, promesses non tenues
 |===
 
 *Algorithmes clés* :
+- *Perceptron (Rosenblatt, 1958)* — premier neurone artificiel
 - Backpropagation (Rumelhart, Hinton 1986) — réseaux de neurones multi-couches
 - SVM — Support Vector Machines (Vapnik 1995)
 - Arbres de décision, forêts aléatoires
 
 [.column]
-=== Intuition de la régression
+=== Le perceptron : premier neurone artificiel
 
-image::images/linear_regression.svg[Régression, 700]
+image::images/perceptron.png[Perceptron, 700]
 [.caption]
-La machine trouve la droite (ou la courbe) qui minimise l'erreur sur les données d'entraînement
-
-→ Généralise ensuite à des données inconnues
+Le perceptron de Rosenblatt (1958) : somme pondérée des entrées + seuil d'activation. +
+Limite : seulement les problèmes linéairement séparables. La backpropagation (1986) permettra d'empiler les couches.
 --
 
 [NOTE.speaker]
@@ -241,9 +273,11 @@ AlexNet (deep learning) :    15.3%
 → Gain de 10 points d'un coup. L'ère du deep learning commence.
 
 [.column]
-image::images/deep_learning_layers.svg[Couches DL, 700]
+image::images/colored_nn.png[Réseau de neurones, 500]
 [.caption]
-Un réseau de neurones profond apprend des représentations hiérarchiques : pixels → bords → formes → objets
+Architecture d'un réseau de neurones : couches d'entrée, cachées, sortie. +
+La profondeur (10-1000+ couches) permet d'apprendre des représentations hiérarchiques : pixels → bords → formes → objets +
+_(© Wikimedia Commons)_
 --
 
 == 2017 — "Attention is All You Need"
@@ -349,6 +383,13 @@ Chaque mot → vecteur de N dimensions (N = 768, 1024, 4096...)
 "chien"    → [-0.71, 0.12, -0.55, ...]  ← loin
 ----
 
+[.ft-quote]
+____
+"Just as you might describe a house by its characteristics — type, location, bedrooms, bathrooms, storeys — the values in an embedding quantify a word's linguistic features. The way these characteristics are derived means we don't know exactly what each value represents, but words we expect to be used in comparable ways often have similar-looking embeddings."
+
+-- Financial Times, _Generative AI exists because of the transformer_ (2023)
+____
+
 *Propriété remarquable* : les relations sémantiques sont des vecteurs
 
 [.math-box]
@@ -376,6 +417,13 @@ Les embeddings sont la première couche du transformer. Ils transforment chaque 
 --
 [.column]
 === Le mécanisme clé du Transformer
+
+[.ft-quote]
+____
+"Before transformers, the state of the art AI translation methods were recurrent neural networks (RNNs), which scanned each word in a sentence and processed it _sequentially_. With self-attention, the transformer computes all the words in a sentence _at the same time_."
+
+-- Financial Times, _Generative AI exists because of the transformer_ (2023)
+____
 
 Pour chaque mot, l'attention calcule :
 *"Quels autres mots de la séquence sont pertinents pour comprendre ce mot ici ?"*
@@ -467,7 +515,58 @@ image::images/transformer_arch.svg[Architecture, 600]
 Architecture originale Encoder-Decoder (Vaswani 2017). Les LLMs modernes n'utilisent que le Decoder.
 --
 
-== Entraînement : du texte brut à la "compréhension"
+== Génération de texte : chercher le meilleur token
+
+[.columns]
+--
+[.column]
+=== Du token au texte : le décodage
+
+[.ft-quote]
+____
+"At its simplest, the model's aim is now to predict the next word in a sequence and do this repeatedly until the output is complete."
+
+-- Financial Times, _Generative AI exists because of the transformer_ (2023)
+____
+
+*Greedy search* : à chaque étape, choisir le token le plus probable.
+
+[.warning-box]
+Problème : "sometimes, while each individual token might be the next best fit, the full phrase can be less relevant."
+
+*Beam search* : explorer les N meilleures séquences en parallèle ("faisceaux").
+→ Résultat global de meilleure qualité.
+
+*Température* : paramètre qui contrôle la "créativité" :
+- T → 0 : déterministe (toujours le token le plus probable)
+- T = 1 : distribution naturelle
+- T > 1 : plus créatif, plus risqué
+
+[.column]
+=== Illustration : beam search (N=3)
+
+[.beam-search]
+----
+Entrée : "La réaction de Diels-Alder..."
+                            ↓
+      ┌─────────────────────┴──────────────────┐
+   "produit"(0.42)    "donne"(0.31)    "forme"(0.18)
+      ↓                    ↓                   ↓
+  "un" "des"           "un" "des"          "un" "des"
+  ...                  ...                 ...
+      └──────────────── Vote final ───────────┘
+              "donne un produit bicyclique"
+----
+
+*Top-k sampling* : sélectionner aléatoirement parmi les k tokens les plus probables → variété sans incohérence.
+
+*Top-p (nucleus) sampling* : sélectionner parmi les tokens qui couvrent p% de la probabilité cumulée.
+--
+
+[NOTE.speaker]
+--
+La température est l'un des paramètres les plus importants pour contrôler le comportement d'un LLM en production. En chimie, on voudra généralement T faible pour les sorties structurées (SMILES, réactions) et T plus haute pour la génération d'hypothèses créatives.
+--
 
 [.columns]
 --
@@ -511,13 +610,19 @@ Le pre-training est de loin la phase la plus coûteuse. Le fine-tuning (SFT + RL
 [.column]
 === Pourquoi les LLMs "inventent" ?
 
-Un LLM génère le token le *plus probable* selon ses poids — pas le token *vrai*.
+Un LLM *n'est pas un moteur de recherche*. C'est un moteur de prédiction de patterns.
 
-*Sources d'hallucinations* :
-- Données d'entraînement erronées
-- Conflits de sources
-- Extrapolation hors distribution
-- Température élevée (créativité = variabilité)
+[.ft-quote]
+____
+"LLMs are not search engines looking up facts; they are pattern-spotting engines that guess the next best option in a sequence. Because of this inherent predictive nature, LLMs can also fabricate information in a process that researchers call 'hallucination'. They can generate made-up numbers, names, dates, quotes — even web links or entire articles."
+
+-- Financial Times, _Generative AI exists because of the transformer_ (2023)
+____
+
+*Grounding et RLHF pour limiter le problème* :
+- Cross-checking contre des sources vérifiées (RAG)
+- Feedback humain (RLHF) — humains qui notent les réponses
+- Reste un *grand défi de recherche*
 
 *Pour la chimie* : *TOUJOURS* vérifier les structures, réactions, données physico-chimiques générées par un LLM !
 
@@ -532,6 +637,52 @@ Un LLM génère le token le *plus probable* selon ses poids — pas le token *vr
 - ... apparaissent spontanément à grande échelle
 
 Ces capacités n'ont *pas* été programmées — elles émergent de la prédiction du prochain token à très grande échelle.
+--
+
+== Au-delà du texte : les Transformers partout
+
+[.columns]
+--
+[.column]
+=== Une architecture universelle de reconnaissance de patterns
+
+[.ft-quote]
+____
+"Its real power lies beyond language. Its inventors discovered that transformer models could recognise and predict any repeating motifs or patterns. From pixels in an image... to computer code... It could even predict notes in music and DNA in proteins."
+
+-- Financial Times, _Generative AI exists because of the transformer_ (2023)
+____
+
+[.domain-grid]
+|===
+| Domaine | Modèle | Input | Output
+
+| Images | DALL-E, Midjourney | Texte | Image
+| Code | GitHub Copilot | Code incomplet | Complétion
+| Musique | MusicLM, Suno | Texte | Audio
+| *Protéines* | *AlphaFold* | *Séquence AA* | *Structure 3D*
+| *Molécules* | *ChemBERTa* | *SMILES* | *Propriétés*
+| Science | Galactica | Question | Réponse scientifique
+|===
+
+[.column]
+=== Pourquoi ça marche partout ?
+
+*La clé* : tout signal structuré peut être "tokenisé" et modélisé comme une séquence.
+
+[.key-insight]
+Une molécule SMILES, une séquence d'ADN, un spectre de masse, une image découpée en patches — tous sont des *séquences de tokens* sur lesquelles l'attention opère.
+
+*Ce qui change* : le vocabulaire (atomes vs pixels vs notes) et les données d'entraînement.
+
+*Ce qui ne change pas* : le mécanisme d'attention, les blocs Transformer, les scaling laws.
+
+→ *Un seul paradigme pour comprendre l'IA chimique moderne.*
+--
+
+[NOTE.speaker]
+--
+C'est pourquoi AlphaFold2 est essentiellement un Transformer : l'Evoformer est un Transformer qui traite des séquences d'acides aminés. De même, les modèles de génération moléculaire basés sur SMILES utilisent exactement les mêmes architectures que GPT, juste avec un vocabulaire chimique.
 --
 
 // ===========================================================
@@ -564,9 +715,10 @@ Elle le fait en *microsecondes*. Pourquoi ? L'évolution a trouvé un chemin gui
 *AlphaFold2 (2021)* → prédit avec précision atomique pour ~200 millions de protéines
 
 [.column]
-image::images/alphafold.svg[AlphaFold2, 700]
+image::images/myoglobin.png[Structure protéique, 600]
 [.caption]
-AlphaFold2 prédit des structures avec une précision comparable à la cristallographie (RMSD < 1 Å)
+Structure 3D d'une protéine (myoglobine). AlphaFold2 prédit des structures avec une précision comparable à la cristallographie (RMSD < 1 Å) — colorée par confiance pLDDT. +
+_(© Wikimedia Commons)_
 --
 
 [NOTE.speaker]

@@ -444,3 +444,62 @@
   font-style: italic;
   opacity: 0.7;
 }
+
+/* ── Citation Financial Times ─────────────────────────────────── */
+.reveal .ft-quote blockquote {
+  border-left: 4px solid #fff1e5;
+  background: rgba(255, 241, 229, 0.06);
+  padding: 0.8em 1.2em;
+  border-radius: 0 8px 8px 0;
+  font-style: italic;
+  font-size: 0.82em;
+  color: #d4c4b0;
+  line-height: 1.6;
+  margin: 0.5em 0;
+}
+
+.reveal .ft-quote blockquote::before {
+  content: '\201C';
+  font-size: 2em;
+  color: #fff1e5;
+  line-height: 0.1;
+  vertical-align: -0.4em;
+  margin-right: 0.1em;
+  opacity: 0.6;
+}
+
+.reveal .ft-quote blockquote p.attribution {
+  font-size: 0.8em;
+  color: #9bb0cc;
+  font-style: normal;
+  margin-top: 0.5em;
+}
+
+/* ── Boîte avertissement ──────────────────────────────────────── */
+.reveal .warning-box {
+  border: 2px solid var(--cpt-gold);
+  background: rgba(245, 197, 24, 0.08);
+  padding: 0.6em 1em;
+  border-radius: 8px;
+  color: var(--cpt-gold);
+  font-size: 0.85em;
+  margin: 0.5em 0;
+}
+
+/* ── Grille de domaines ───────────────────────────────────────── */
+.reveal .domain-grid table {
+  font-size: 0.72em;
+  width: 100%;
+}
+
+.reveal .domain-grid table tr td:nth-child(3),
+.reveal .domain-grid table tr td:nth-child(4) {
+  color: var(--cpt-green);
+}
+
+/* ── Logo sur le titre ────────────────────────────────────────── */
+.reveal .slides section img[alt="Chimie ParisTech PSL"] {
+  filter: brightness(1.1);
+  margin: 1em auto 0.5em;
+  display: block;
+}
