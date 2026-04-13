@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 440" font-family="Inter,sans-serif">
+  <rect width="640" height="440" fill="#0a1628" rx="12"/>
+  <!-- Background protein-like blob -->
+  <radialGradient id="glow2" cx="50%" cy="50%" r="50%">
+    <stop offset="0%" stop-color="#00b09b" stop-opacity="0.15"/>
+    <stop offset="100%" stop-color="#0a1628" stop-opacity="0"/>
+  </radialGradient>
+  <ellipse cx="320" cy="210" rx="280" ry="180" fill="url(#glow2)"/>
+
+  <!-- Protein backbone (α-helix style ribbon) -->
+  <!-- Left helix -->
+  <path d="M 80,150 C 90,130 130,130 140,150 C 150,170 190,170 200,150 C 210,130 250,130 260,150 C 270,170 310,170 320,150" 
+        stroke="#3d8ef0" stroke-width="12" fill="none" stroke-linecap="round" opacity="0.9"/>
+  <path d="M 80,150 C 90,130 130,130 140,150 C 150,170 190,170 200,150 C 210,130 250,130 260,150 C 270,170 310,170 320,150" 
+        stroke="#1e5fa8" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.6"/>
+
+  <!-- Right helix -->
+  <path d="M 320,150 C 340,120 380,120 400,150 C 420,180 460,180 480,150 C 500,120 540,120 560,150 C 570,165 580,180 575,200"
+        stroke="#00b09b" stroke-width="12" fill="none" stroke-linecap="round" opacity="0.9"/>
+  <path d="M 320,150 C 340,120 380,120 400,150 C 420,180 460,180 480,150 C 500,120 540,120 560,150"
+        stroke="#009080" stroke-width="7" fill="none" stroke-linecap="round" opacity="0.6"/>
+
+  <!-- Beta sheets (arrows) -->
+  <polygon points="100,220 200,220 200,240 220,230 200,220 200,240 100,240" fill="#f5c518" opacity="0.8"/>
+  <polygon points="250,260 350,260 350,280 370,270 350,260 350,280 250,280" fill="#f5c518" opacity="0.7"/>
+  <polygon points="400,220 520,220 520,240 545,230 520,220 520,240 400,240" fill="#f5c518" opacity="0.8"/>
+
+  <!-- Loops connecting elements -->
+  <path d="M 200,230 C 225,270 225,270 250,265" stroke="#9bb0cc" stroke-width="4" fill="none" opacity="0.7"/>
+  <path d="M 350,268 C 375,290 390,280 400,230" stroke="#9bb0cc" stroke-width="4" fill="none" opacity="0.7"/>
+  <path d="M 320,150 C 310,190 280,200 260,215" stroke="#9bb0cc" stroke-width="4" fill="none" opacity="0.5"/>
+  <path d="M 575,200 C 560,240 540,250 520,228" stroke="#9bb0cc" stroke-width="4" fill="none" opacity="0.5"/>
+
+  <!-- Atom-like spheres at key positions -->
+  <circle cx="80" cy="150" r="8" fill="#3d8ef0" opacity="0.9"/>
+  <circle cx="320" cy="150" r="10" fill="#f5c518" opacity="0.9"/>
+  <circle cx="575" cy="200" r="8" fill="#00b09b" opacity="0.9"/>
+  <circle cx="220" cy="230" r="7" fill="#e05050" opacity="0.8"/>
+  <circle cx="370" cy="270" r="7" fill="#e05050" opacity="0.8"/>
+  <circle cx="545" cy="230" r="7" fill="#e05050" opacity="0.8"/>
+
+  <!-- Confidence color bar -->
+  <defs>
+    <linearGradient id="pLDDT" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#e05050"/>
+      <stop offset="33%" stop-color="#f5c518"/>
+      <stop offset="66%" stop-color="#3d8ef0"/>
+      <stop offset="100%" stop-color="#00b09b"/>
+    </linearGradient>
+  </defs>
+  <rect x="100" y="330" width="440" height="16" fill="url(#pLDDT)" rx="4"/>
+  <text x="100" y="360" fill="#e05050" font-size="11">Faible</text>
+  <text x="220" y="360" fill="#f5c518" font-size="11" text-anchor="middle">Moyen</text>
+  <text x="430" y="360" fill="#3d8ef0" font-size="11" text-anchor="middle">Bon</text>
+  <text x="540" y="360" fill="#00b09b" font-size="11" text-anchor="end">Très bon</text>
+  <text x="320" y="378" fill="#9bb0cc" font-size="12" text-anchor="middle">Score de confiance pLDDT (0-100)</text>
+
+  <!-- Title area -->
+  <text x="320" y="415" fill="#e8edf4" font-size="14" font-weight="700" text-anchor="middle">Prédiction de structure protéique — AlphaFold2 (DeepMind, 2021)</text>
+  <text x="320" y="432" fill="#9bb0cc" font-size="11" text-anchor="middle">Hélices α (bleu), feuillets β (jaune), boucles (gris) | Précision atomique : RMSD &lt; 1 Å</text>
+</svg>

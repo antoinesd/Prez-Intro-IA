@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 400" font-family="Inter,sans-serif">
+  <rect width="680" height="400" fill="#0a1628" rx="12"/>
+  <text x="340" y="28" fill="#e8edf4" font-size="16" font-weight="600" text-anchor="middle">Projection 2D des embeddings (t-SNE) — clusters sémantiques</text>
+
+  <!-- Cluster: molécules organiques -->
+  <ellipse cx="200" cy="200" rx="90" ry="55" fill="rgba(30,95,168,0.15)" stroke="#3d8ef0" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="200" y="270" fill="#3d8ef0" font-size="11" text-anchor="middle">molécules organiques</text>
+  <circle cx="175" cy="185" r="5" fill="#3d8ef0"/>
+  <text x="178" y="180" fill="#e8edf4" font-size="12">benzène</text>
+  <circle cx="220" cy="210" r="5" fill="#3d8ef0"/>
+  <text x="223" y="205" fill="#e8edf4" font-size="12">toluène</text>
+  <circle cx="180" cy="225" r="5" fill="#3d8ef0"/>
+  <text x="183" y="220" fill="#e8edf4" font-size="12">xylène</text>
+  <circle cx="230" cy="185" r="5" fill="#3d8ef0"/>
+  <text x="233" y="180" fill="#e8edf4" font-size="12">naphtalène</text>
+  <circle cx="155" cy="205" r="5" fill="#3d8ef0"/>
+  <text x="108" y="200" fill="#e8edf4" font-size="12">anthracène</text>
+
+  <!-- Cluster: réactions chimiques -->
+  <ellipse cx="490" cy="150" rx="80" ry="45" fill="rgba(0,176,155,0.12)" stroke="#00b09b" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="490" y="205" fill="#00b09b" font-size="11" text-anchor="middle">réactions</text>
+  <circle cx="465" cy="135" r="5" fill="#00b09b"/>
+  <text x="468" y="130" fill="#e8edf4" font-size="12">oxydation</text>
+  <circle cx="510" cy="160" r="5" fill="#00b09b"/>
+  <text x="513" y="155" fill="#e8edf4" font-size="12">réduction</text>
+  <circle cx="475" cy="165" r="5" fill="#00b09b"/>
+  <text x="416" y="160" fill="#e8edf4" font-size="12">substitution</text>
+  <circle cx="515" cy="138" r="5" fill="#00b09b"/>
+  <text x="518" y="133" fill="#e8edf4" font-size="12">addition</text>
+
+  <!-- Cluster: métaux -->
+  <ellipse cx="480" cy="300" rx="75" ry="50" fill="rgba(245,197,24,0.1)" stroke="#f5c518" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="480" y="360" fill="#f5c518" font-size="11" text-anchor="middle">métaux</text>
+  <circle cx="455" cy="285" r="5" fill="#f5c518"/>
+  <text x="458" y="280" fill="#e8edf4" font-size="12">fer</text>
+  <circle cx="510" cy="300" r="5" fill="#f5c518"/>
+  <text x="513" y="295" fill="#e8edf4" font-size="12">cuivre</text>
+  <circle cx="470" cy="315" r="5" fill="#f5c518"/>
+  <text x="473" y="310" fill="#e8edf4" font-size="12">zinc</text>
+  <circle cx="505" cy="275" r="5" fill="#f5c518"/>
+  <text x="508" y="270" fill="#e8edf4" font-size="12">nickel</text>
+
+  <!-- Cluster: hors chimie (pour contraste) -->
+  <ellipse cx="120" cy="330" rx="65" ry="38" fill="rgba(224,80,80,0.1)" stroke="#e05050" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="120" y="378" fill="#e05050" font-size="11" text-anchor="middle">concepts lointains</text>
+  <circle cx="100" cy="320" r="5" fill="#e05050"/>
+  <text x="68" y="315" fill="#e8edf4" font-size="12">football</text>
+  <circle cx="140" cy="335" r="5" fill="#e05050"/>
+  <text x="143" y="330" fill="#e8edf4" font-size="12">musique</text>
+
+  <!-- Arrow showing analogy -->
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#f5c518"/>
+    </marker>
+  </defs>
+  <line x1="220" y1="210" x2="180" y2="225" stroke="#f5c518" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <text x="295" y="248" fill="#f5c518" font-size="11">benzène→toluène ≈ +CH₃</text>
+  <line x1="220" y1="245" x2="220" y2="215" stroke="#f5c518" stroke-width="1.2" stroke-dasharray="3,2" marker-end="url(#arr)"/>
+</svg>

@@ -1,0 +1,14 @@
+{
+  "name": "prez-intro-ia",
+  "version": "1.0.0",
+  "description": "Introduction à l'Intelligence Artificielle – Chimie ParisTech PSL",
+  "scripts": {
+    "build": "node build.js",
+    "serve": "npx http-server . -p 8080 -o slides.html",
+    "watch": "node build.js --watch"
+  },
+  "devDependencies": {
+    "@asciidoctor/reveal.js": "^5.0.1",
+    "asciidoctor": "^3.0.2"
+  }
+}

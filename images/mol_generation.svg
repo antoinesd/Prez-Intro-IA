@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 400" font-family="Inter,sans-serif">
+  <rect width="700" height="400" fill="#0a1628" rx="12"/>
+  <text x="350" y="28" fill="#e8edf4" font-size="15" font-weight="600" text-anchor="middle">Génération de molécules guidée par propriétés</text>
+
+  <!-- Latent space (center) -->
+  <ellipse cx="350" cy="210" rx="160" ry="100" fill="rgba(30,95,168,0.15)" stroke="#3d8ef0" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="350" y="205" fill="#3d8ef0" font-size="13" text-anchor="middle">Espace latent</text>
+  <text x="350" y="223" fill="#9bb0cc" font-size="11" text-anchor="middle">(représentation apprise)</text>
+
+  <!-- Points in latent space -->
+  <circle cx="310" cy="195" r="5" fill="#3d8ef0" opacity="0.8"/>
+  <circle cx="360" cy="180" r="5" fill="#3d8ef0" opacity="0.8"/>
+  <circle cx="390" cy="220" r="5" fill="#3d8ef0" opacity="0.8"/>
+  <circle cx="330" cy="240" r="5" fill="#3d8ef0" opacity="0.8"/>
+  <!-- Optimized point -->
+  <circle cx="370" cy="205" r="8" fill="#f5c518" stroke="#e8edf4" stroke-width="2"/>
+  <text x="370" y="180" fill="#f5c518" font-size="11" text-anchor="middle">↑ optimisé</text>
+
+  <!-- Left side: input properties -->
+  <rect x="20" y="80" width="180" height="240" fill="#112240" rx="10" stroke="#1e5fa8" stroke-width="1.5"/>
+  <text x="110" y="102" fill="#f5c518" font-size="13" font-weight="600" text-anchor="middle">Propriétés cibles</text>
+  <text x="35" y="128" fill="#e8edf4" font-size="12">✓ logP = 2.5 ± 0.5</text>
+  <text x="35" y="150" fill="#e8edf4" font-size="12">✓ MW &lt; 500 Da</text>
+  <text x="35" y="172" fill="#e8edf4" font-size="12">✓ HBA ≤ 10</text>
+  <text x="35" y="194" fill="#e8edf4" font-size="12">✓ HBD ≤ 5</text>
+  <text x="35" y="216" fill="#9bb0cc" font-size="11">(règle de Lipinski)</text>
+  <line x1="35" y1="228" x2="185" y2="228" stroke="#1e5fa8" stroke-width="1"/>
+  <text x="35" y="248" fill="#e8edf4" font-size="12">✓ Affinité cible</text>
+  <text x="35" y="270" fill="#e8edf4" font-size="12">  Ki &lt; 100 nM</text>
+  <text x="35" y="295" fill="#e8edf4" font-size="12">✗ Toxicité Ames</text>
+
+  <!-- Arrow left to center -->
+  <line x1="200" y1="200" x2="185" y2="210" stroke="#1e5fa8" stroke-width="2"/>
+  <polygon points="187,215 200,205 196,198" fill="#1e5fa8"/>
+  <text x="240" y="178" fill="#9bb0cc" font-size="11" text-anchor="middle">Optimisation</text>
+  <text x="240" y="193" fill="#9bb0cc" font-size="11" text-anchor="middle">dans l'espace</text>
+  <text x="240" y="208" fill="#9bb0cc" font-size="11" text-anchor="middle">latent</text>
+  <line x1="200" y1="200" x2="190" y2="200" stroke="#9bb0cc" stroke-width="1" stroke-dasharray="3,2"/>
+
+  <!-- Arrow center to right -->
+  <defs>
+    <marker id="arrowR" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto">
+      <path d="M0,0 L0,8 L10,4 z" fill="#00b09b"/>
+    </marker>
+  </defs>
+  <line x1="510" y1="200" x2="480" y2="210" stroke="#00b09b" stroke-width="2" stroke-dasharray="4,2"/>
+  <text x="455" y="178" fill="#9bb0cc" font-size="11" text-anchor="middle">Décodage</text>
+  <text x="455" y="193" fill="#9bb0cc" font-size="11" text-anchor="middle">en structure</text>
+
+  <!-- Right side: output molecule -->
+  <rect x="500" y="80" width="185" height="240" fill="#112240" rx="10" stroke="#00b09b" stroke-width="1.5"/>
+  <text x="592" y="102" fill="#00b09b" font-size="13" font-weight="600" text-anchor="middle">Molécule générée</text>
+  <!-- Simple benzene ring sketch -->
+  <polygon points="592,135 616,148 616,175 592,188 568,175 568,148" fill="none" stroke="#e8edf4" stroke-width="2"/>
+  <line x1="592" y1="135" x2="592" y2="120" stroke="#e8edf4" stroke-width="2"/>
+  <line x1="568" y1="148" x2="556" y2="140" stroke="#e8edf4" stroke-width="2"/>
+  <line x1="616" y1="175" x2="630" y2="183" stroke="#e8edf4" stroke-width="2"/>
+  <!-- NH2 group -->
+  <line x1="616" y1="148" x2="632" y2="138" stroke="#3d8ef0" stroke-width="2"/>
+  <text x="633" y="134" fill="#3d8ef0" font-size="13">NH₂</text>
+  <!-- SMILES -->
+  <text x="592" y="218" fill="#9bb0cc" font-size="10" text-anchor="middle">Nc1ccc(cc1)C(=O)O</text>
+  <line x1="515" y1="228" x2="675" y2="228" stroke="#1e5fa8" stroke-width="1"/>
+  <text x="592" y="248" fill="#e8edf4" font-size="11" text-anchor="middle">logP = 2.3 ✓</text>
+  <text x="592" y="264" fill="#e8edf4" font-size="11" text-anchor="middle">MW = 137 Da ✓</text>
+  <text x="592" y="280" fill="#00b09b" font-size="11" text-anchor="middle">Ki (simulé) = 45 nM ✓</text>
+  <text x="592" y="300" fill="#9bb0cc" font-size="10" text-anchor="middle">→ Synthèse proposée</text>
+
+  <!-- Bottom label -->
+  <text x="350" y="375" fill="#9bb0cc" font-size="12" text-anchor="middle">VAE / Diffusion : l'espace latent permet interpolation et optimisation guidée</text>
+</svg>
