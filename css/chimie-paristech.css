@@ -316,19 +316,34 @@
 }
 
 /* ── Layout deux colonnes ────────────────────────────────────── */
-.reveal .columns {
+.reveal .openblock.columns > .content,
+.reveal .openblock.two-columns > .content {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2em;
   align-items: start;
 }
 
-.reveal .columns.ratio-40-60 {
+.reveal .openblock.columns.ratio-40-60 > .content {
   grid-template-columns: 2fr 3fr;
 }
 
-.reveal .columns.ratio-60-40 {
+.reveal .openblock.columns.ratio-60-40 > .content {
   grid-template-columns: 3fr 2fr;
+}
+
+/* Strip default exampleblock styling from column containers */
+.reveal .openblock.columns .exampleblock.column,
+.reveal .openblock.two-columns .exampleblock.column {
+  border: none;
+  background: transparent;
+  padding: 0;
+  box-shadow: none;
+}
+
+.reveal .openblock.columns .exampleblock.column > .content,
+.reveal .openblock.two-columns .exampleblock.column > .content {
+  padding: 0;
 }
 
 /* ── Cartes highlight ────────────────────────────────────────── */
