@@ -95,7 +95,7 @@ _(Wikimedia Commons / photographie de 1928)_
 
 [NOTE.speaker]
 --
-Turing était aussi chimiste : il a modélisé la morphogenèse (formation des taches de léopard) avec des équations de réaction-diffusion. Connexion directe avec la chimie !
+Turing était un mathématicien universel : en plus de l'informatique théorique, il a modélisé la morphogenèse (formation des taches de léopard) avec des équations différentielles — montrant que l'IA peut toucher toutes les sciences.
 --
 
 == 1956 — La naissance officielle du terme "IA"
@@ -130,9 +130,9 @@ L'intelligence = *manipulation de symboles* selon des règles logiques
 
 [source,lisp]
 ----
-(DEFUN est-alcool (molecule)
-  (AND (contient-OH molecule)
-       (C-sp3 molecule)))
+(DEFUN est-spam (email)
+  (AND (contient-mot "urgent" email)
+       (expediteur-inconnu email)))
 ----
 
 LISP (1958, McCarthy) devient **le** langage de l'IA.
@@ -163,17 +163,16 @@ Un système expert encode la connaissance d'un expert humain sous forme de règl
 
 [source]
 ----
-SI pH < 7
-ALORS solution est acide
+SI température > 38.5°C
+ALORS patient a de la fièvre
 
-SI solution est acide
-  ET présence de Fe³⁺
-ALORS risque de corrosion = ÉLEVÉ
+SI patient a de la fièvre
+  ET toux = PRÉSENTE
+ALORS risque grippal = ÉLEVÉ
 ----
 
 *DENDRAL (1965)* — Stanford
 Identification de structures chimiques par spectrométrie de masse
-→ Premier usage de l'IA en chimie !
 
 *MYCIN (1972)* — Diagnostic médical
 → Performances supérieures aux médecins humains dans son domaine
@@ -391,9 +390,9 @@ Plongée dans le mécanisme qui révolutionne l'IA
 --
 *Exercice mental* :
 
-> La réaction de Diels-Alder est une cycloaddition [4+2] qui implique un diène et un **___**
+> Pour faire une omelette, il faut d'abord casser des **___**
 
-Vous avez deviné : *diénophile* — et probablement avec un haut degré de confiance.
+Vous avez deviné : *œufs* — et probablement avec un haut degré de confiance.
 
 *C'est exactement ce que fait un LLM* — mais sur des milliards d'exemples de texte.
 
@@ -416,9 +415,9 @@ Chaque mot → vecteur de N dimensions (N = 768, 1024, 4096...)
 
 [.math-box]
 ----
-"benzène"  → [0.23, -0.87, 0.41, ...]
-"toluène"  → [0.25, -0.84, 0.39, ...]  ← proche !
-"chien"    → [-0.71, 0.12, -0.55, ...]  ← loin
+"chat"    → [0.23, -0.87, 0.41, ...]
+"chien"   → [0.25, -0.84, 0.39, ...]  ← proche !
+"voiture" → [-0.71, 0.12, -0.55, ...]  ← loin
 ----
 
 [.ft-quote]
@@ -433,7 +432,7 @@ ____
 [.math-box]
 ----
 roi - homme + femme ≈ reine
-benzène - H + CH₃ ≈ toluène  ?
+Paris - France + Italie ≈ Rome
 ----
 
 Ces vecteurs sont *appris* depuis les données — pas programmés à la main.
@@ -474,11 +473,11 @@ Pour chaque mot, l'attention calcule :
 [.example-box]
 ====
 --
-> "La **molécule** de benzène est aromatique car elle possède **ses** électrons π délocalisés"
+> "Le **chat** s'est endormi dans le fauteuil parce qu'**il** était fatigué"
 
-Pour résoudre "ses" → le modèle attend **fortement** sur "molécule"
+Pour résoudre "il" → le modèle attend **fortement** sur "chat"
 
-Pour comprendre "aromatique" → attention sur "benzène" ET "électrons π"
+Pour comprendre "fatigué" → attention sur "chat" ET "endormi"
 --
 
 *Formule de l'attention* :
@@ -512,8 +511,8 @@ Au lieu d'une seule attention, le Transformer utilise H "têtes" en parallèle.
 
 Chaque tête apprend à regarder différents aspects :
 - *Tête 1* : relations syntaxiques (sujet-verbe)
-- *Tête 2* : co-références (elle/la molécule)
-- *Tête 3* : relations chimiques (réactif/produit)
+- *Tête 2* : co-références (il/le chat)
+- *Tête 3* : relations temporelles (avant/après)
 - *Tête N* : ...
 
 Les résultats sont *concaténés* puis projetés.
@@ -606,15 +605,15 @@ Problème : "sometimes, while each individual token might be the next best fit, 
 
 [.beam-search]
 ----
-Entrée : "La réaction de Diels-Alder..."
+Entrée : "Pour faire une omelette, il faut..."
                             ↓
       ┌─────────────────────┴──────────────────┐
-   "produit"(0.42)    "donne"(0.31)    "forme"(0.18)
+   "casser"(0.42)    "battre"(0.31)    "mélanger"(0.18)
       ↓                    ↓                   ↓
   "un" "des"           "un" "des"          "un" "des"
   ...                  ...                 ...
       └──────────────── Vote final ───────────┘
-              "donne un produit bicyclique"
+              "casser des œufs"
 ----
 
 *Top-k sampling* : sélectionner aléatoirement parmi les k tokens les plus probables → variété sans incohérence.
@@ -625,7 +624,7 @@ Entrée : "La réaction de Diels-Alder..."
 
 [NOTE.speaker]
 --
-La température est l'un des paramètres les plus importants pour contrôler le comportement d'un LLM en production. En chimie, on voudra généralement T faible pour les sorties structurées (SMILES, réactions) et T plus haute pour la génération d'hypothèses créatives.
+La température est l'un des paramètres les plus importants pour contrôler le comportement d'un LLM en production. On voudra généralement T faible pour les sorties structurées (code, données factuelles) et T plus haute pour la génération créative (brainstorming, rédaction).
 --
 
 [.columns]
@@ -666,7 +665,7 @@ La performance améliore de façon prévisible (loi puissance) avec le compute �
 
 [NOTE.speaker]
 --
-Le pre-training est de loin la phase la plus coûteuse. Le fine-tuning (SFT + RLHF) ne coûte qu'une fraction. C'est pourquoi on peut adapter un LLM à un domaine spécifique (chimie !) avec des ressources raisonnables.
+Le pre-training est de loin la phase la plus coûteuse. Le fine-tuning (SFT + RLHF) ne coûte qu'une fraction. C'est pourquoi on peut adapter un LLM à un domaine spécifique (médecine, droit, ingénierie...) avec des ressources raisonnables.
 --
 
 == Limites et hallucinations
@@ -692,7 +691,7 @@ ____
 - Feedback humain (RLHF) — humains qui notent les réponses
 - Reste un *grand défi de recherche*
 
-*Pour la chimie* : *TOUJOURS* vérifier les structures, réactions, données physico-chimiques générées par un LLM !
+*TOUJOURS* vérifier les faits, chiffres, dates et citations générés par un LLM — quelle que soit la discipline !
 
 ====
 [.column]
@@ -748,19 +747,19 @@ ____
 *La clé* : tout signal structuré peut être "tokenisé" et modélisé comme une séquence.
 
 [.key-insight]
-Une molécule SMILES, une séquence d'ADN, un spectre de masse, une image découpée en patches — tous sont des *séquences de tokens* sur lesquelles l'attention opère.
+Une image découpée en patches, une mélodie, une séquence d'ADN, du code source — tous sont des *séquences de tokens* sur lesquelles l'attention opère.
 
-*Ce qui change* : le vocabulaire (atomes vs pixels vs notes) et les données d'entraînement.
+*Ce qui change* : le vocabulaire (pixels vs notes vs mots) et les données d'entraînement.
 
 *Ce qui ne change pas* : le mécanisme d'attention, les blocs Transformer, les scaling laws.
 
-→ *Un seul paradigme pour comprendre l'IA chimique moderne.*
+→ *Un seul paradigme pour tout comprendre.*
 ====
 --
 
 [NOTE.speaker]
 --
-C'est pourquoi AlphaFold2 est essentiellement un Transformer : l'Evoformer est un Transformer qui traite des séquences d'acides aminés. De même, les modèles de génération moléculaire basés sur SMILES utilisent exactement les mêmes architectures que GPT, juste avec un vocabulaire chimique.
+C'est pourquoi AlphaFold2 est essentiellement un Transformer : l'Evoformer traite des séquences d'acides aminés exactement comme GPT traite du texte. De même, GitHub Copilot et les modèles de génération d'images partagent la même architecture de base — seul le vocabulaire change.
 --
 
 // ===========================================================
