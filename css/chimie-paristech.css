@@ -381,19 +381,20 @@
 }
 
 /* ── Timeline horizontale ────────────────────────────────────── */
-.reveal .timeline {
+.reveal .openblock.timeline-horizontal > .content {
   display: flex;
+  flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 0;
   position: relative;
-  margin: 1em 0;
+  margin: 1.5em 0;
+  padding-top: 3.5em;
 }
 
-.reveal .timeline::before {
+.reveal .openblock.timeline-horizontal > .content::before {
   content: '';
   position: absolute;
-  top: 24px;
+  top: calc(24px + 1.75em);
   left: 0;
   right: 0;
   height: 3px;
@@ -401,37 +402,44 @@
   z-index: 0;
 }
 
-.reveal .timeline-item {
+.reveal .paragraph.step {
   display: flex;
   flex-direction: column;
   align-items: center;
   flex: 1;
   position: relative;
   z-index: 1;
+  text-align: center;
 }
 
-.reveal .timeline-dot {
+.reveal .paragraph.step::before {
+  content: '';
   width: 48px;
   height: 48px;
   border-radius: 50%;
   background: var(--cpt-blue-mid);
   border: 3px solid var(--cpt-blue-bright);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.55em;
-  font-weight: 700;
-  color: var(--cpt-gold);
+  display: block;
   flex-shrink: 0;
+  margin-bottom: 0.5em;
+  position: absolute;
+  top: -3.5em;
 }
 
-.reveal .timeline-label {
-  font-size: 0.42em;
+.reveal .paragraph.step p {
+  font-size: 0.65em;
   text-align: center;
-  margin-top: 0.5em;
+  margin: 0;
   color: var(--cpt-text-muted);
-  max-width: 100px;
+  max-width: 130px;
   line-height: 1.3;
+}
+
+.reveal .paragraph.step p strong {
+  color: var(--cpt-gold);
+  font-size: 1.1em;
+  display: block;
+  margin-bottom: 0.3em;
 }
 
 /* ── Indicateur de fragment ──────────────────────────────────── */

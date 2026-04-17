@@ -343,27 +343,27 @@ Ce papier a été cité plus de 100 000 fois. C'est l'un des papiers les plus in
 
 [.timeline-horizontal]
 --
-[.step]
+[.fragment.step]
 *2018* +
 BERT (Google) +
 110M params
 
-[.step]
+[.fragment.step]
 *2020* +
 GPT-3 (OpenAI) +
 175B params
 
-[.step]
+[.fragment.step]
 *2022* +
 ChatGPT +
 1M users en 5 jours
 
-[.step]
+[.fragment.step]
 *2023* +
 GPT-4, Gemini, Llama +
 Multimodal
 
-[.step]
+[.fragment.step]
 *2024* +
 o1, Gemini Ultra +
 Reasoning amélioré
