@@ -164,6 +164,27 @@
   padding: 1em;
 }
 
+/* ── Schéma ASCII beam-search ───────────────────────────────── */
+.reveal .listingblock.beam-search {
+  margin: 0.6em 0;
+}
+
+.reveal .listingblock.beam-search .content {
+  overflow-x: auto;
+}
+
+.reveal .listingblock.beam-search pre {
+  margin: 0;
+  padding: 0.9em 1em;
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 0.56em;
+  line-height: 1.2;
+  white-space: pre;
+  overflow-x: auto;
+  border: 1px solid #c9d0da;
+  background: #f8fafc;
+}
+
 /* ── Liens ───────────────────────────────────────────────────── */
 .reveal a {
   color: var(--cpt-blue-psl);

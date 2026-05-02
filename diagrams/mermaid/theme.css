@@ -1,0 +1,55 @@
+/* Mermaid styling aligned with presentation charter */
+#my-svg .node rect,
+#my-svg .node circle,
+#my-svg .node ellipse,
+#my-svg .node polygon,
+#my-svg .node path {
+  fill: #ccecea !important;
+  stroke: #00a295 !important;
+  stroke-width: 1.5px !important;
+}
+
+#my-svg .node .label,
+#my-svg .node .label p,
+#my-svg .nodeLabel,
+#my-svg .label text,
+#my-svg span {
+  color: #333333 !important;
+  fill: #333333 !important;
+}
+
+#my-svg .edgePath .path,
+#my-svg .flowchart-link {
+  stroke: #7d6950 !important;
+  stroke-width: 1.5px !important;
+}
+
+#my-svg .marker,
+#my-svg .marker path,
+#my-svg .arrowMarkerPath,
+#my-svg .arrowheadPath {
+  fill: #7d6950 !important;
+  stroke: #7d6950 !important;
+}
+
+#my-svg .cluster rect {
+  fill: #f5f6f8 !important;
+  stroke: #e2e4e8 !important;
+  stroke-width: 1.5px !important;
+}
+
+#my-svg .cluster-label,
+#my-svg .cluster-label text,
+#my-svg .cluster text {
+  color: #6b7280 !important;
+  fill: #6b7280 !important;
+}
+
+#my-svg .edgeLabel,
+#my-svg .edgeLabel p,
+#my-svg .edgeLabel rect {
+  background: #ffffff !important;
+  fill: #ffffff !important;
+  color: #333333 !important;
+}
+

@@ -1,5 +1,6 @@
 const asciidoctor = require('@asciidoctor/core')()
 const asciidoctorRevealjs = require('@asciidoctor/reveal.js')
+const { generateDiagrams } = require('./scripts/generate-diagrams')
 const fs = require('fs')
 const path = require('path')
 
@@ -15,6 +16,7 @@ const options = {
 
 function build () {
   try {
+    generateDiagrams()
     asciidoctor.convertFile('slides.adoc', options)
     const now = new Date().toLocaleTimeString('fr-FR')
     console.log(`[${now}] ✓ Présentation générée : slides.html`)
@@ -26,8 +28,8 @@ function build () {
 build()
 
 if (process.argv.includes('--watch')) {
-  const WATCH_DIRS = ['.', 'images', 'css']
-  const EXTENSIONS = new Set(['.adoc', '.css', '.svg', '.png', '.jpg', '.jpeg', '.gif', '.webp'])
+  const WATCH_DIRS = ['.', 'images', 'css', 'diagrams/mermaid']
+  const EXTENSIONS = new Set(['.adoc', '.css', '.svg', '.png', '.jpg', '.jpeg', '.gif', '.webp', '.mmd'])
 
   // Debounce pour éviter les rebuilds multiples en cas de rafale de modifications
   let timer = null

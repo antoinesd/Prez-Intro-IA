@@ -1,0 +1,15 @@
+flowchart TB
+  A["Entree: Pour faire une omelette, il faut..."] --> B1["casser (0.42)"]
+  A --> B2["battre (0.31)"]
+  A --> B3["melanger (0.18)"]
+
+  B1 --> C1["un / des / ..."]
+  B2 --> C2["un / des / ..."]
+  B3 --> C3["un / des / ..."]
+
+  C1 --> D["Selection du meilleur faisceau"]
+  C2 --> D
+  C3 --> D
+
+  D --> E["Sortie: casser des oeufs"]
+

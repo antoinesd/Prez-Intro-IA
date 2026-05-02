@@ -1,0 +1,8 @@
+flowchart LR
+  A["Observation"] --> B["LLM"]
+  B --> C["Plan"]
+  C --> D["Action"]
+  D --> E["Appel outil"]
+  E --> F["Resultat"]
+  F --> B
+

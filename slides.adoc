@@ -19,8 +19,9 @@
 :revealjs_height: 1080
 :revealjs_hash: true
 :revealjs_center: true
-:revealjs_plugins: [highlight]
+:revealjs_plugins: [highlight, math]
 :source-highlighter: highlight.js
+:stem: latexmath
 :icons: font
 
 [.title-slide]
@@ -440,26 +441,32 @@ En pratique :
 
 === Embeddings : représentation vectorielle
 
+--
 Chaque mot est projeté dans un espace de grande dimension (N = 768, 1024, 4096...).
 
-[.math-box]
-----
-"chat"    → [0.23, -0.87, 0.41, ...]
-"chien"   → [0.25, -0.84, 0.39, ...]  ← proche
-"voiture" → [-0.71, 0.12, -0.55, ...] ← loin
-----
+[stem]
+++++
+\begin{aligned}
+\text{chat}    &\mapsto [0.23, -0.87, 0.41, \ldots] \\
+\text{chien}   &\mapsto [0.25, -0.84, 0.39, \ldots] && (\text{proche}) \\
+\text{voiture} &\mapsto [-0.71, 0.12, -0.55, \ldots] && (\text{loin})
+\end{aligned}
+++++
 
 Ces vecteurs sont *appris* automatiquement pendant l'entraînement.
+--
 
 === Embeddings : relations et visualisation
 
 *Propriété remarquable* : certaines relations s'expriment comme des déplacements vectoriels.
 
-[.math-box]
-----
-roi - homme + femme ≈ reine
-Paris - France + Italie ≈ Rome
-----
+[stem]
+++++
+\begin{aligned}
+\text{roi} - \text{homme} + \text{femme} &\approx \text{reine} \\
+\text{Paris} - \text{France} + \text{Italie} &\approx \text{Rome}
+\end{aligned}
+++++
 
 image::embeddings_2d.svg[Embeddings en 2D, 700]
 [.caption]
@@ -494,8 +501,10 @@ Avec la self-attention, tous les tokens sont traités en parallèle.
 
 *Formule de l'attention* :
 
-[.math-box]
-Attention(Q, K, V) = softmax(QKᵀ / √d_k) · V
+[stem]
+++++
+\operatorname{Attention}(Q, K, V) = \operatorname{softmax}\left(\frac{QK^\top}{\sqrt{d_k}}\right)V
+++++
 
 Q = Query, K = Key, V = Value
 
@@ -534,7 +543,7 @@ Exemples typiques de spécialisations :
 === Multi-Head : ordre de grandeur
 
 [.key-insight]
-GPT-4 : ~96 têtes par couche × 96 couches ≈ 9 216 "regards" simultanés.
+stem:[\text{GPT-4} : 96\ \text{têtes/couche} \times 96\ \text{couches} \approx 9\,216\ \text{regards simultanés}]
 
 image::multihead_attention.svg[Multi-head attention, 700]
 [.caption]
@@ -547,22 +556,7 @@ Un Transformer = empilement de blocs identiques appliqués N fois.
 
 === Architecture : bloc unitaire
 
-[.architecture-box]
-----
-Input tokens
-    ↓
-[Embedding + Positional Encoding]
-    ↓ (× N)
-┌─────────────────────────┐
-│ Multi-Head Attention    │
-│ + Residual + LayerNorm  │
-│                         │
-│ Feed-Forward Network    │
-│ + Residual + LayerNorm  │
-└─────────────────────────┘
-    ↓
-Output logits
-----
+image::transformer_block.svg[Bloc Transformer, 920]
 
 === Architecture : deux briques clés
 
@@ -597,18 +591,7 @@ Limite : un choix local optimal peut produire une phrase globale moins bonne.
 
 *Beam search* : explorer N séquences en parallèle, puis garder la meilleure séquence globale.
 
-[.beam-search]
-----
-Entrée : "Pour faire une omelette, il faut..."
-                            ↓
-      ┌─────────────────────┴──────────────────┐
-   "casser"(0.42)    "battre"(0.31)    "mélanger"(0.18)
-      ↓                    ↓                   ↓
-  "un" "des"           "un" "des"          "un" "des"
-  ...                  ...                 ...
-      └──────────────── Vote final ───────────┘
-              "casser des œufs"
-----
+image::beam_search.svg[Beam search, 1000]
 
 === Sampling : température, top-k, top-p
 
@@ -631,7 +614,7 @@ Entrée : "Pour faire une omelette, il faut..."
 *Phase 3 — RLHF* : aligner les réponses sur les préférences humaines.
 
 [.key-insight]
-Performance ≈ f(N_params × N_tokens × compute)
+stem:[\text{Performance} \approx f\!\left(N_{\text{params}} \times N_{\text{tokens}} \times \text{compute}\right)]
 
 image::scaling_laws.svg[Scaling laws, 600]
 [.caption]
@@ -820,13 +803,7 @@ L'IA compresse le cycle de découverte sur trois leviers :
 
 === Pipeline : où l'IA crée le plus de valeur
 
-[.pipeline]
-----
-Identification cible  →  Hit identification  →
-Lead optimization  →  Préclinique  →  Clinique
-
-           ~12-15 ans          ~2 milliards $
-----
+image::drug_discovery_pipeline.svg[Pipeline drug discovery, 980]
 
 *Identification de cibles* : intégration génomique/protéomique.
 
@@ -1090,14 +1067,7 @@ Un agent IA n'est pas juste un chatbot :
 
 Un agent = LLM + outils + mémoire + boucle de décision
 
-[.architecture-box]
-----
-Observation (environment)
-    ↓
-[LLM] → Plan → Action → Tool call
-    ↑                        ↓
-    └──────── Résultat ───────┘
-----
+image::agent_loop.svg[Boucle agent IA, 900]
 
 *Outils typiques* :
 

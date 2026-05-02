@@ -1,0 +1,9 @@
+flowchart TB
+  A["Input tokens"] --> B["Embedding + Positional Encoding"]
+  B --> C["Bloc Transformer x N"]
+  C --> C1["Multi-Head Attention"]
+  C1 --> C2["Residual + LayerNorm"]
+  C2 --> C3["Feed-Forward Network"]
+  C3 --> C4["Residual + LayerNorm"]
+  C4 --> D["Output logits"]
+
