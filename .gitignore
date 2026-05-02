@@ -3,3 +3,5 @@ slides.html
 .DS_Store
 *.swp
 *.swo
+.idea/**
+

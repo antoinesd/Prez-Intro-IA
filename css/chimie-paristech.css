@@ -1,47 +1,47 @@
 /**
- * Chimie ParisTech PSL – Thème RevealJS
+ * Chimie ParisTech PSL – Thème RevealJS (Light)
  * Présentation : Introduction à l'Intelligence Artificielle
  *
- * Palette :
- *   Bleu PSL foncé  : #0a1628
- *   Bleu PSL moyen  : #1a3a5c
- *   Bleu PSL vif    : #1e5fa8
- *   Or/Accent       : #f5c518
- *   Vert accent     : #00b09b
- *   Texte clair     : #e8edf4
- *   Texte secondaire: #9bb0cc
+ * Palette relevee depuis le CSS officiel du site (26/04/2026):
+ * https://www.chimieparistech.psl.eu/wp-content/themes/bb-theme-child/style.css
+ *   Vert principal : #00a295
+ *   Vert fonce     : #008c80
+ *   Brun           : #7d6950
+ *   Or             : #c4b708
+ *   Fond           : #ffffff
  */
 
 /* ── Import de la police ─────────────────────────────────────── */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css?family=News+Cycle:400,700');
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap');
 
 /* ── Variables globales ──────────────────────────────────────── */
 :root {
-  --cpt-blue-dark:   #0a1628;
-  --cpt-blue-mid:    #1a3a5c;
-  --cpt-blue-vivid:  #1e5fa8;
-  --cpt-blue-bright: #3d8ef0;
-  --cpt-gold:        #f5c518;
-  --cpt-green:       #00b09b;
-  --cpt-red:         #e05050;
-  --cpt-text:        #e8edf4;
-  --cpt-text-muted:  #9bb0cc;
-  --cpt-border:      rgba(61, 142, 240, 0.25);
+  --cpt-red:         #00a295;
+  --cpt-red-light:   #ccecea;
+  --cpt-red-mid:     #66c7bf;
+  --cpt-blue-psl:    #7d6950;
+  --cpt-blue-light:  #d8d2cb;
+  --cpt-text:        #333333;
+  --cpt-text-muted:  #6B7280;
+  --cpt-bg:          #FFFFFF;
+  --cpt-bg-soft:     #F5F6F8;
+  --cpt-border:      #E2E4E8;
+  --cpt-gold:        #c4b708;
 }
 
 /* ── Base ────────────────────────────────────────────────────── */
 .reveal-viewport {
-  background: var(--cpt-blue-dark);
-  background-image:
-    radial-gradient(ellipse at 20% 50%, rgba(30, 95, 168, 0.15) 0%, transparent 60%),
-    radial-gradient(ellipse at 80% 20%, rgba(0, 176, 155, 0.08) 0%, transparent 50%);
+  background: var(--cpt-bg);
 }
 
 .reveal {
-  font-family: 'Inter', 'Helvetica Neue', sans-serif;
-  font-size: 36px;
+  font-family: 'Lato', sans-serif;
+  font-size: 34px;
   font-weight: 400;
   color: var(--cpt-text);
+  background: var(--cpt-bg);
 }
 
 /* ── Slides ──────────────────────────────────────────────────── */
@@ -51,6 +51,7 @@
 
 .reveal .slides section {
   padding: 20px 40px;
+  background: var(--cpt-bg);
 }
 
 /* ── Titres ──────────────────────────────────────────────────── */
@@ -58,52 +59,64 @@
 .reveal h2,
 .reveal h3,
 .reveal h4 {
-  font-family: 'Inter', sans-serif;
-  font-weight: 700;
-  letter-spacing: -0.02em;
+  font-family: 'News Cycle', Impact, sans-serif;
+  font-weight: 400;
+  letter-spacing: normal;
   text-transform: none;
   line-height: 1.2;
-  margin-bottom: 0.5em;
+  margin: 0 0 20px 0;
+  color: var(--cpt-text);
 }
 
 .reveal h1 {
-  font-size: 2.4em;
+  font-size: 2.6em;
   color: var(--cpt-text);
-  background: linear-gradient(135deg, #ffffff 0%, var(--cpt-blue-bright) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
 .reveal h2 {
-  font-size: 1.6em;
+  font-size: 1.65em;
   color: var(--cpt-text);
-  border-bottom: 2px solid var(--cpt-blue-vivid);
+  border-bottom: 3px solid var(--cpt-red);
   padding-bottom: 0.2em;
   margin-bottom: 0.6em;
 }
 
 .reveal h3 {
   font-size: 1.2em;
-  color: var(--cpt-gold);
-  font-weight: 600;
+  color: var(--cpt-red);
+  font-weight: 400;
 }
 
 .reveal h4 {
-  font-size: 1em;
+  font-size: 0.9em;
   color: var(--cpt-text-muted);
-  font-weight: 500;
+  font-weight: 400;
 }
 
 /* ── Slide titre principal (cover) ──────────────────────────── */
 .reveal .slides section.title-slide,
 .reveal .slides > section:first-child {
   text-align: center;
+  background: #FFFFFF;
+}
+
+/* ── Sous-titre de la slide de couverture ────────────────────── */
+/* Asciidoctor génère : <div class="paragraph subtitle"><p>…</p></div> */
+.reveal .paragraph.subtitle,
+.reveal .paragraph.subtitle p {
+  font-size: 0.95em;
+  font-weight: 400;
+  color: var(--cpt-blue-psl);
+  letter-spacing: 0.01em;
+  margin: 0.3em auto 1em;
+  font-style: italic;
+  text-align: center;
 }
 
 /* ── Paragraphes et listes ───────────────────────────────────── */
 .reveal p {
-  line-height: 1.6;
+  margin: 16px 0;
+  line-height: 1.3;
   color: var(--cpt-text);
 }
 
@@ -120,79 +133,64 @@
 }
 
 .reveal ul li::marker {
-  color: var(--cpt-blue-bright);
+  color: var(--cpt-red);
 }
 
 .reveal ul ul li::marker {
-  color: var(--cpt-gold);
+  color: var(--cpt-blue-psl);
 }
 
 /* ── Code ────────────────────────────────────────────────────── */
 .reveal code {
   font-family: 'JetBrains Mono', 'Courier New', monospace;
   font-size: 0.85em;
-  color: var(--cpt-gold);
-  background: rgba(245, 197, 24, 0.1);
+  color: var(--cpt-red);
+  background: var(--cpt-red-light);
   padding: 0.1em 0.3em;
   border-radius: 4px;
 }
 
 .reveal pre {
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.10);
   border: 1px solid var(--cpt-border);
   border-radius: 8px;
+  background: #F5F6F8;
 }
 
 .reveal pre code {
   font-size: 0.75em;
   background: none;
-  color: inherit;
+  color: var(--cpt-text);
   padding: 1em;
 }
 
 /* ── Liens ───────────────────────────────────────────────────── */
 .reveal a {
-  color: var(--cpt-blue-bright);
+  color: var(--cpt-blue-psl);
   text-decoration: none;
-  border-bottom: 1px dotted var(--cpt-blue-bright);
+  border-bottom: 1px dotted var(--cpt-blue-psl);
 }
 
 .reveal a:hover {
-  color: var(--cpt-gold);
-  border-bottom-color: var(--cpt-gold);
+  color: var(--cpt-red);
+  border-bottom-color: var(--cpt-red);
 }
 
 /* ── Blocs callout / admonition ─────────────────────────────── */
 .reveal .admonitionblock {
-  border-left: 4px solid var(--cpt-blue-vivid);
-  background: rgba(30, 95, 168, 0.12);
+  border-left: 4px solid var(--cpt-blue-psl);
+  background: var(--cpt-blue-light);
   padding: 0.8em 1em;
   border-radius: 0 8px 8px 0;
   margin: 0.8em 0;
 }
 
-.reveal .admonitionblock.note {
-  border-left-color: var(--cpt-blue-bright);
-}
+.reveal .admonitionblock.note  { border-left-color: var(--cpt-blue-psl); }
+.reveal .admonitionblock.tip   { border-left-color: #2D7D46; background: #E8F5EC; }
+.reveal .admonitionblock.warning { border-left-color: var(--cpt-gold); background: #f7f5de; }
+.reveal .admonitionblock.important { border-left-color: var(--cpt-red); background: var(--cpt-red-light); }
 
-.reveal .admonitionblock.tip {
-  border-left-color: var(--cpt-green);
-  background: rgba(0, 176, 155, 0.1);
-}
-
-.reveal .admonitionblock.warning {
-  border-left-color: var(--cpt-gold);
-  background: rgba(245, 197, 24, 0.1);
-}
-
-.reveal .admonitionblock.important {
-  border-left-color: var(--cpt-red);
-  background: rgba(224, 80, 80, 0.1);
-}
-
-.reveal .admonitionblock .icon {
-  display: none;
-}
+.reveal .admonitionblock .icon { display: none; }
 
 .reveal .admonitionblock td.content {
   color: var(--cpt-text);
@@ -201,24 +199,39 @@
 }
 
 /* ── Images ──────────────────────────────────────────────────── */
+.reveal .imageblock {
+  text-align: center;
+  margin: 0 auto;
+}
+
 .reveal img,
 .reveal video {
   max-width: 100%;
   max-height: 60vh;
   border-radius: 8px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
 }
 
-.reveal figure {
-  margin: 0;
-}
+.reveal figure { margin: 0; }
 
 .reveal figure figcaption {
-  font-size: 0.5em;
+  font-size: 0.42em;
   color: var(--cpt-text-muted);
   margin-top: 0.5em;
   text-align: center;
   font-style: italic;
+}
+
+/* Légendes AsciiDoc (paragraphes .caption sous image::[]) */
+.reveal .caption,
+.reveal p.caption {
+  font-size: 0.42em;
+  color: var(--cpt-text-muted);
+  margin: 0.5em auto 0;
+  max-width: min(1100px, 80%);
+  text-align: center;
+  font-style: italic;
+  line-height: 1.35;
 }
 
 /* ── Tableaux ────────────────────────────────────────────────── */
@@ -229,8 +242,8 @@
 }
 
 .reveal table th {
-  background: var(--cpt-blue-mid);
-  color: var(--cpt-gold);
+  background: var(--cpt-blue-psl);
+  color: #FFFFFF;
   padding: 0.6em 0.8em;
   border: 1px solid var(--cpt-border);
   font-weight: 600;
@@ -240,17 +253,17 @@
   padding: 0.5em 0.8em;
   border: 1px solid var(--cpt-border);
   color: var(--cpt-text);
-  background: rgba(26, 58, 92, 0.3);
+  background: #FFFFFF;
 }
 
 .reveal table tr:nth-child(even) td {
-  background: rgba(26, 58, 92, 0.5);
+  background: var(--cpt-bg-soft);
 }
 
 /* ── Citations ───────────────────────────────────────────────── */
 .reveal blockquote {
-  background: rgba(30, 95, 168, 0.15);
-  border-left: 4px solid var(--cpt-gold);
+  background: var(--cpt-bg-soft);
+  border-left: 4px solid var(--cpt-red);
   border-radius: 0 8px 8px 0;
   padding: 0.8em 1.2em;
   font-style: italic;
@@ -260,18 +273,16 @@
   box-shadow: none;
 }
 
-.reveal blockquote p {
-  color: var(--cpt-text-muted);
-}
+.reveal blockquote p { color: var(--cpt-text-muted); }
 
 /* ── Barre de progression ────────────────────────────────────── */
 .reveal .progress {
   height: 4px;
-  background: var(--cpt-blue-mid);
+  background: var(--cpt-border);
 }
 
 .reveal .progress span {
-  background: linear-gradient(90deg, var(--cpt-blue-vivid), var(--cpt-blue-bright));
+  background: linear-gradient(90deg, var(--cpt-red), var(--cpt-red-mid));
 }
 
 /* ── Numéros de slide ────────────────────────────────────────── */
@@ -279,31 +290,28 @@
   background: transparent;
   color: var(--cpt-text-muted);
   font-size: 0.45em;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Lato', sans-serif;
   bottom: 12px;
   right: 16px;
 }
 
 /* ── Contrôles de navigation ─────────────────────────────────── */
-.reveal .controls {
-  color: var(--cpt-blue-bright);
-}
+.reveal .controls { color: var(--cpt-red); }
 
-/* ── Logo Chimie ParisTech PSL (coin supérieur droit) ────────── */
+/* ── Logo coin supérieur droit ───────────────────────────────── */
 .reveal .slide-logo {
   position: fixed;
   top: 16px;
   right: 20px;
   z-index: 1000;
   height: 48px;
-  opacity: 0.85;
-  filter: brightness(1.1);
+  opacity: 0.95;
 }
 
-/* ── Badge section (pill coloré avant h2) ────────────────────── */
+/* ── Badge section ───────────────────────────────────────────── */
 .reveal .section-badge {
   display: inline-block;
-  background: var(--cpt-blue-vivid);
+  background: var(--cpt-red);
   color: white;
   font-size: 0.45em;
   font-weight: 600;
@@ -324,15 +332,9 @@
   align-items: start;
 }
 
-.reveal .openblock.columns.ratio-40-60 > .content {
-  grid-template-columns: 2fr 3fr;
-}
+.reveal .openblock.columns.ratio-40-60 > .content { grid-template-columns: 2fr 3fr; }
+.reveal .openblock.columns.ratio-60-40 > .content { grid-template-columns: 3fr 2fr; }
 
-.reveal .openblock.columns.ratio-60-40 > .content {
-  grid-template-columns: 3fr 2fr;
-}
-
-/* Strip default exampleblock styling from column containers */
 .reveal .openblock.columns .exampleblock.column,
 .reveal .openblock.two-columns .exampleblock.column {
   border: none;
@@ -342,42 +344,43 @@
 }
 
 .reveal .openblock.columns .exampleblock.column > .content,
-.reveal .openblock.two-columns .exampleblock.column > .content {
-  padding: 0;
-}
+.reveal .openblock.two-columns .exampleblock.column > .content { padding: 0; }
 
 /* ── Cartes highlight ────────────────────────────────────────── */
 .reveal .highlight-card {
-  background: rgba(30, 95, 168, 0.15);
-  border: 1px solid var(--cpt-border);
+  background: var(--cpt-blue-light);
+  border: 1px solid #c9c2b7;
   border-radius: 12px;
   padding: 1em 1.2em;
   margin: 0.5em 0;
 }
 
-.reveal .highlight-card.gold {
-  border-color: rgba(245, 197, 24, 0.4);
-  background: rgba(245, 197, 24, 0.08);
-}
+.reveal .highlight-card.gold  { border-color: var(--cpt-gold); background: #f7f5de; }
+.reveal .highlight-card.green { border-color: var(--cpt-red); background: var(--cpt-red-light); }
 
-.reveal .highlight-card.green {
-  border-color: rgba(0, 176, 155, 0.4);
-  background: rgba(0, 176, 155, 0.08);
-}
-
-/* ── Texte coloré utilitaires ────────────────────────────────── */
-.reveal .text-gold   { color: var(--cpt-gold)  !important; }
-.reveal .text-green  { color: var(--cpt-green) !important; }
-.reveal .text-blue   { color: var(--cpt-blue-bright) !important; }
+/* ── Utilitaires texte ───────────────────────────────────────── */
+.reveal .text-gold   { color: var(--cpt-gold)       !important; }
+.reveal .text-green  { color: var(--cpt-red)        !important; }
+.reveal .text-blue   { color: var(--cpt-blue-psl)   !important; }
 .reveal .text-muted  { color: var(--cpt-text-muted) !important; }
-.reveal .text-red    { color: var(--cpt-red)   !important; }
-.reveal .text-center { text-align: center !important; }
-.reveal .text-small  { font-size: 0.7em !important; }
+.reveal .text-red    { color: var(--cpt-red)         !important; }
+.reveal .text-center { text-align: center            !important; }
+.reveal .text-small  { font-size: 0.7em              !important; }
 
-/* ── Slides "section header" plein fond ──────────────────────── */
-.reveal .slides section[data-state="section"] {
+/* ── Slides "section header" (part-slide) ────────────────────── */
+.reveal .slides section.part-slide {
   text-align: center;
-  background: linear-gradient(135deg, var(--cpt-blue-mid) 0%, var(--cpt-blue-dark) 100%);
+  background: var(--cpt-red) !important;
+}
+
+.reveal .slides section.part-slide h2 {
+  color: #FFFFFF !important;
+  border-bottom-color: rgba(255,255,255,0.4);
+}
+
+.reveal .slides section.part-slide p,
+.reveal .slides section.part-slide .part-subtitle {
+  color: rgba(255,255,255,0.85) !important;
 }
 
 /* ── Timeline horizontale ────────────────────────────────────── */
@@ -395,10 +398,9 @@
   content: '';
   position: absolute;
   top: calc(24px + 1.75em);
-  left: 0;
-  right: 0;
+  left: 0; right: 0;
   height: 3px;
-  background: linear-gradient(90deg, var(--cpt-blue-vivid), var(--cpt-blue-bright));
+  background: linear-gradient(90deg, var(--cpt-red), var(--cpt-red-mid));
   z-index: 0;
 }
 
@@ -414,11 +416,10 @@
 
 .reveal .paragraph.step::before {
   content: '';
-  width: 48px;
-  height: 48px;
+  width: 48px; height: 48px;
   border-radius: 50%;
-  background: var(--cpt-blue-mid);
-  border: 3px solid var(--cpt-blue-bright);
+  background: #FFFFFF;
+  border: 3px solid var(--cpt-red);
   display: block;
   flex-shrink: 0;
   margin-bottom: 0.5em;
@@ -436,32 +437,72 @@
 }
 
 .reveal .paragraph.step p strong {
-  color: var(--cpt-gold);
+  color: var(--cpt-red);
   font-size: 1.1em;
   display: block;
   margin-bottom: 0.3em;
 }
 
-/* ── Indicateur de fragment ──────────────────────────────────── */
-.reveal .fragment.highlight-current-blue.current-fragment {
-  color: var(--cpt-blue-bright);
+/* ── Timeline verticale (.timeline-slide) ────────────────────── */
+.reveal .openblock.timeline-slide > .content {
+  position: relative;
+  margin: 1em 0;
+  padding-left: 2.2em;
 }
 
-/* ── Ajustement reveal.js par défaut ─────────────────────────── */
-.reveal .slides section .fragment {
-  visibility: inherit;
+.reveal .openblock.timeline-slide > .content::before {
+  content: '';
+  position: absolute;
+  left: 0.65em;
+  top: 0.3em;
+  bottom: 0.3em;
+  width: 3px;
+  background: linear-gradient(180deg, var(--cpt-red), var(--cpt-red-mid));
+  border-radius: 2px;
 }
+
+.reveal .openblock.timeline-slide .paragraph.event {
+  position: relative;
+  margin: 0 0 0.9em 0;
+  padding: 0.7em 0.9em;
+  background: var(--cpt-bg-soft);
+  border: 1px solid var(--cpt-border);
+  border-left: 4px solid var(--cpt-red);
+  border-radius: 8px;
+}
+
+.reveal .openblock.timeline-slide .paragraph.event::before {
+  content: '';
+  position: absolute;
+  left: -1.78em;
+  top: 0.95em;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #fff;
+  border: 3px solid var(--cpt-red);
+  box-sizing: border-box;
+}
+
+.reveal .openblock.timeline-slide .paragraph.event p {
+  margin: 0;
+  line-height: 1.35;
+}
+
+/* ── Fragments ───────────────────────────────────────────────── */
+.reveal .fragment.highlight-current-blue.current-fragment {
+  color: var(--cpt-blue-psl);
+}
+
+.reveal .slides section .fragment { visibility: inherit; }
 
 /* ── SVG inline ──────────────────────────────────────────────── */
-.reveal svg text {
-  font-family: 'Inter', sans-serif !important;
-}
+.reveal svg text { font-family: 'Lato', sans-serif !important; }
 
-/* ── Pied de page avec section courante ──────────────────────── */
+/* ── Pied de page ────────────────────────────────────────────── */
 .reveal .slide-footer {
   position: fixed;
-  bottom: 10px;
-  left: 20px;
+  bottom: 10px; left: 20px;
   font-size: 0.38em;
   color: var(--cpt-text-muted);
   font-style: italic;
@@ -470,13 +511,13 @@
 
 /* ── Citation Financial Times ─────────────────────────────────── */
 .reveal .ft-quote blockquote {
-  border-left: 4px solid #fff1e5;
-  background: rgba(255, 241, 229, 0.06);
+  border-left: 4px solid var(--cpt-blue-psl);
+  background: var(--cpt-blue-light);
   padding: 0.8em 1.2em;
   border-radius: 0 8px 8px 0;
   font-style: italic;
   font-size: 0.82em;
-  color: #d4c4b0;
+  color: #4d4438;
   line-height: 1.6;
   margin: 0.5em 0;
 }
@@ -484,16 +525,16 @@
 .reveal .ft-quote blockquote::before {
   content: '\201C';
   font-size: 2em;
-  color: #fff1e5;
+  color: var(--cpt-blue-psl);
   line-height: 0.1;
   vertical-align: -0.4em;
   margin-right: 0.1em;
-  opacity: 0.6;
+  opacity: 0.5;
 }
 
 .reveal .ft-quote blockquote p.attribution {
   font-size: 0.8em;
-  color: #9bb0cc;
+  color: var(--cpt-text-muted);
   font-style: normal;
   margin-top: 0.5em;
 }
@@ -501,28 +542,46 @@
 /* ── Boîte avertissement ──────────────────────────────────────── */
 .reveal .warning-box {
   border: 2px solid var(--cpt-gold);
-  background: rgba(245, 197, 24, 0.08);
+  background: #f7f5de;
   padding: 0.6em 1em;
   border-radius: 8px;
-  color: var(--cpt-gold);
+  color: #6a5f00;
   font-size: 0.85em;
   margin: 0.5em 0;
 }
 
-/* ── Grille de domaines ───────────────────────────────────────── */
-.reveal .domain-grid table {
-  font-size: 0.72em;
-  width: 100%;
+/* ── Key insight ─────────────────────────────────────────────── */
+.reveal .key-insight {
+  background: var(--cpt-red-light);
+  border-left: 4px solid var(--cpt-red);
+  border-radius: 0 8px 8px 0;
+  padding: 0.6em 1em;
+  color: var(--cpt-text);
+  margin: 0.5em 0;
+  font-weight: 500;
 }
 
-.reveal .domain-grid table tr td:nth-child(3),
-.reveal .domain-grid table tr td:nth-child(4) {
-  color: var(--cpt-green);
+/* ── Limitation box ──────────────────────────────────────────── */
+.reveal .limitation-box {
+  background: #f7f5de;
+  border-left: 4px solid var(--cpt-gold);
+  border-radius: 0 8px 8px 0;
+  padding: 0.6em 1em;
+  color: var(--cpt-text);
+  margin: 0.5em 0;
+  font-size: 0.9em;
 }
+
+/* ── Grille de domaines ───────────────────────────────────────── */
+.reveal .domain-grid table { font-size: 0.72em; width: 100%; }
+
+.reveal .domain-grid table tr td:nth-child(3),
+.reveal .domain-grid table tr td:nth-child(4) { color: var(--cpt-red); }
 
 /* ── Logo sur le titre ────────────────────────────────────────── */
 .reveal .slides section img[alt="Chimie ParisTech PSL"] {
-  filter: brightness(1.1);
   margin: 1em auto 0.5em;
   display: block;
+  box-shadow: none;
+  border-radius: 0;
 }

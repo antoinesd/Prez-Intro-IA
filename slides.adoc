@@ -1,5 +1,15 @@
 = Introduction à l'Intelligence Artificielle
 :subtitle: Des systèmes experts aux modèles génératifs
+:copyright: CC BY-SA 4.0
+:data-uri:
+:sectids!:
+:includegifs:
+:toc2:
+:sectanchors:
+:idprefix:
+:idseparator: -
+:icons: font
+:imagesdir: images
 :revealjs_customtheme: css/chimie-paristech.css
 :revealjsdir: node_modules/reveal.js
 :revealjs_slideNumber: c/t
@@ -19,16 +29,31 @@
 [.subtitle]
 Des systèmes experts aux modèles génératifs
 
-image::images/chimie_paristech_logo.svg[Chimie ParisTech PSL, 380]
+image::chimie_paristech_logo_officiel.png[Chimie ParisTech PSL, 380]
 
 [.conference-info]
-Conférence — 2024 · ~60 minutes
+Conférence — mai 2026
 
 [NOTE.speaker]
 --
 Présentation destinée à des élèves ingénieurs Bac+5 et doctorants.
 Durée estimée : 60 minutes + questions.
 --
+
+
+[.columns]
+== Antoine Sabot-Durand
+
+[.column]
+* Directeur technique chez SCIAM
+* En charge de la stratégie IA et de l'innovation
+* Architecte IT
+* Java Champion, ancien CDI spec lead, ancien MicroProfile Health et Fault Tolerance spec lead
+* Suivez-moi sur Bluesky : https://bsky.app/profile/antoine.sabot-durand.net[@antoine.sabot-durand.net^]
+
+[.column]
+image::asd.jpg[role="pull-right"]
+
 
 == Sommaire
 
@@ -66,12 +91,11 @@ Histoire de l'Intelligence Artificielle
 [.part-subtitle]
 Des systèmes experts aux réseaux de neurones profonds
 
+[.columns]
 == 1950 — La question de Turing
 
-[.two-columns]
---
 [.column]
-====
+--
 [discrete]
 === "Can machines think ?"
 
@@ -82,16 +106,16 @@ Il propose le **Test de Turing** : si un humain ne peut pas distinguer la machin
 *Ce test est-il la bonne mesure ?*
 
 → Non, mais il a structuré 70 ans de recherche.
+--
 
-====
-[.column]
-====
-image::images/alan_turing.jpg[Alan Turing, 400]
+[.column.is-one-third]
+--
+image::alan_turing.jpg[Alan Turing, 400]
 [.caption]
 Alan Turing (1912–1954) — père de l'informatique théorique +
 _(Wikimedia Commons / photographie de 1928)_
-====
 --
+
 
 [NOTE.speaker]
 --
@@ -117,12 +141,11 @@ John McCarthy, Marvin Minsky, Claude Shannon, Nathaniel Rochester +
 _(Spoiler : c'était trop optimiste... mais l'intuition était juste)_
 --
 
+[.columns]
 == 1960-1970 — L'IA symbolique : la règle comme intelligence
 
-[.columns]
---
 [.column]
-====
+--
 [discrete]
 === Le paradigme **Good Old-Fashioned AI** (GOFAI)
 
@@ -138,16 +161,16 @@ L'intelligence = *manipulation de symboles* selon des règles logiques
 LISP (1958, McCarthy) devient **le** langage de l'IA.
 
 *Résultats impressionnants* :
-- ELIZA (1966) — chatbot thérapeutique
-- SHRDLU (1970) — compréhension de phrases en monde de blocs
 
-====
-[.column]
-====
-image::images/eliza.svg[ELIZA chatbot, 600]
+* ELIZA (1966) — chatbot thérapeutique
+* SHRDLU (1970) — compréhension de phrases en monde de blocs
+--
+
+[.column.is-one-third]
+--
+image::eliza.svg[ELIZA chatbot, 600]
 [.caption]
 ELIZA — premier chatbot, simulant un psychothérapeute rogérien
-====
 --
 
 == 1980 — Les systèmes experts : l'IA industrielle
@@ -214,14 +237,15 @@ Deep Blue ne "pense" pas — il évalue 200 millions de positions/seconde avec d
 *Mais le signal est clair* : les machines peuvent surpasser les humains dans des domaines formalisables.
 
 *1996-2016 — Succès de l'IA symbolique hybride* :
-- Reconnaissance de chèques bancaires (LeCun, 1998)
-- Spam filtering (Naive Bayes)
-- Moteurs de recommandation
+
+* Reconnaissance de chèques bancaires (LeCun, 1998)
+* Spam filtering (Naive Bayes)
+* Moteurs de recommandation
 
 ====
 [.column]
 ====
-image::images/deep_blue.jpg[Deep Blue, 500]
+image::deep_blue.jpg[Deep Blue, 500]
 [.caption]
 IBM Deep Blue — premier programme à battre un champion du monde d'échecs en titre +
 _(© Wikimedia Commons / IBM)_
@@ -253,10 +277,11 @@ Kasparov a été très perturbé par la "créativité" de Deep Blue lors de cert
 |===
 
 *Algorithmes clés* :
-- *Perceptron (Rosenblatt, 1958)* — premier neurone artificiel
-- Backpropagation (Rumelhart, Hinton 1986) — réseaux de neurones multi-couches
-- SVM — Support Vector Machines (Vapnik 1995)
-- Arbres de décision, forêts aléatoires
+
+* *Perceptron (Rosenblatt, 1958)* — premier neurone artificiel
+* Backpropagation (Rumelhart, Hinton 1986) — réseaux de neurones multi-couches
+* SVM — Support Vector Machines (Vapnik 1995)
+* Arbres de décision, forêts aléatoires
 
 ====
 [.column]
@@ -264,7 +289,7 @@ Kasparov a été très perturbé par la "créativité" de Deep Blue lors de cert
 [discrete]
 === Le perceptron : premier neurone artificiel
 
-image::images/perceptron.png[Perceptron, 700]
+image::perceptron.png[Perceptron, 700]
 [.caption]
 Le perceptron de Rosenblatt (1958) : somme pondérée des entrées + seuil d'activation. +
 Limite : seulement les problèmes linéairement séparables. La backpropagation (1986) permettra d'empiler les couches.
@@ -288,10 +313,11 @@ La backpropagation est l'algorithme fondateur. L'idée : calculer le gradient de
 *Problème historique* : les réseaux profonds ne s'entraînaient pas bien (vanishing gradient)
 
 *Solutions* :
-- Pre-training couche par couche (Hinton 2006)
-- Nouvelles fonctions d'activation (ReLU)
-- Dropout (régularisation)
-- GPU comme accélérateur d'entraînement
+
+* Pre-training couche par couche (Hinton 2006)
+* Nouvelles fonctions d'activation (ReLU)
+* Dropout (régularisation)
+* GPU comme accélérateur d'entraînement
 
 *ImageNet 2012* → révolution AlexNet
 
@@ -307,7 +333,7 @@ AlexNet (deep learning) :    15.3%
 ====
 [.column]
 ====
-image::images/colored_nn.png[Réseau de neurones, 500]
+image::colored_nn.png[Réseau de neurones, 500]
 [.caption]
 Architecture d'un réseau de neurones : couches d'entrée, cachées, sortie. +
 La profondeur (10-1000+ couches) permet d'apprendre des représentations hiérarchiques : pixels → bords → formes → objets +
@@ -325,9 +351,10 @@ We propose a new simple network architecture, the Transformer, based solely on a
 ____
 
 *Ce papier change tout* :
-→ Plus de RNN (lents, difficile à paralléliser)
-→ L'attention permet de voir *tout le contexte en une seule opération*
-→ Scalable sur GPU/TPU
+
+* Plus de RNN (lents, difficile à paralléliser)
+* L'attention permet de voir *tout le contexte en une seule opération*
+* Scalable sur GPU/TPU
 
 *6 ans plus tard* : GPT-4, Gemini, Claude, Mistral... sont tous des Transformers
 
@@ -404,30 +431,29 @@ Un modèle entraîné uniquement à prédire le prochain token apprend implicite
 
 == Les embeddings : les mots dans l'espace vectoriel
 
-[.columns]
---
-[.column]
-====
-[discrete]
-=== Représentation vectorielle
+[.key-insight]
+En pratique :
 
-Chaque mot → vecteur de N dimensions (N = 768, 1024, 4096...)
+* Chaque token devient un vecteur dense (appris)
+* La proximité géométrique approxime la proximité de sens
+* Les relations sémantiques émergent des données
+
+=== Embeddings : représentation vectorielle
+
+Chaque mot est projeté dans un espace de grande dimension (N = 768, 1024, 4096...).
 
 [.math-box]
 ----
 "chat"    → [0.23, -0.87, 0.41, ...]
-"chien"   → [0.25, -0.84, 0.39, ...]  ← proche !
-"voiture" → [-0.71, 0.12, -0.55, ...]  ← loin
+"chien"   → [0.25, -0.84, 0.39, ...]  ← proche
+"voiture" → [-0.71, 0.12, -0.55, ...] ← loin
 ----
 
-[.ft-quote]
-____
-"Just as you might describe a house by its characteristics — type, location, bedrooms, bathrooms, storeys — the values in an embedding quantify a word's linguistic features. The way these characteristics are derived means we don't know exactly what each value represents, but words we expect to be used in comparable ways often have similar-looking embeddings."
+Ces vecteurs sont *appris* automatiquement pendant l'entraînement.
 
--- Financial Times, _Generative AI exists because of the transformer_ (2023)
-____
+=== Embeddings : relations et visualisation
 
-*Propriété remarquable* : les relations sémantiques sont des vecteurs
+*Propriété remarquable* : certaines relations s'expriment comme des déplacements vectoriels.
 
 [.math-box]
 ----
@@ -435,16 +461,9 @@ roi - homme + femme ≈ reine
 Paris - France + Italie ≈ Rome
 ----
 
-Ces vecteurs sont *appris* depuis les données — pas programmés à la main.
-
-====
-[.column]
-====
-image::images/embeddings_2d.svg[Embeddings en 2D, 700]
+image::embeddings_2d.svg[Embeddings en 2D, 700]
 [.caption]
 Projection 2D d'embeddings (t-SNE) : les mots sémantiquement proches sont proches dans l'espace vectoriel
-====
---
 
 [NOTE.speaker]
 --
@@ -453,45 +472,36 @@ Les embeddings sont la première couche du transformer. Ils transforment chaque 
 
 == L'attention : "qui regarde qui" ?
 
-[.columns]
---
-[.column]
-====
-[discrete]
-=== Le mécanisme clé du Transformer
+[.key-insight]
+L'attention répond à une question simple :
 
-[.ft-quote]
-____
-"Before transformers, the state of the art AI translation methods were recurrent neural networks (RNNs), which scanned each word in a sentence and processed it _sequentially_. With self-attention, the transformer computes all the words in a sentence _at the same time_."
+* Pour chaque token, quels autres tokens sont pertinents ici ?
 
--- Financial Times, _Generative AI exists because of the transformer_ (2023)
-____
+=== Attention : intuition
 
-Pour chaque mot, l'attention calcule :
-*"Quels autres mots de la séquence sont pertinents pour comprendre ce mot ici ?"*
+Avant les Transformers, les RNN traitaient le texte séquentiellement.
+Avec la self-attention, tous les tokens sont traités en parallèle.
 
 [.example-box]
 ====
---
 > "Le **chat** s'est endormi dans le fauteuil parce qu'**il** était fatigué"
 
-Pour résoudre "il" → le modèle attend **fortement** sur "chat"
+* Pour résoudre "il" → forte attention sur "chat"
+* Pour comprendre "fatigué" → attention sur "chat" et "endormi"
+====
 
-Pour comprendre "fatigué" → attention sur "chat" ET "endormi"
---
+=== Attention : calcul et interprétation
 
 *Formule de l'attention* :
 
 [.math-box]
 Attention(Q, K, V) = softmax(QKᵀ / √d_k) · V
 
-Q = Query (ce que je cherche), K = Key (ce que j'offre), V = Value (ce que je transmets)
+Q = Query, K = Key, V = Value
 
-[.column]
-image::images/attention_viz.svg[Attention, 700]
+image::attention_viz.svg[Attention, 700]
 [.caption]
 Carte d'attention : chaque cellule montre le poids d'attention entre deux tokens
---
 
 [NOTE.speaker]
 --
@@ -500,43 +510,42 @@ La division par √d_k évite que les produits scalaires ne deviennent trop gran
 
 == L'attention multi-têtes : regarder sous différents angles
 
-[.columns]
---
-[.column]
-====
-[discrete]
-=== Multi-Head Attention
+[.key-insight]
+Une seule tête = une seule perspective.
+Le multi-head combine plusieurs perspectives en parallèle.
 
-Au lieu d'une seule attention, le Transformer utilise H "têtes" en parallèle.
+=== Multi-Head : principe
 
-Chaque tête apprend à regarder différents aspects :
-- *Tête 1* : relations syntaxiques (sujet-verbe)
-- *Tête 2* : co-références (il/le chat)
-- *Tête 3* : relations temporelles (avant/après)
-- *Tête N* : ...
+Au lieu d'une seule attention, le Transformer utilise H têtes en parallèle.
 
-Les résultats sont *concaténés* puis projetés.
+Chaque tête apprend une projection différente de la séquence.
+
+Les sorties de toutes les têtes sont *concaténées* puis reprojetées.
+
+=== Multi-Head : ce que les têtes capturent
+
+Exemples typiques de spécialisations :
+
+* syntaxe (sujet-verbe)
+* co-références (il/le chat)
+* dépendances longues distance
+* relations temporelles (avant/après)
+
+=== Multi-Head : ordre de grandeur
 
 [.key-insight]
-GPT-4 a ~96 têtes d'attention par couche et 96 couches. Soit ~9 216 "regards" différents simultanés.
+GPT-4 : ~96 têtes par couche × 96 couches ≈ 9 216 "regards" simultanés.
 
-====
-[.column]
-====
-image::images/multihead_attention.svg[Multi-head attention, 700]
+image::multihead_attention.svg[Multi-head attention, 700]
 [.caption]
-Multi-Head Attention : H projections parallèles, puis concaténation
-====
---
+Multi-Head Attention : projections parallèles puis concaténation
 
 == Architecture complète du Transformer
 
-[.columns]
---
-[.column]
-====
-[discrete]
-=== Blocs répétés N fois
+[.key-insight]
+Un Transformer = empilement de blocs identiques appliqués N fois.
+
+=== Architecture : bloc unitaire
 
 [.architecture-box]
 ----
@@ -552,56 +561,41 @@ Input tokens
 │ + Residual + LayerNorm  │
 └─────────────────────────┘
     ↓
-Output logits (prob sur vocabulaire)
+Output logits
 ----
 
-*Positional Encoding* : comme l'attention ne voit pas l'ordre, on injecte la position dans l'embedding
+=== Architecture : deux briques clés
 
-*Feed-Forward* : 2 couches linéaires — le "stockage de connaissances"
+*Positional Encoding* : injecte l'ordre des tokens.
 
-====
-[.column]
-====
-image::images/transformer_arch.svg[Architecture, 600]
+*Feed-Forward Network* : transforme localement chaque position (2 couches linéaires).
+
+[.key-insight]
+Les couches attention + FFN empilées apprennent des représentations de plus en plus abstraites.
+
+=== Architecture : modèle original vs LLM modernes
+
+image::transformer_arch.svg[Architecture, 600]
 [.caption]
-Architecture originale Encoder-Decoder (Vaswani 2017). Les LLMs modernes n'utilisent que le Decoder.
-====
---
+Vaswani 2017 : Encoder-Decoder ; LLM actuels : principalement Decoder-only.
 
 == Génération de texte : chercher le meilleur token
 
-[.columns]
---
-[.column]
-====
-[discrete]
-=== Du token au texte : le décodage
+[.key-insight]
+Trois idées pour lire cette partie :
 
-[.ft-quote]
-____
-"At its simplest, the model's aim is now to predict the next word in a sequence and do this repeatedly until the output is complete."
+* Le décodage choisit une séquence, pas seulement un mot
+* La température et le sampling contrôlent le style de sortie
+* Le pré-entraînement + alignment expliquent le comportement final
 
--- Financial Times, _Generative AI exists because of the transformer_ (2023)
-____
+=== Décodage : greedy vs beam search
 
-*Greedy search* : à chaque étape, choisir le token le plus probable.
+*Greedy search* : choisir à chaque étape le token le plus probable.
 
 [.warning-box]
-Problème : "sometimes, while each individual token might be the next best fit, the full phrase can be less relevant."
+Limite : un choix local optimal peut produire une phrase globale moins bonne.
 
-*Beam search* : explorer les N meilleures séquences en parallèle ("faisceaux").
-→ Résultat global de meilleure qualité.
-
-*Température* : paramètre qui contrôle la "créativité" :
-- T → 0 : déterministe (toujours le token le plus probable)
-- T = 1 : distribution naturelle
-- T > 1 : plus créatif, plus risqué
-
-====
-[.column]
-====
-[discrete]
-=== Illustration : beam search (N=3)
+*Beam search* : explorer N séquences en parallèle, puis garder la meilleure séquence globale.
 
 [.beam-search]
 ----
@@ -616,115 +610,91 @@ Entrée : "Pour faire une omelette, il faut..."
               "casser des œufs"
 ----
 
-*Top-k sampling* : sélectionner aléatoirement parmi les k tokens les plus probables → variété sans incohérence.
+=== Sampling : température, top-k, top-p
 
-*Top-p (nucleus) sampling* : sélectionner parmi les tokens qui couvrent p% de la probabilité cumulée.
-====
---
+*Température* (créativité) :
 
-[NOTE.speaker]
---
-La température est l'un des paramètres les plus importants pour contrôler le comportement d'un LLM en production. On voudra généralement T faible pour les sorties structurées (code, données factuelles) et T plus haute pour la génération créative (brainstorming, rédaction).
---
+* T → 0 : déterministe
+* T = 1 : distribution naturelle
+* T > 1 : plus créatif, plus risqué
 
-[.columns]
---
-[.column]
-====
-[discrete]
-=== Les 3 phases d'entraînement
+*Top-k sampling* : tirage aléatoire parmi les k tokens les plus probables.
 
-*Phase 1 : Pre-training (auto-supervisé)*
-- Corpus : internet, livres, code, articles scientifiques
-- Tâche : prédire le prochain token
-- Coût : ~100M$ pour GPT-4, des mois sur des milliers de GPU
+*Top-p (nucleus) sampling* : tirage dans le plus petit ensemble couvrant p% de probabilité cumulée.
 
-*Phase 2 : Instruction Fine-tuning (SFT)*
-- Données : paires (instruction, réponse de qualité)
-- Apprend à "suivre des instructions"
+=== Entraînement : 3 phases + scaling laws
 
-*Phase 3 : RLHF*
-- Reinforcement Learning from Human Feedback
-- Des humains notent les réponses
-- Le modèle optimise pour les préférences humaines
+*Phase 1 — Pre-training* : prédire le prochain token sur un très grand corpus.
 
-====
-[.column]
-====
-[discrete]
-=== Les scaling laws
+*Phase 2 — SFT* : apprendre à suivre des consignes.
+
+*Phase 3 — RLHF* : aligner les réponses sur les préférences humaines.
 
 [.key-insight]
 Performance ≈ f(N_params × N_tokens × compute)
 
-image::images/scaling_laws.svg[Scaling laws, 600]
+image::scaling_laws.svg[Scaling laws, 600]
 [.caption]
-La performance améliore de façon prévisible (loi puissance) avec le compute — ce qui permet de planifier l'entraînement
-====
---
+La performance améliore de façon prévisible (loi puissance) avec le compute
 
 [NOTE.speaker]
 --
-Le pre-training est de loin la phase la plus coûteuse. Le fine-tuning (SFT + RLHF) ne coûte qu'une fraction. C'est pourquoi on peut adapter un LLM à un domaine spécifique (médecine, droit, ingénierie...) avec des ressources raisonnables.
+La température est l'un des paramètres les plus importants pour contrôler le comportement d'un LLM en production. T faible pour les sorties structurées, T plus élevée pour la génération créative.
+
+Le pre-training reste la phase la plus coûteuse ; SFT + RLHF permettent ensuite une adaptation domaine plus abordable.
 --
 
 == Limites et hallucinations
 
-[.columns]
---
-[.column]
-====
-[discrete]
-=== Pourquoi les LLMs "inventent" ?
+[.key-insight]
+Les LLMs peuvent être impressionnants *et* se tromper avec assurance.
 
-Un LLM *n'est pas un moteur de recherche*. C'est un moteur de prédiction de patterns.
+=== Pourquoi les hallucinations existent
 
-[.ft-quote]
-____
-"LLMs are not search engines looking up facts; they are pattern-spotting engines that guess the next best option in a sequence. Because of this inherent predictive nature, LLMs can also fabricate information in a process that researchers call 'hallucination'. They can generate made-up numbers, names, dates, quotes — even web links or entire articles."
+Un LLM n'est pas un moteur de recherche : il prédit la suite la plus probable.
 
--- Financial Times, _Generative AI exists because of the transformer_ (2023)
-____
+Conséquence : il peut produire des faits inventés, sources fictives ou chiffres erronés.
 
-*Grounding et RLHF pour limiter le problème* :
-- Cross-checking contre des sources vérifiées (RAG)
-- Feedback humain (RLHF) — humains qui notent les réponses
-- Reste un *grand défi de recherche*
+=== Réduction du risque (sans garantie totale)
 
-*TOUJOURS* vérifier les faits, chiffres, dates et citations générés par un LLM — quelle que soit la discipline !
+* grounding par sources vérifiées (RAG)
+* alignment via feedback humain (RLHF)
+* contrôles applicatifs (validation, citations, garde-fous)
 
-====
-[.column]
-====
-[discrete]
-=== Mais aussi des capacités émergentes
+[.warning-box]
+Règle opérationnelle : vérifier systématiquement faits, dates, chiffres et références.
 
-[.emergent-list]
-- Raisonnement en chaîne (Chain-of-Thought)
-- Analogies inter-domaines
-- Génération de code
-- Traduction sans supervision explicite
-- ... apparaissent spontanément à grande échelle
+=== Capacités émergentes
 
-Ces capacités n'ont *pas* été programmées — elles émergent de la prédiction du prochain token à très grande échelle.
-====
---
+À grande échelle apparaissent aussi :
+
+* raisonnement en chaîne
+* analogies inter-domaines
+* génération de code
+* traduction sans supervision explicite
+
+[.key-insight]
+Ces capacités n'ont pas été codées explicitement : elles émergent de l'entraînement prédictif.
 
 == Au-delà du texte : les Transformers partout
 
-[.columns]
---
-[.column]
-====
-[discrete]
-=== Une architecture universelle de reconnaissance de patterns
+[.key-insight]
+Le Transformer est devenu une architecture générale de modélisation de séquences.
 
-[.ft-quote]
-____
-"Its real power lies beyond language. Its inventors discovered that transformer models could recognise and predict any repeating motifs or patterns. From pixels in an image... to computer code... It could even predict notes in music and DNA in proteins."
+=== Même mécanisme, domaines différents
 
--- Financial Times, _Generative AI exists because of the transformer_ (2023)
-____
+Ce qui varie :
+
+* le vocabulaire (mots, pixels, notes, acides aminés...)
+* les données d'entraînement
+
+Ce qui reste stable :
+
+* l'attention
+* les blocs Transformer
+* les scaling laws
+
+=== Exemples concrets hors texte
 
 [.domain-grid]
 |===
@@ -738,24 +708,12 @@ ____
 | Science | Galactica | Question | Réponse scientifique
 |===
 
-====
-[.column]
-====
-[discrete]
-=== Pourquoi ça marche partout ?
-
-*La clé* : tout signal structuré peut être "tokenisé" et modélisé comme une séquence.
+=== Message à retenir
 
 [.key-insight]
-Une image découpée en patches, une mélodie, une séquence d'ADN, du code source — tous sont des *séquences de tokens* sur lesquelles l'attention opère.
+Image en patches, mélodie, ADN, code : tout peut devenir une séquence de tokens.
 
-*Ce qui change* : le vocabulaire (pixels vs notes vs mots) et les données d'entraînement.
-
-*Ce qui ne change pas* : le mécanisme d'attention, les blocs Transformer, les scaling laws.
-
-→ *Un seul paradigme pour tout comprendre.*
-====
---
+→ Un paradigme commun pour des domaines très différents.
 
 [NOTE.speaker]
 --
@@ -796,7 +754,7 @@ Elle le fait en *microsecondes*. Pourquoi ? L'évolution a trouvé un chemin gui
 ====
 [.column]
 ====
-image::images/myoglobin.png[Structure protéique, 600]
+image::myoglobin.png[Structure protéique, 600]
 [.caption]
 Structure 3D d'une protéine (myoglobine). AlphaFold2 prédit des structures avec une précision comparable à la cristallographie (RMSD < 1 Å) — colorée par confiance pLDDT. +
 _(© Wikimedia Commons)_
@@ -820,14 +778,16 @@ AlphaFold2 a remporté CASP14 en 2020 avec un score GDT de 92,4/100 — dépassa
 *Entrée* : séquence d'acides aminés + alignements multiples (MSA)
 
 *Evoformer* (cœur d'AlphaFold2) :
-- Transformer modifié qui traite simultanément :
-  - La séquence (1D)
-  - La matrice de distances entre résidus (2D)
-- Itérations de "communication" entre les deux représentations
+
+* Transformer modifié qui traite simultanément :
+** La séquence (1D)
+** La matrice de distances entre résidus (2D)
+* Itérations de "communication" entre les deux représentations
 
 *Structure module* :
-- Converge vers des coordonnées 3D
-- Utilise une représentation en "cadres rigides" (SE(3))
+
+* Converge vers des coordonnées 3D
+* Utilise une représentation en "cadres rigides" (SE(3))
 
 *Résultat* : coordonnées atomiques + score de confiance (pLDDT)
 
@@ -838,11 +798,11 @@ AlphaFold2 a remporté CASP14 en 2020 avec un score GDT de 92,4/100 — dépassa
 === Impact réel
 
 [.impact-list]
-- *Malaria* : nouvelles cibles thérapeutiques identifiées
-- *Enzymes industrielles* : optimisation enzymatique
-- *Drug discovery* : 40-50% de réduction du temps
-- *AlphaFold3* (2024) : étend aux petites molécules, ADN, ARN, ions
-- *Base de données* : 214 millions de structures disponibles gratuitement
+* *Malaria* : nouvelles cibles thérapeutiques identifiées
+* *Enzymes industrielles* : optimisation enzymatique
+* *Drug discovery* : 40-50% de réduction du temps
+* *AlphaFold3* (2024) : étend aux petites molécules, ADN, ARN, ions
+* *Base de données* : 214 millions de structures disponibles gratuitement
 
 [.key-insight]
 Nobel de Chimie 2024 → David Baker, Demis Hassabis, John Jumper
@@ -851,12 +811,14 @@ Nobel de Chimie 2024 → David Baker, Demis Hassabis, John Jumper
 
 == Drug Discovery accéléré par l'IA
 
-[.columns]
---
-[.column]
-====
-[discrete]
-=== Le pipeline classique
+[.key-insight]
+L'IA compresse le cycle de découverte sur trois leviers :
+
+* Meilleure sélection de cibles
+* Screening massif accéléré
+* Génération guidée de candidats
+
+=== Pipeline : où l'IA crée le plus de valeur
 
 [.pipeline]
 ----
@@ -866,33 +828,21 @@ Lead optimization  →  Préclinique  →  Clinique
            ~12-15 ans          ~2 milliards $
 ----
 
-[discrete]
-=== Où l'IA intervient
+*Identification de cibles* : intégration génomique/protéomique.
 
-*Identification de cibles* : analyse de données génomiques/protéomiques
+*Virtual screening* : docking accéléré (ordre de grandeur jusqu'à 10^6 molécules/heure).
 
-*Virtual screening* : docking moléculaire accéléré par DL
-→ Schrodinger, Vina-GPU : 10^6 molécules/heure vs 10^3 classique
+*Génération de novo* : VAE / diffusion pour proposer des molécules sous contraintes.
 
-*Génération de molécules de novo* : modèles génératifs (VAE, Diffusion)
-→ "Inventer" des molécules avec les propriétés souhaitées
+=== Cas d'étude : Insilico Medicine
 
-====
-[.column]
-====
-[discrete]
-=== Cas concret : Insilico Medicine
+* *2019* : cible fibrosis identifiée par IA
+* *2020* : candidat généré en 21 jours
+* *2023* : essai clinique Phase II positif
 
-[.case-study]
-- *2019* : Cible (fibrosis) identifiée par IA
-- *2020* : Molécule candidate générée par IA en 21 jours
-- *2023* : Essai clinique Phase II positif
+Vs pipeline classique : 4-5 ans pour atteindre ce stade.
 
-Vs pipeline classique : 4-5 ans pour la même étape
-
-image::images/drug_discovery.svg[Drug discovery, 500]
-====
---
+image::drug_discovery.svg[Drug discovery, 500]
 
 [NOTE.speaker]
 --
@@ -916,8 +866,9 @@ Benzène  : c1ccccc1
 ----
 
 *Graph Neural Networks (GNN)* : la molécule comme graphe
-- Atomes = nœuds, liaisons = arêtes
-- Message passing entre voisins
+
+* Atomes = nœuds, liaisons = arêtes
+* Message passing entre voisins
 
 *3D (point cloud)* : coordonnées atomiques
 
@@ -925,10 +876,10 @@ Benzène  : c1ccccc1
 === Modèles génératifs moléculaires
 
 [.model-list]
-- *VAE* (Variational AutoEncoder) : espace latent continu → interpolation et optimisation
-- *GAN* : génération adversariale de molécules
-- *Flow models* : distribution exacte
-- *Diffusion* (2023+) : DiffSBDD, DiffDock — génération 3D dans le site actif
+* *VAE* (Variational AutoEncoder) : espace latent continu → interpolation et optimisation
+* *GAN* : génération adversariale de molécules
+* *Flow models* : distribution exacte
+* *Diffusion* (2023+) : DiffSBDD, DiffDock — génération 3D dans le site actif
 
 ====
 [.column]
@@ -936,7 +887,7 @@ Benzène  : c1ccccc1
 [discrete]
 === Propriétés ciblables
 
-image::images/mol_generation.svg[Génération moléculaire, 700]
+image::mol_generation.svg[Génération moléculaire, 700]
 [.caption]
 Optimisation guidée : l'espace latent permet de naviguer vers des molécules avec les propriétés souhaitées (solubilité, toxicité, affinité de liaison)
 ====
@@ -952,18 +903,21 @@ Optimisation guidée : l'espace latent permet de naviguer vers des molécules av
 === Spectroscopie assistée par IA
 
 *NMR (RMN)* :
-- Prédiction automatique des déplacements chimiques
-- ACD/Labs, NMRshiftDB
-- Identification de molécules inconnues depuis le spectre
+
+* Prédiction automatique des déplacements chimiques
+* ACD/Labs, NMRshiftDB
+* Identification de molécules inconnues depuis le spectre
 
 *IR / Raman* :
-- Identification de mélanges complexes
-- Détection de falsification alimentaire
-- Contrôle qualité pharmaceutique
+
+* Identification de mélanges complexes
+* Détection de falsification alimentaire
+* Contrôle qualité pharmaceutique
 
 *MS (Spectrométrie de masse)* :
-- SIRIUS + CSI:FingerID : identification de métabolites
-- Performances comparables aux experts humains en 2023
+
+* SIRIUS + CSI:FingerID : identification de métabolites
+* Performances comparables aux experts humains en 2023
 
 ====
 [.column]
@@ -1009,14 +963,15 @@ La rétrosynthèse = décomposer une molécule cible en précurseurs disponibles
 === Chimie computationnelle + ML
 
 *Potentiels interatomiques ML (MLFF)* :
-- DFT (Density Functional Theory) = précision quantique mais coûteux (O(N³))
-- MLFF (DeepMD, SchNet, NequIP) : précision DFT, vitesse force field classique
-- Applications : simulation de matériaux, dynamique de protéines
+
+* DFT (Density Functional Theory) = précision quantique mais coûteux (O(N³))
+* MLFF (DeepMD, SchNet, NequIP) : précision DFT, vitesse force field classique
+* Applications : simulation de matériaux, dynamique de protéines
 
 [.key-insight]
 MACE-MP-0 (2023) : modèle universel entraîné sur ~150 000 matériaux → transfert zero-shot à des systèmes non vus
 
-image::images/retrosynthesis.svg[Rétrosynthèse, 500]
+image::retrosynthesis.svg[Rétrosynthèse, 500]
 ====
 --
 
@@ -1035,14 +990,16 @@ DeepMind a aussi publié GNoME (2023) qui a prédit 2.2 millions de nouveaux cri
 === Découverte de nouveaux matériaux
 
 *GNoME (Google DeepMind, 2023)* :
-- Graph Neural Network pour prédire la stabilité des cristaux
-- 2.2 millions de nouveaux matériaux stables proposés
-- 736 validés expérimentalement par robots de synthèse
+
+* Graph Neural Network pour prédire la stabilité des cristaux
+* 2.2 millions de nouveaux matériaux stables proposés
+* 736 validés expérimentalement par robots de synthèse
 
 *Applications énergétiques* :
-- Électrolytes pour batteries Li-ion (meilleure conductivité, moindre toxicité)
-- Photocatalyseurs pour la production d'H₂
-- Membranes pour capture du CO₂
+
+* Électrolytes pour batteries Li-ion (meilleure conductivité, moindre toxicité)
+* Photocatalyseurs pour la production d'H₂
+* Membranes pour capture du CO₂
 
 ====
 [.column]
@@ -1122,12 +1079,14 @@ Idée centrale : au lieu de dépenser tout le compute à l'entraînement, alloue
 
 == Les Agents IA : de l'assistant à l'acteur autonome
 
-[.columns]
---
-[.column]
-====
-[discrete]
-=== Qu'est-ce qu'un agent IA ?
+[.key-insight]
+Un agent IA n'est pas juste un chatbot :
+
+* Il planifie
+* Il agit via des outils
+* Il boucle sur les retours de l'environnement
+
+=== Architecture d'un agent
 
 Un agent = LLM + outils + mémoire + boucle de décision
 
@@ -1141,31 +1100,28 @@ Observation (environment)
 ----
 
 *Outils typiques* :
-- Recherche web / bases de données scientifiques
-- Exécution de code Python (calculs, DFT...)
-- Accès à des instruments de labo
-- Appels à d'autres agents spécialisés
 
-====
-[.column]
-====
-[discrete]
+* Recherche web / bases scientifiques
+* Exécution de code (calculs, DFT...)
+* Accès à des instruments de labo
+* Appels à d'autres agents spécialisés
+
 === Applications en chimie
 
 [.agent-example]
 *ChemCrow (2023)* : agent LLM avec 18 outils chimiques
-→ Synthèse autonome de chloroquine (antipaludéen)
-→ Planification de 4 synthèses complexes
+
+→ Synthèse autonome de chloroquine
+
+→ Planification de synthèses complexes
 
 [.agent-example]
-*Autonomous Chemical Research (2023, Nature)* :
-Agent qui accède à PubChem, exécute du code, commande des réactions robotisées
+*Autonomous Chemical Research (Nature, 2023)* :
+
+Agent couplé à bases chimiques, exécution de code et réactions robotisées
 
 [.key-insight]
-La combinaison Agent IA + Self-Driving Lab = chercheur autonome ?
-(Question éthique : quid de la supervision humaine ?)
-====
---
+Agent IA + Self-Driving Lab : potentiel de chercheur semi-autonome (avec supervision humaine)
 
 [NOTE.speaker]
 --
@@ -1201,11 +1157,11 @@ ChemCrow a planifié la synthèse de DEET (répulsif moustiques) et d'aspirine d
 === Ce qui manque encore (probablement)
 
 [.gaps-list]
-- *Compréhension causale* : "corrélation ≠ causalité" — les LLMs confondent encore facilement
-- *Embodiment* : comprendre le monde physique via l'expérience directe
-- *Efficacité des données* : un enfant apprend en 1000× moins d'exemples
-- *Robustesse* : distribution shift, adversarial examples
-- *Long-term planning* : cohérence sur des tâches multi-jours
+* *Compréhension causale* : "corrélation ≠ causalité" — les LLMs confondent encore facilement
+* *Embodiment* : comprendre le monde physique via l'expérience directe
+* *Efficacité des données* : un enfant apprend en 1000× moins d'exemples
+* *Robustesse* : distribution shift, adversarial examples
+* *Long-term planning* : cohérence sur des tâches multi-jours
 
 [.timeline-box]
 *Prédictions d'experts* : 2030 à "jamais" selon les experts...

@@ -1,5 +1,8 @@
 const asciidoctor = require('@asciidoctor/core')()
 const asciidoctorRevealjs = require('@asciidoctor/reveal.js')
+const fs = require('fs')
+const path = require('path')
+
 asciidoctorRevealjs.register()
 
 const options = {
@@ -10,5 +13,45 @@ const options = {
   }
 }
 
-asciidoctor.convertFile('slides.adoc', options)
-console.log('✓ Presentation built: slides.html')
+function build () {
+  try {
+    asciidoctor.convertFile('slides.adoc', options)
+    const now = new Date().toLocaleTimeString('fr-FR')
+    console.log(`[${now}] ✓ Présentation générée : slides.html`)
+  } catch (err) {
+    console.error('✗ Erreur lors de la génération :', err.message)
+  }
+}
+
+build()
+
+if (process.argv.includes('--watch')) {
+  const WATCH_DIRS = ['.', 'images', 'css']
+  const EXTENSIONS = new Set(['.adoc', '.css', '.svg', '.png', '.jpg', '.jpeg', '.gif', '.webp'])
+
+  // Debounce pour éviter les rebuilds multiples en cas de rafale de modifications
+  let timer = null
+  function scheduleRebuild (filename) {
+    if (timer) clearTimeout(timer)
+    timer = setTimeout(() => {
+      console.log(`\n→ Modification détectée : ${filename}`)
+      build()
+      timer = null
+    }, 150)
+  }
+
+  WATCH_DIRS.forEach(dir => {
+    const absDir = path.resolve(dir)
+    if (!fs.existsSync(absDir)) return
+    fs.watch(absDir, (eventType, filename) => {
+      if (!filename) return
+      const ext = path.extname(filename).toLowerCase()
+      if (EXTENSIONS.has(ext)) {
+        scheduleRebuild(path.join(dir, filename))
+      }
+    })
+    console.log(`👁  Surveillance : ${dir}/`)
+  })
+
+  console.log('\nMode watch actif — Ctrl+C pour arrêter.\n')
+}
