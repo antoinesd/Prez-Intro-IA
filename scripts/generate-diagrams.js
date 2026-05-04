@@ -21,6 +21,10 @@ const diagrams = [
   {
     input: path.join('diagrams', 'mermaid', 'agent-loop.mmd'),
     output: path.join('images', 'agent_loop.svg')
+  },
+  {
+    input: path.join('diagrams', 'mermaid', 'rag-pipeline.mmd'),
+    output: path.join('images', 'rag_pipeline.svg')
   }
 ]
 

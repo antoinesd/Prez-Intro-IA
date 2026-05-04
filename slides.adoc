@@ -477,102 +477,6 @@ Projection 2D d'embeddings (t-SNE) : les mots sémantiquement proches sont proch
 Les embeddings sont la première couche du transformer. Ils transforment chaque token (mot ou sous-mot) en vecteur dense. Ces vecteurs encodent le sens de façon distribuée sur toutes les dimensions — pas une dimension = une feature.
 --
 
-== L'attention : "qui regarde qui" ?
-
-[.key-insight]
-L'attention répond à une question simple :
-
-* Pour chaque token, quels autres tokens sont pertinents ici ?
-
-=== Attention : intuition
-
-Avant les Transformers, les RNN traitaient le texte séquentiellement.
-Avec la self-attention, tous les tokens sont traités en parallèle.
-
-[.example-box]
-====
-> "Le **chat** s'est endormi dans le fauteuil parce qu'**il** était fatigué"
-
-* Pour résoudre "il" → forte attention sur "chat"
-* Pour comprendre "fatigué" → attention sur "chat" et "endormi"
-====
-
-=== Attention : calcul et interprétation
-
-*Formule de l'attention* :
-
-[stem]
-++++
-\operatorname{Attention}(Q, K, V) = \operatorname{softmax}\left(\frac{QK^\top}{\sqrt{d_k}}\right)V
-++++
-
-Q = Query, K = Key, V = Value
-
-image::attention_viz.svg[Attention, 700]
-[.caption]
-Carte d'attention : chaque cellule montre le poids d'attention entre deux tokens
-
-[NOTE.speaker]
---
-La division par √d_k évite que les produits scalaires ne deviennent trop grands avec des vecteurs de grande dimension, ce qui ferait disparaître les gradients (saturation du softmax).
---
-
-== L'attention multi-têtes : regarder sous différents angles
-
-[.key-insight]
-Une seule tête = une seule perspective.
-Le multi-head combine plusieurs perspectives en parallèle.
-
-=== Multi-Head : principe
-
-Au lieu d'une seule attention, le Transformer utilise H têtes en parallèle.
-
-Chaque tête apprend une projection différente de la séquence.
-
-Les sorties de toutes les têtes sont *concaténées* puis reprojetées.
-
-=== Multi-Head : ce que les têtes capturent
-
-Exemples typiques de spécialisations :
-
-* syntaxe (sujet-verbe)
-* co-références (il/le chat)
-* dépendances longues distance
-* relations temporelles (avant/après)
-
-=== Multi-Head : ordre de grandeur
-
-[.key-insight]
-stem:[\text{GPT-4} : 96\ \text{têtes/couche} \times 96\ \text{couches} \approx 9\,216\ \text{regards simultanés}]
-
-image::multihead_attention.svg[Multi-head attention, 700]
-[.caption]
-Multi-Head Attention : projections parallèles puis concaténation
-
-== Architecture complète du Transformer
-
-[.key-insight]
-Un Transformer = empilement de blocs identiques appliqués N fois.
-
-=== Architecture : bloc unitaire
-
-image::transformer_block.svg[Bloc Transformer, 920]
-
-=== Architecture : deux briques clés
-
-*Positional Encoding* : injecte l'ordre des tokens.
-
-*Feed-Forward Network* : transforme localement chaque position (2 couches linéaires).
-
-[.key-insight]
-Les couches attention + FFN empilées apprennent des représentations de plus en plus abstraites.
-
-=== Architecture : modèle original vs LLM modernes
-
-image::transformer_arch.svg[Architecture, 600]
-[.caption]
-Vaswani 2017 : Encoder-Decoder ; LLM actuels : principalement Decoder-only.
-
 == Génération de texte : chercher le meilleur token
 
 [.key-insight]
@@ -632,7 +536,8 @@ Le pre-training reste la phase la plus coûteuse ; SFT + RLHF permettent ensuite
 [.key-insight]
 Les LLMs peuvent être impressionnants *et* se tromper avec assurance.
 
-=== Pourquoi les hallucinations existent
+[discrete]
+=== Pourquoi les hallucinations existent ?
 
 Un LLM n'est pas un moteur de recherche : il prédit la suite la plus probable.
 
@@ -661,21 +566,20 @@ Ces capacités n'ont pas été codées explicitement : elles émergent de l'entr
 
 == Au-delà du texte : les Transformers partout
 
+[discrete]
+=== Le Transformer est devenu une architecture générale de modélisation de séquences.
+
+→ Un principe commun pour des domaines très différents.
+
 [.key-insight]
-Le Transformer est devenu une architecture générale de modélisation de séquences.
+Image, mélodie, ADN, code : tout peut devenir une séquence de tokens.
 
-=== Même mécanisme, domaines différents
 
-Ce qui varie :
 
-* le vocabulaire (mots, pixels, notes, acides aminés...)
-* les données d'entraînement
-
-Ce qui reste stable :
-
-* l'attention
-* les blocs Transformer
-* les scaling laws
+[NOTE.speaker]
+--
+C'est pourquoi AlphaFold2 est essentiellement un Transformer : l'Evoformer traite des séquences d'acides aminés exactement comme GPT traite du texte. De même, GitHub Copilot et les modèles de génération d'images partagent la même architecture de base — seul le vocabulaire change.
+--
 
 === Exemples concrets hors texte
 
@@ -691,17 +595,73 @@ Ce qui reste stable :
 | Science | Galactica | Question | Réponse scientifique
 |===
 
-=== Message à retenir
+== RAG : donner une "mémoire externe" au LLM
 
 [.key-insight]
-Image en patches, mélodie, ADN, code : tout peut devenir une séquence de tokens.
+RAG = *Retrieval-Augmented Generation* : on fait d'abord une recherche dans une base de connaissances, puis on demande au LLM de répondre avec ce contexte.
 
-→ Un paradigme commun pour des domaines très différents.
+Version vulgarisée :
 
-[NOTE.speaker]
+* Un LLM seul répond de mémoire (parfois bien, parfois faux)
+* Un système RAG lui "ouvre le classeur" avant qu'il réponde
+* La réponse est plus fiable et plus traçable
+
+=== RAG : fonctionnement en 4 étapes
+
+[.columns]
 --
-C'est pourquoi AlphaFold2 est essentiellement un Transformer : l'Evoformer traite des séquences d'acides aminés exactement comme GPT traite du texte. De même, GitHub Copilot et les modèles de génération d'images partagent la même architecture de base — seul le vocabulaire change.
+[.column]
+====
+[discrete]
+=== 1) Préparer la base
+
+On découpe les documents en petits morceaux (_chunks_), puis on les convertit en vecteurs (_embeddings_).
+
+[discrete]
+=== 2) Chercher les passages utiles
+
+La question utilisateur est vectorisée, puis on récupère les *k* passages les plus proches dans la base vectorielle.
+====
+[.column]
+====
+[discrete]
+=== 3) Construire le prompt
+
+On injecte question + passages retrouvés dans le prompt envoyé au LLM.
+
+[discrete]
+=== 4) Générer la réponse
+
+Le LLM répond en s'appuyant sur le contexte fourni (et idéalement avec citations de sources).
+====
 --
+
+=== Architecture type d'un RAG
+
+image::rag_pipeline.svg[Pipeline RAG]
+
+[.caption]
+Pipeline simplifié : indexation des documents, retrieval, prompt augmenté, génération de réponse.
+
+=== RAG : ce que ça améliore... et ses limites
+
+[.key-insight]
+Le RAG *réduit* les hallucinations, mais ne les supprime pas totalement.
+
+Ce que ça améliore :
+
+* Réponses plus factuelles sur un domaine précis
+* Possibilité de citer les sources utilisées
+* Mise à jour des connaissances sans réentraîner le modèle
+
+Limites à garder en tête :
+
+* Mauvais retrieval = mauvaise réponse
+* Contexte trop long ou bruité = confusion
+* Toujours besoin de validation humaine pour les cas critiques
+
+[.warning-box]
+Règle pratique : qualité d'un RAG = qualité des documents + qualité de l'indexation + qualité du retrieval.
 
 // ===========================================================
 // PARTIE 3 : IA EN CHIMIE
@@ -811,15 +771,23 @@ image::drug_discovery_pipeline.svg[Pipeline drug discovery, 980]
 
 *Génération de novo* : VAE / diffusion pour proposer des molécules sous contraintes.
 
+[.columns.is-vcentered]
 === Cas d'étude : Insilico Medicine
+
+[.column]
+--
+[discrete]
+=== Un accélérateur de la recherche
 
 * *2019* : cible fibrosis identifiée par IA
 * *2020* : candidat généré en 21 jours
 * *2023* : essai clinique Phase II positif
 
-Vs pipeline classique : 4-5 ans pour atteindre ce stade.
 
-image::drug_discovery.svg[Drug discovery, 500]
+icon:flask[] Vs pipeline classique : 4-5 ans pour atteindre ce stade.
+--
+[.column]
+image::drug_discovery.svg[Drug discovery]
 
 [NOTE.speaker]
 --

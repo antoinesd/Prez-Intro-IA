@@ -51,7 +51,14 @@
 
 .reveal .slides section {
   padding: 20px 40px;
+  box-sizing: border-box;
   background: var(--cpt-bg);
+}
+
+/* Donne une marge interne stable aux slides mono-colonne. */
+.reveal .slides section > .slide-content {
+  padding: 0 0.75rem;
+  box-sizing: border-box;
 }
 
 /* ── Titres ──────────────────────────────────────────────────── */

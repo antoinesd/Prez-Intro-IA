@@ -1,0 +1,11 @@
+flowchart LR
+  A["Documents internes\nPDF, wiki, procedures"] --> B["Indexation\nchunking + embeddings"]
+  B --> C[("Base vectorielle")]
+
+  Q["Question utilisateur"] --> D["Retrieval\nTop-k passages"]
+  C --> D
+
+  D --> E["Prompt augmente\nquestion + contexte"]
+  E --> F["LLM"]
+  F --> G["Reponse + sources"]
+
