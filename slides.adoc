@@ -477,6 +477,102 @@ Projection 2D d'embeddings (t-SNE) : les mots sémantiquement proches sont proch
 Les embeddings sont la première couche du transformer. Ils transforment chaque token (mot ou sous-mot) en vecteur dense. Ces vecteurs encodent le sens de façon distribuée sur toutes les dimensions — pas une dimension = une feature.
 --
 
+== L'attention : "qui regarde qui" ?
+
+[.key-insight]
+L'attention répond à une question simple :
+
+* Pour chaque token, quels autres tokens sont pertinents ici ?
+
+=== Attention : intuition
+
+Avant les Transformers, les RNN traitaient le texte séquentiellement.
+Avec la self-attention, tous les tokens sont traités en parallèle.
+
+[.example-box]
+====
+> "Le **chat** s'est endormi dans le fauteuil parce qu'**il** était fatigué"
+
+* Pour résoudre "il" → forte attention sur "chat"
+* Pour comprendre "fatigué" → attention sur "chat" et "endormi"
+====
+
+=== Attention : calcul et interprétation
+
+*Formule de l'attention* :
+
+[stem]
+++++
+\operatorname{Attention}(Q, K, V) = \operatorname{softmax}\left(\frac{QK^\top}{\sqrt{d_k}}\right)V
+++++
+
+Q = Query, K = Key, V = Value
+
+image::attention_viz.svg[Attention, 700]
+[.caption]
+Carte d'attention : chaque cellule montre le poids d'attention entre deux tokens
+
+[NOTE.speaker]
+--
+La division par √d_k évite que les produits scalaires ne deviennent trop grands avec des vecteurs de grande dimension, ce qui ferait disparaître les gradients (saturation du softmax).
+--
+
+== L'attention multi-têtes : regarder sous différents angles
+
+[.key-insight]
+Une seule tête = une seule perspective.
+Le multi-head combine plusieurs perspectives en parallèle.
+
+=== Multi-Head : principe
+
+Au lieu d'une seule attention, le Transformer utilise H têtes en parallèle.
+
+Chaque tête apprend une projection différente de la séquence.
+
+Les sorties de toutes les têtes sont *concaténées* puis reprojetées.
+
+=== Multi-Head : ce que les têtes capturent
+
+Exemples typiques de spécialisations :
+
+* syntaxe (sujet-verbe)
+* co-références (il/le chat)
+* dépendances longues distance
+* relations temporelles (avant/après)
+
+=== Multi-Head : ordre de grandeur
+
+[.key-insight]
+stem:[\text{GPT-4} : 96\ \text{têtes/couche} \times 96\ \text{couches} \approx 9\,216\ \text{regards simultanés}]
+
+image::multihead_attention.svg[Multi-head attention, 700]
+[.caption]
+Multi-Head Attention : projections parallèles puis concaténation
+
+== Architecture complète du Transformer
+
+[.key-insight]
+Un Transformer = empilement de blocs identiques appliqués N fois.
+
+=== Architecture : bloc unitaire
+
+image::transformer_block.svg[Bloc Transformer, 920]
+
+=== Architecture : deux briques clés
+
+*Positional Encoding* : injecte l'ordre des tokens.
+
+*Feed-Forward Network* : transforme localement chaque position (2 couches linéaires).
+
+[.key-insight]
+Les couches attention + FFN empilées apprennent des représentations de plus en plus abstraites.
+
+=== Architecture : modèle original vs LLM modernes
+
+image::transformer_arch.svg[Architecture, 600]
+[.caption]
+Vaswani 2017 : Encoder-Decoder ; LLM actuels : principalement Decoder-only.
+
 == Génération de texte : chercher le meilleur token
 
 [.key-insight]
@@ -1162,10 +1258,6 @@ C'est de la statistique sur des données massives + de l'optimisation. Comprendr
 [.takeaway]
 *La chimie est un terrain privilégié* +
 Données structurées, règles physiques, problèmes combinatoires → l'IA y excelle. AlphaFold, drug discovery, matériaux : la révolution est en cours.
-
-[.takeaway]
-*Les outils sont accessibles* +
-Hugging Face, RDKit, DeepChem, AlphaFold DB, IBM RXN... Des ressources open-source de qualité existent. Apprenez à les utiliser !
 
 [.takeaway]
 *L'humain reste indispensable* +

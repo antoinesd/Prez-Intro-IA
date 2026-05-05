@@ -613,3 +613,26 @@
   box-shadow: none;
   border-radius: 0;
 }
+
+/* ── Takeaways ───────────────────────────────────────────────── */
+.reveal .takeaways {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  margin: 2em 0;
+}
+
+.reveal .takeaway {
+  background: var(--cpt-bg-soft);
+  border-left: 4px solid var(--cpt-red);
+  padding: 1em;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  font-size: 0.9em;
+  line-height: 1;
+}
+
+.reveal .takeaway strong {
+  color: var(--cpt-red);
+  font-weight: bold;
+}
