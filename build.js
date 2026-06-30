@@ -238,13 +238,13 @@ async function build ({ pdf = false, portable = false, portableGzip = false } = 
       await exportPdf('slides.pdf')
     }
     if (portable) {
-      await exportPortableHtml('slides.html', 'slides.portable.html', { compress: true, gzip: portableGzip })
+      await exportPortableHtml('slides.html', 'slides-portables.html', { compress: true, gzip: portableGzip })
     }
     const now = new Date().toLocaleTimeString('fr-FR')
     const outputs = ['slides.html']
     if (pdf) outputs.push('slides.pdf')
-    if (portable) outputs.push('slides.portable.html')
-    if (portable && portableGzip) outputs.push('slides.portable.html.gz')
+    if (portable) outputs.push('slides-portables.html')
+    if (portable && portableGzip) outputs.push('slides-portables.html.gz')
     const out = outputs.join(' + ')
     console.log(`[${now}] ✓ Présentation générée : ${out}`)
   } catch (err) {

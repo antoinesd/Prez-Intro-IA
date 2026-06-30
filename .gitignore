@@ -1,7 +1,7 @@
 node_modules/
 slides.html
-slides.portable.html
-slides.portable.html.gz
+slides-portables.html
+slides-portables.html.gz
 slides.pdf
 .DS_Store
 *.swp
