@@ -117,10 +117,48 @@ function formatBytes (bytes) {
   return `${(bytes / (1024 * 1024)).toFixed(2)} Mo`
 }
 
+async function embedCssIntoHtml (htmlContent) {
+  // Remplace les liens CSS locaux par du CSS inline
+  const cssLinkRegex = /<link\s+rel=["']stylesheet["']\s+href=["']([^"']+)["'][^>]*>/gi
+  
+  const replacements = []
+  let match
+  while ((match = cssLinkRegex.exec(htmlContent)) !== null) {
+    const fullMatch = match[0]
+    const href = match[1]
+    
+    // Ignorer les URLs externes (http, https, //)
+    if (/^(https?:|\/\/)/.test(href)) {
+      continue
+    }
+    
+    const cssPath = path.resolve(href)
+    if (!fs.existsSync(cssPath)) {
+      console.warn(`⚠️ Fichier CSS non trouvé : ${href}`)
+      continue
+    }
+    
+    const cssContent = fs.readFileSync(cssPath, 'utf8')
+    const replacement = `<style type="text/css">${cssContent}</style>`
+    replacements.push({ fullMatch, replacement })
+  }
+  
+  // Applique toutes les remplacements
+  let result = htmlContent
+  replacements.forEach(({ fullMatch, replacement }) => {
+    result = result.replace(fullMatch, replacement)
+  })
+  
+  return result
+}
+
 async function exportPortableHtml (inputFile = 'slides.html', outputFile = 'slides.portable.html', { compress = true, gzip = false } = {}) {
   const inputPath = path.resolve(inputFile)
   const outputPath = path.resolve(outputFile)
-  const htmlContent = fs.readFileSync(inputPath, 'utf8')
+  let htmlContent = fs.readFileSync(inputPath, 'utf8')
+
+  // Embarquer les CSS d'abord
+  htmlContent = await embedCssIntoHtml(htmlContent)
 
   const inlined = await new Promise((resolve, reject) => {
     inlineHtmlResources({
@@ -190,6 +228,12 @@ async function build ({ pdf = false, portable = false, portableGzip = false } = 
   try {
     generateDiagrams()
     asciidoctor.convertFile('slides.adoc', options)
+    
+    // Embarquer les CSS dans le fichier slides.html pour le rendre auto-porteur
+    let htmlContent = fs.readFileSync('slides.html', 'utf8')
+    htmlContent = await embedCssIntoHtml(htmlContent)
+    fs.writeFileSync('slides.html', htmlContent, 'utf8')
+    
     if (pdf) {
       await exportPdf('slides.pdf')
     }
