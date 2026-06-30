@@ -23,15 +23,33 @@ npm install
 
 ## Build
 
+### Build standard
 ```bash
 npm run build
 ```
+Génère `slides.html` avec styles CSS intégrés (auto-porteur).
 
-Génère `slides.html` à la racine du projet.
+### Build portable (standalone)
+```bash
+npm run build:portable
+```
+Génère `slides.portable.html` — un fichier HTML unique et autonome contenant tous les styles, scripts et images (sauf CDN externes). Parfait pour partager ou archiver.
+
+### Build PDF
+```bash
+npm run build:pdf
+```
+Génère `slides.pdf` (requiert Playwright).
+
+### Build complet
+```bash
+npm run build:all
+```
+Produit `slides.html`, `slides.pdf` et `slides.portable.html` en une seule commande.
 
 ## Affichage
 
-Ouvrir `slides.html` dans un navigateur (Firefox, Chrome). Pour éviter les restrictions CORS sur les images SVG locales, servir via un serveur HTTP :
+Ouvrir `slides.html` ou `slides.portable.html` dans un navigateur (Firefox, Chrome). Pour éviter les restrictions CORS sur les images SVG locales, servir via un serveur HTTP :
 
 ```bash
 npx http-server . -p 8080 -o slides.html
