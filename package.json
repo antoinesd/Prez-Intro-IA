@@ -5,12 +5,23 @@
   "scripts": {
     "generate:diagrams": "node scripts/generate-diagrams.js",
     "build": "node build.js",
+    "build:portable": "node build.js --portable",
+    "build:portable:gzip": "node build.js --portable --portable-gzip",
+    "build:pdf": "node build.js --pdf",
+    "build:all": "node build.js --pdf --portable",
+    "build:all:gzip": "node build.js --pdf --portable --portable-gzip",
     "serve": "npx http-server . -p 8080 -o slides.html",
-    "watch": "node build.js --watch"
+    "watch": "node build.js --watch",
+    "watch:pdf": "node build.js --watch --pdf",
+    "watch:portable": "node build.js --watch --portable",
+    "watch:portable:gzip": "node build.js --watch --portable --portable-gzip"
   },
   "devDependencies": {
     "@asciidoctor/reveal.js": "^5.0.1",
     "asciidoctor": "^3.0.2",
-    "@mermaid-js/mermaid-cli": "^11.6.0"
+    "html-minifier-terser": "^7.2.0",
+    "@mermaid-js/mermaid-cli": "^11.6.0",
+    "playwright": "^1.54.1",
+    "web-resource-inliner": "^6.0.1"
   }
 }

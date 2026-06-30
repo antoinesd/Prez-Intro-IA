@@ -1,0 +1,390 @@
+// ===========================================================
+// PARTIE 1 : HISTOIRE DE L'IA
+// ===========================================================
+
+[.part-slide]
+== Partie 1 +
+Histoire de l'Intelligence Artificielle
+
+[.part-subtitle]
+Des systèmes experts aux réseaux de neurones profonds
+
+[.columns]
+== 1950 — La question de Turing
+
+[.column]
+--
+[discrete]
+=== "Can machines think ?"
+
+Alan Turing pose la question en 1950 dans _Computing Machinery and Intelligence_.
+
+Il propose le **Test de Turing** : si un humain ne peut pas distinguer la machine de l'humain dans une conversation, la machine est "intelligente".
+
+*Ce test est-il la bonne mesure ?*
+
+→ Non, mais il a structuré 70 ans de recherche.
+--
+
+[.column.is-one-third]
+--
+image::alan_turing.jpg[Alan Turing, 400]
+[.caption]
+Alan Turing (1912–1954) — père de l'informatique théorique +
+_(Wikimedia Commons / photographie de 1928)_
+--
+
+
+[NOTE.speaker]
+--
+Turing était un mathématicien universel : en plus de l'informatique théorique, il a modélisé la morphogenèse (formation des taches de léopard) avec des équations différentielles — montrant que l'IA peut toucher toutes les sciences.
+--
+
+== 1956 — La naissance officielle du terme "IA"
+
+[.timeline-slide]
+--
+[.event]
+*Dartmouth Conference (1956)* +
+John McCarthy, Marvin Minsky, Claude Shannon, Nathaniel Rochester +
+→ Naissance officielle du terme **"Artificial Intelligence"**
+
+[.event]
+*Hypothèse centrale* +
+"Every aspect of learning or any other feature of intelligence can in principle be so precisely described that a machine can be made to simulate it."
+
+[.event]
+*Optimisme débridé* +
+"Dans 20 ans, les machines feront tout ce qu'un humain peut faire." +
+_(Spoiler : c'était trop optimiste... mais l'intuition était juste)_
+--
+
+[.columns]
+== 1960-1970 — L'IA symbolique : la règle comme intelligence
+
+[.column]
+--
+[discrete]
+=== Le paradigme **Good Old-Fashioned AI** (GOFAI)
+
+L'intelligence = *manipulation de symboles* selon des règles logiques
+
+[source,lisp]
+----
+(DEFUN est-spam (email)
+  (AND (contient-mot "urgent" email)
+       (expediteur-inconnu email)))
+----
+
+LISP (1958, McCarthy) devient **le** langage de l'IA.
+
+*Résultats impressionnants* :
+
+* ELIZA (1966) — chatbot thérapeutique
+* SHRDLU (1970) — compréhension de phrases en monde de blocs
+--
+
+[.column.is-one-third]
+--
+image::eliza.svg[ELIZA chatbot, 600]
+[.caption]
+ELIZA — premier chatbot, simulant un psychothérapeute rogérien
+--
+
+== 1980 — Les systèmes experts : l'IA industrielle
+
+[.columns]
+--
+[.column]
+====
+[discrete]
+=== Le modèle SI-ALORS
+
+Un système expert encode la connaissance d'un expert humain sous forme de règles :
+
+[source]
+----
+SI température > 38.5°C
+ALORS patient a de la fièvre
+
+SI patient a de la fièvre
+  ET toux = PRÉSENTE
+ALORS risque grippal = ÉLEVÉ
+----
+
+*DENDRAL (1965)* — Stanford
+Identification de structures chimiques par spectrométrie de masse
+
+*MYCIN (1972)* — Diagnostic médical
+→ Performances supérieures aux médecins humains dans son domaine
+
+====
+[.column]
+====
+[discrete]
+=== La limite fondamentale
+
+[.limitation-box]
+La connaissance du monde ne peut pas être encodée à la main
+
+* Des milliers de règles à maintenir
+* Connaissance fragmentée, pas de généralisation
+* Incapacité à apprendre de nouveaux exemples
+* "Brittleness" : hors domaine = échec total
+
+*L'hiver de l'IA* frappe en 1987 :
+financement s'effondre, promesses non tenues
+====
+--
+
+== 1997 — Deep Blue : les machines battent les champions
+
+[.columns]
+--
+[.column]
+====
+[discrete]
+=== Un tournant symbolique
+
+*11 mai 1997* : Deep Blue (IBM) bat Garry Kasparov au jeu d'échecs (3,5 – 2,5).
+
+*Ce que Deep Blue n'est PAS* :
+[.limitation-box]
+Deep Blue ne "pense" pas — il évalue 200 millions de positions/seconde avec des heuristiques codées à la main.
+
+*Mais le signal est clair* : les machines peuvent surpasser les humains dans des domaines formalisables.
+
+*1996-2016 — Succès de l'IA symbolique hybride* :
+
+* Reconnaissance de chèques bancaires (LeCun, 1998)
+* Spam filtering (Naive Bayes)
+* Moteurs de recommandation
+
+====
+[.column]
+====
+image::deep_blue.jpg[Deep Blue, 500]
+[.caption]
+IBM Deep Blue — premier programme à battre un champion du monde d'échecs en titre +
+_(© Wikimedia Commons / IBM)_
+====
+--
+
+[NOTE.speaker]
+--
+Kasparov a été très perturbé par la "créativité" de Deep Blue lors de certains coups — des coups que le logiciel a joués parce qu'ils ne déclenchaient pas de pénalité dans sa fonction d'évaluation, pas parce qu'il "voyait" une stratégie à long terme. Ce malentendu sur la nature de l'IA est encore courant aujourd'hui.
+--
+
+== 1986-1995 — Le Machine Learning : laisser les données parler
+
+[.columns]
+--
+[.column]
+====
+[discrete]
+=== Du "programmer" à "apprendre"
+
+*Paradigme shift fondamental* :
+
+[.comparison]
+|===
+| IA classique | Machine Learning
+| Humain écrit des règles | Machine apprend des règles depuis les données
+| Représentation manuelle | Représentation automatique
+| Expertise explicite | Patterns cachés dans les données
+|===
+
+*Algorithmes clés* :
+
+* *Perceptron (Rosenblatt, 1958)* — premier neurone artificiel
+* Backpropagation (Rumelhart, Hinton 1986) — réseaux de neurones multi-couches
+* SVM — Support Vector Machines (Vapnik 1995)
+* Arbres de décision, forêts aléatoires
+
+====
+[.column]
+====
+[discrete]
+=== Le perceptron : premier neurone artificiel
+
+image::perceptron.png[Perceptron, 700]
+[.caption]
+Le perceptron de Rosenblatt (1958) : somme pondérée des entrées + seuil d'activation. +
+Limite : seulement les problèmes linéairement séparables. La backpropagation (1986) permettra d'empiler les couches.
+====
+--
+
+[NOTE.speaker]
+--
+La backpropagation est l'algorithme fondateur. L'idée : calculer le gradient de l'erreur par rapport aux poids du réseau, puis ajuster les poids dans le sens inverse du gradient. Simple conceptuellement, mais difficile à faire fonctionner en pratique à l'époque.
+--
+
+== 2006-2012 — La renaissance : le Deep Learning
+
+[.columns]
+--
+[.column]
+====
+[discrete]
+=== Geoffrey Hinton & co. relancent les réseaux profonds
+
+*Problème historique* : les réseaux profonds ne s'entraînaient pas bien (vanishing gradient)
+
+*Solutions* :
+
+* Pre-training couche par couche (Hinton 2006)
+* Nouvelles fonctions d'activation (ReLU)
+* Dropout (régularisation)
+* GPU comme accélérateur d'entraînement
+
+*ImageNet 2012* → révolution AlexNet
+
+[source]
+----
+Taux d'erreur ImageNet :
+Meilleure méthode classique : 26.2%
+AlexNet (deep learning) :    15.3%
+----
+
+→ Gain de 10 points d'un coup. L'ère du deep learning commence.
+
+====
+[.column]
+====
+image::colored_nn.png[Réseau de neurones, 500]
+[.caption]
+Architecture d'un réseau de neurones : couches d'entrée, cachées, sortie. +
+La profondeur (10-1000+ couches) permet d'apprendre des représentations hiérarchiques : pixels → bords → formes → objets +
+_(© Wikimedia Commons)_
+====
+--
+
+== 2017 — "Attention is All You Need"
+
+[.quote-slide]
+--
+[quote, Vaswani et al., Google Brain 2017]
+____
+We propose a new simple network architecture, the Transformer, based solely on attention mechanisms, dispensing with recurrence and convolutions entirely.
+____
+
+*Ce papier change tout* :
+
+* Plus de RNN (lents, difficile à paralléliser)
+* L'attention permet de voir *tout le contexte en une seule opération*
+* Scalable sur GPU/TPU
+
+*6 ans plus tard* : GPT-4, Gemini, Claude, Mistral... sont tous des Transformers
+
+_Voir la partie suivante pour comprendre le mécanisme_
+--
+
+[NOTE.speaker]
+--
+Ce papier a été cité plus de 100 000 fois. C'est l'un des papiers les plus influents de l'histoire de l'informatique.
+--
+
+== 2020-2024 — L'explosion des LLMs
+
+[.timeline-horizontal]
+--
+[.fragment.step]
+*2018* +
+BERT (Google) +
+110M params
+
+[.fragment.step]
+*2020* +
+GPT-3 (OpenAI) +
+175B params
+
+[.fragment.step]
+*2022* +
+ChatGPT +
+1M users en 5 jours
+
+[.fragment.step]
+*2023* +
+GPT-4, Gemini, Llama +
+Multimodal
+
+[.fragment.step]
+*2024* +
+o1, Gemini Ultra +
+Reasoning amélioré
+--
+
+[.key-insight]
+La loi de scaling : doubler les données × la taille du modèle → performance prévisible +
+*(Kaplan et al., OpenAI 2020)*
+
+== Récapitulatif : IA, Machine Learning, Deep Learning, IA Générative
+
+[.columns]
+--
+[.column]
+====
+[discrete]
+=== Les relations entre les concepts
+
+Pensez à des cercles concentriques :
+
+[stem]
+++++
+\text{IA} \supset \text{Machine Learning} \supset \text{Deep Learning} \supset \text{IA Générative}
+++++
+
+* **IA** = domaine très large (70+ ans d'histoire)
+* **Machine Learning** = sous-ensemble qui apprend des données
+* **Deep Learning** = sous-ensemble avec réseaux profonds (10+ couches)
+* **IA Générative** = sous-ensemble qui crée du contenu nouveau
+
+====
+[.column]
+====
+[discrete]
+=== Vision synthétique de l'évolution
+
+image::scaling_laws.svg[alt, 400]
+[.caption]
+Chaque génération a amené une augmentation de puissance de calcul et de données
+====
+--
+
+== Tableau comparatif : les trois paradigmes
+
+[.comparison-table]
+|===
+| Aspect | Machine Learning | Deep Learning | IA Générative
+
+| **Période clé** | 1986-2012 | 2012-2020 | 2020+
+| **Technologie** | Divers (SVM, arbres, RF) | Réseaux neuronaux profonds | Transformers & Diffusion
+| **Profondeur** | Peu/moyen de couches | 10 à 1000+ couches | 96-200+ couches
+| **Données** | Milliers à millions | Millions à milliards | Centaines de milliards
+| **Calcul** | CPU suffisant | GPU/TPU | GPU/TPU clusters
+| **Ce qu'il fait** | Classification, prédiction | Reconnaissance avancée | Génération de contenu
+| **Exemple** | Détecteur spam | ImageNet (2012) | ChatGPT, DALL-E
+
+|===
+
+== La révolution générative : changement de paradigme
+
+[.key-insight]
+**Machine Learning** = prédire une catégorie / un nombre
+
+[.key-insight]
+**Deep Learning** = extraire et reconnaître des patterns complexes
+
+[.key-insight]
+**IA Générative** = prédire *la suite* d'une séquence (token, pixel, frame...)
+
+→ Trois mots-clés, trois objectifs différents, une même mathématique sous-jacente (l'optimisation)
+
+[.takeaway]
+====
+Pendant 30 ans, l'IA a appris à *reconnaître* et *classifier* le monde.
+
+Depuis 2020, elle apprend à *générer* et *créer*.
+
+Cette transition change tout — et c'est juste le début.
+====

@@ -1,0 +1,239 @@
+// ===========================================================
+// PARTIE 3 : IA EN CHIMIE
+// ===========================================================
+
+[.part-slide]
+== Partie 3 +
+L'IA Révolutionne la Chimie
+
+[.part-subtitle]
+AlphaFold, drug discovery, synthèse et au-delà
+
+== AlphaFold : résoudre un problème vieux de 50 ans
+
+[.key-insight]
+*Le problème* : les protéines se replient selon des règles physiques, mais prédire la bonne forme en 3D depuis la simple séquence d'acides aminés était IMPOSSIBLE — même les meilleurs ordinateurs échouaient depuis 50 ans.
+
+[.columns]
+--
+[.column]
+====
+*Avant AlphaFold* :
+
+* Structurale par cristallographie aux rayons X = 2-5 ans de travail
+* Coûteux, long, sans garantie
+* Seulement ~180 000 structures connues pour les millions de protéines existantes
+* Les chercheurs étaient bloqués
+
+*La révolution (2021)* :
+
+AlphaFold2 prédit la structure 3D en **quelques secondes** avec une précision comparable à l'expérience !
+
+====
+[.column]
+====
+image::myoglobin.png[Structure protéique, 600]
+[.caption]
+Structure 3D d'une protéine (myoglobine). Les couleurs indiquent la confiance de la prédiction.
+====
+--
+
+[.key-insight]
+*Résultat* : **214 millions de structures prédites et librement accessibles**. Chaque chercheur du monde peut maintenant voir les formes 3D des protéines pertinentes pour son travail.
+
+[NOTE.speaker]
+--
+AlphaFold2 a remporté le grand défi international CASP14 en 2020. Score : 92,4/100 — meilleur que toutes les expériences précédentes. Nobel de Chimie 2024 pour David Baker, Demis Hassabis, John Jumper.
+--
+
+== Impact réel : de la théorie aux applications
+
+*Où le changement se voit* :
+
+[.columns]
+--
+[.column]
+====
+* **Malaria & maladies infectieuses**
+
+Identifié rapidement les protéines critiques du parasite → nouvelles cibles thérapeutiques en mois, pas en années.
+
+* **Enzymes industrielles**
+
+Optimisation automatisée des enzymes pour la chimie verte, les biofuels, les détergents.
+====
+[.column]
+====
+* **Drug discovery**
+
+40-50% de réduction du temps pour comprendre si une molécule candidate peut se fixer au bon endroit.
+
+* **AlphaFold3 (2024)**
+
+Étendu aux molécules petites, ADN, ARN, ions — l'IA voit maintenant les mécanismes complets de la vie moléculaire.
+====
+--
+
+== Drug Discovery : accélérer la quête du médicament
+
+[.key-insight]
+*Le problème* : développer un nouveau médicament prend **10-15 ans** et **2+ milliards de dollars**. L'IA peut réduire ce délai d'années entières.
+
+[.columns]
+--
+[.column]
+====
+*Où l'IA économise du temps* :
+
+1. **Sélection des cibles** — Analyser en secondes des données génomiques pour identifier LE bon endroit à attaquer
+
+2. **Criblage virtuel** — Tester informatiquement si 1 million de molécules se lient bien, vs les tester en labo
+
+3. **Génération guidée** — L'IA propose directement des molécules avec les bonnes propriétés
+====
+[.column]
+====
+image::drug_discovery.svg[Drug discovery, 500]
+
+[.takeaway]
+Insilico Medicine : cible identifiée (2019) → molécule générée (21 jours) → essais cliniques approuvés (2023)
+
+Vs classique : 4-5 ans pour atteindre ce stade
+====
+--
+
+[.key-insight]
+*Résultat concret* : Des médicaments pour maladies rares et maladies infectieuses arrivent **4× plus vite** au stade de test en humain.
+
+== Génération de molécules : l'IA crée des molécules inexistantes
+
+[.key-insight]
+*Le problème* : concevoir une molécule avec des propriétés spécifiques (solubles, efficaces, pas toxiques) est un puzzle combinatoire gigantesque. L'IA apprend à naviguer cet espace.
+
+[.columns]
+--
+[.column]
+====
+**Comment représenter une molécule à l'ordinateur ?**
+
+* **SMILES** : notation textuelle (comme "CC(=O)Oc1ccccc1C(=O)O" = Aspirine)
+* **Graphes** : atomes = nœuds, liaisons = connexions
+* **Structures 3D** : vraies coordonnées atomiques
+
+**Ce que l'IA apprend** :
+
+L'IA entraînée sur des millions de molécules réelles apprend des patterns : "si tu veux une molécule soluble, ajoute cet groupe chimique"
+
+====
+[.column]
+====
+image::mol_generation.svg[Génération moléculaire]
+[.caption]
+L'IA navigue dans l'espace des molécules possibles pour trouver celle avec les bonnes propriétés
+====
+--
+
+[.key-insight]
+*Résultat* : **Molécules entièrement nouvelles** générées en secondes, avec des propriétés prédéfinies. Exscientia a découvert un médicament contre le TOC en **12 mois** (vs 4.5 ans en moyenne).
+
+== IA pour l'analyse : savoir ce qu'on a fabriqué
+
+[.key-insight]
+*Le problème* : identifier une molécule inconnue ou détecter des contaminants au contrôle qualité. Tâche manuelle lente et coûteuse.
+
+[.columns]
+--
+[.column]
+====
+**Spectroscopie + IA**
+
+* **RMN** (résonance magnétique nucléaire) — L'IA prédit les spectres → Identification en secondes
+
+* **IR/Raman** — L'IA détecte les falsifications alimentaires ou les impuretés
+
+* **Spectrométrie de masse** — Identification de molécules inconnues par IA (SIRIUS)
+====
+[.column]
+====
+**Résultats concrets** :
+
+✅ P&G : détecte les défauts cosmétiques 200× plus précis que l'humain (0.01% vs 2% d'erreur)
+
+✅ Raman portable : détecte le méthanol dans l'alcool frelaté en terrain
+
+✅ Performances en 2023 = niveau expert humain en quelques minutes
+====
+--
+
+== Synthèse organique : l'IA planifie le chemin chimique
+
+[.key-insight]
+*Le problème* : synthétiser une molécule complexe = trouver une séquence de réactions parmi des **billions de chemins possibles**. Même les chimistes experts explorent laborieusement.
+
+[.columns]
+--
+[.column]
+====
+**Rétrosynthèse assistée par IA**
+
+Au lieu de tester manuelle réactions :
+
+✅ **AiZynthFinder** (AstraZeneca) : trouve une route synthétique valide en **secondes**
+
+✅ **IBM RXN** : Transformer entraîné sur 2.5 millions de réactions chimiques
+
+→ Prédit les produits de réaction avec >80% d'exactitude
+
+**Résultat** : plan de synthèse en minutes, pas en semaines
+====
+[.column]
+====
+**Chimie computationnelle ultra-rapide**
+
+L'IA apprend à prédire les propriétés sans calcul quantique (DFT) coûteux.
+
+**MACE-MP-0** (2023) : modèle universel prédit les propriétés d'énormes systèmes → transfert à des molécules jamais vues
+
+→ 1000× plus rapide que les calculs classiques
+====
+--
+
+[NOTE.speaker]
+--
+DeepMind a prédit 2.2 millions de cristaux stables — 380 000 validés expérimentalement par robots. Sans IA : 50 ans de travail humain.
+--
+
+== Découverte de matériaux : la révolution automatisée
+
+[.key-insight]
+*Le problème* : trouver un **nouveau matériau** avec les propriétés désirées (meilleure batterie, photocatalyseur, supraconducteur) = explorer un univers de combinaisons infinies.
+
+[.columns]
+--
+[.column]
+====
+**Le changement de paradigme**
+
+**Avant IA** : concevoir → synthétiser → tester → attendre résultats (mois)
+
+**Avec IA** : prédire stabilité → prédire propriétés → robots synthétisent et testent automatiquement
+
+**GNoME** (Google DeepMind, 2023) :
+
+* Prédit **2.2 millions** de nouveaux cristaux stables
+* **380 000** validés expérimentalement par robots automatisés
+* Accélération : **50 ans de travail en quelques mois**
+====
+[.column]
+====
+**Applications réelles en 2024+**
+
+✅ **Batteries Li-ion** — Électrolytes plus stables et plus conducteurs
+
+✅ **Énergie verte** — Photocatalyseurs pour H₂, capture CO₂
+
+✅ **Informatique** — Matériaux plus efficaces énergétiquement
+
+→ Chaque avancée = années gagnées avant commercialisation
+====
+--

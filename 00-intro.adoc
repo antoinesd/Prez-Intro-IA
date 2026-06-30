@@ -1,0 +1,57 @@
+[.title-slide]
+== Introduction à l'Intelligence Artificielle
+
+[.subtitle]
+Des systèmes experts aux modèles génératifs
+
+image::chimie_paristech_logo_officiel.png[Chimie ParisTech PSL, 380]
+
+[.conference-info]
+Conférence — mai 2026
+
+[NOTE.speaker]
+--
+Présentation destinée à des élèves ingénieurs Bac+5 et doctorants.
+Durée estimée : 60 minutes + questions.
+--
+
+
+[.columns]
+== Antoine Sabot-Durand
+
+[.column]
+* Directeur technique chez SCIAM
+* En charge de la stratégie IA et de l'innovation
+* Architecte IT
+* Java Champion, ancien CDI spec lead, ancien MicroProfile Health et Fault Tolerance spec lead
+* Suivez-moi sur Bluesky : https://bsky.app/profile/antoine.sabot-durand.net[@antoine.sabot-durand.net^]
+
+[.column]
+image::asd.jpg[role="pull-right"]
+
+
+== Sommaire
+
+[.columns]
+--
+[.column]
+====
+. *Histoire de l'IA* — des origines aux LLMs
+. *Les Transformers* — comment ça marche vraiment
+. *IA en chimie* — AlphaFold et au-delà
+. *Le futur* — raisonnement, AGI
+
+====
+[.column]
+====
+> « L'intelligence artificielle est peut-être l'un des effets de levier les plus importants de l'histoire de l'humanité. »
+>
+> -- Geoffrey Hinton, Prix Nobel de Physique 2024
+====
+--
+
+[NOTE.speaker]
+--
+Le Prix Nobel 2024 de Physique a été attribué à Geoffrey Hinton et John Hopfield pour leurs travaux fondateurs en réseaux de neurones — signe que l'IA est maintenant reconnue comme science fondamentale.
+--
+

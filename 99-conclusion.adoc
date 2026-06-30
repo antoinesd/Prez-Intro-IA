@@ -1,0 +1,73 @@
+// ===========================================================
+// CONCLUSION
+// ===========================================================
+
+[.part-slide]
+== Conclusion
+
+== Ce qu'il faut retenir
+
+[.takeaways]
+--
+[.takeaway]
+*L'IA n'est pas magique* +
+C'est de la statistique sur des données massives + de l'optimisation. Comprendre les principes permet d'utiliser l'IA intelligemment et d'identifier ses limites.
+
+[.takeaway]
+*La chimie est un terrain privilégié* +
+Données structurées, règles physiques, problèmes combinatoires → l'IA y excelle. AlphaFold, drug discovery, matériaux : la révolution est en cours.
+
+[.takeaway]
+*L'humain reste indispensable* +
+Interprétation des résultats, validation expérimentale, créativité scientifique, éthique — l'IA augmente mais ne remplace pas (encore) le chimiste.
+
+[.takeaway]
+*Agissez maintenant* +
+L'IA évolue à vitesse exponentielle. Ceux qui comprennent ces outils aujourd'hui seront mieux positionnés demain.
+--
+
+== Ressources pour aller plus loin
+
+[.resources-slide]
+--
+[.resource-category]
+[discrete]
+=== 📚 Pour comprendre
+
+* *3Blue1Brown* — "Neural Networks" (YouTube) — visualisations exceptionnelles
+* *Andrej Karpathy* — "Let's build GPT from scratch" (YouTube)
+* *Fast.ai* — cours pratiques deep learning, gratuits en ligne
+* *The Illustrated Transformer* — Jay Alammar (blog)
+
+[.resource-category]
+[discrete]
+=== 🧪 Pour la chimie
+
+* *DeepChem* — bibliothèque ML pour la chimie (Python, open-source)
+* *AlphaFold DB* — alphafold.ebi.ac.uk — 214M structures gratuites
+* *IBM RXN* — rxn.app.accelerate.science — prédiction de réactions
+* *HuggingFace* — modèles fine-tunés chimie (ChemBERTa, MolT5...)
+
+[.resource-category]
+[discrete]
+=== 📰 Pour suivre l'actualité
+
+* *Papers With Code* — suivi des SOTA en ML
+* *Nature Machine Intelligence* — IA appliquée aux sciences
+* *The Batch* (Andrew Ng) — newsletter hebdomadaire
+--
+
+[.final-slide]
+== Questions ?
+
+[.contact-info]
+Chimie ParisTech PSL +
+11 rue Pierre et Marie Curie +
+75005 Paris
+
+[.social]
+icon:github[] github.com/antoinesd/Prez-Intro-IA
+
+[.thank-you]
+Merci pour votre attention !
+

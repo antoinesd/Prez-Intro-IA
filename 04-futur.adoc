@@ -1,0 +1,302 @@
+// ===========================================================
+// PARTIE 4 : LE FUTUR
+// ===========================================================
+
+[.part-slide]
+== Partie 4 +
+Le Futur de l'IA
+
+[.part-subtitle]
+Raisonnement, agents, et la question de l'AGI
+
+== L'IA dans votre quotidien professionnel : une compétence à part entière
+
+[.key-insight]
+L'IA ne va pas remplacer les ingénieurs. +
+Mais les ingénieurs qui *savent utiliser l'IA* vont remplacer ceux qui ne savent pas.
+
+=== Ce qui change dans votre métier
+
+[.columns]
+--
+[.column]
+====
+[discrete]
+=== Ce que l'IA fait déjà très bien
+
+* Générer un premier jet de code, de rapport, de résumé
+* Rechercher et synthétiser de la littérature scientifique
+* Proposer des pistes expérimentales depuis un problème
+* Analyser des données et produire des visualisations
+* Rédiger des e-mails, comptes-rendus, présentations
+
+[.key-insight]
+*Gain de temps réel* : 20-40% sur les tâches de production de contenu selon les études (McKinsey, 2024)
+====
+[.column]
+====
+[discrete]
+=== Ce que l'IA ne remplace pas (encore)
+
+* Le *jugement scientifique* : interpréter un résultat inattendu
+* La *créativité de rupture* : poser une nouvelle question
+* La *responsabilité* : signer un résultat, assumer une décision
+* Le *travail expérimental* : manipuler, observer, sentir, tâtonner
+* La *relation humaine* : convaincre, collaborer, enseigner
+
+[.warning-box]
+Un ingénieur qui délègue son jugement à l'IA sans vérifier devient *moins* compétent avec le temps.
+====
+--
+
+=== Maîtriser l'IA : trois postures à adopter
+
+[.columns]
+--
+[.column]
+====
+[discrete]
+=== 1) Le scepticisme actif
+
+[.example-box]
+L'IA affirme avec assurance — même quand elle invente.
+
+→ Toujours vérifier les faits, les sources, les chiffres
+
+→ Ne jamais signer un document généré par IA sans relecture critique
+
+→ Traiter l'IA comme un *stagiaire brillant mais non fiable*
+
+[discrete]
+=== 2) Le prompt engineering
+
+La qualité de la sortie dépend de la qualité de la question.
+
+[.example-box]
+❌ "Explique-moi AlphaFold" +
+✅ "Tu es un biochimiste. Explique en 5 bullet points comment AlphaFold2 prédit la structure d'une protéine, pour un ingénieur chimiste sans background bio."
+
+→ Contexte + rôle + format + contraintes = meilleur résultat
+====
+[.column]
+====
+[discrete]
+=== 3) L'orchestration
+
+Ne pas utiliser l'IA comme un oracle isolé, mais comme un *outil dans un workflow* :
+
+* Décomposer les tâches complexes en étapes
+* Valider les sorties intermédiaires
+* Combiner IA + expertise humaine + sources fiables
+
+[.key-insight]
+Les meilleurs utilisateurs d'IA sont ceux qui savent *quand ne pas l'utiliser*.
+====
+--
+
+=== Enjeux sociétaux : les questions que vous aurez à affronter
+
+[.columns]
+--
+[.column]
+====
+[discrete]
+=== Dans votre entreprise
+
+*Propriété intellectuelle* : qui détient le brevet d'une molécule co-conçue avec une IA ?
+
+*Traçabilité* : comment auditer une décision prise par un modèle opaque ?
+
+*Inégalités d'accès* : GPT-4 coûte cher — les PME et pays en développement sont-ils exclus ?
+
+*Dépendance technologique* : OpenAI, Google, Anthropic... toute la chaîne dépend de quelques acteurs américains ou chinois.
+====
+[.column]
+====
+[discrete]
+=== Dans la société
+
+*Désinformation* : les deepfakes et textes générés deviennent indétectables
+
+*Emploi* : l'automatisation touche désormais les métiers cognitifs qualifiés, pas seulement les tâches répétitives
+
+*Environnement* : entraîner GPT-4 ≈ émissions de 500 vols Paris-New York. À l'échelle mondiale, l'empreinte carbone de l'IA explose.
+
+*Souveraineté* : les données scientifiques européennes entraînent des modèles américains. Pour qui travaille-t-on vraiment ?
+====
+--
+
+[.takeaway]
+*Votre génération est la première à entrer dans la vie professionnelle avec l'IA comme outil quotidien.* +
+Vous n'aurez pas le luxe d'apprendre "plus tard". +
+Comprendre ces outils — leurs forces *et* leurs limites — est une compétence d'ingénieur au même titre que la thermodynamique ou la spectroscopie.
+
+== Améliorer le raisonnement : au-delà de la prédiction de token
+
+[.columns]
+--
+[.column]
+====
+[discrete]
+=== Chain-of-Thought : penser étape par étape
+
+*Problème* : les LLMs ont du mal avec le raisonnement multi-étapes
+
+*Solution* : laisser le modèle "penser à voix haute"
+
+[.example-box]
+*Sans CoT* :
+Q: 17 × 23 = ?
+R: 371 ✗
+
+*Avec CoT* :
+Q: 17 × 23 = ? Réfléchissons étape par étape.
+R: 17 × 20 = 340. 17 × 3 = 51. 340 + 51 = 391 ✓
+
+*OpenAI o1 / o3 (2024)* : entraîné spécifiquement à raisonner
+→ Performances proches des experts en maths olympiques et coding
+
+====
+[.column]
+====
+[discrete]
+=== Reasoning as Test-Time Compute
+
+[.key-insight]
+Idée centrale : au lieu de dépenser tout le compute à l'entraînement, allouer plus de compute à l'inférence (réfléchir plus longtemps)
+
+*Self-Consistency* : générer N raisonnements, voter pour la réponse majoritaire
+
+*Tree of Thoughts* : explorer un arbre de raisonnements possibles
+
+*Process Reward Model* : évaluer la qualité de chaque étape intermédiaire, pas seulement la réponse finale
+
+→ La "pensée lente" de Kahneman appliquée aux LLMs
+====
+--
+
+== Les Agents IA : de l'assistant à l'acteur autonome
+
+[.key-insight]
+Un agent IA n'est pas juste un chatbot :
+
+* Il planifie
+* Il agit via des outils
+* Il boucle sur les retours de l'environnement
+
+=== Architecture d'un agent
+
+Un agent = LLM + outils + mémoire + boucle de décision
+
+image::agent_loop.svg[Boucle agent IA, 900]
+
+*Outils typiques* :
+
+* Recherche web / bases scientifiques
+* Exécution de code (calculs, DFT...)
+* Accès à des instruments de labo
+* Appels à d'autres agents spécialisés
+
+=== Applications en chimie
+
+[.agent-example]
+*ChemCrow (2023)* : agent LLM avec 18 outils chimiques
+
+→ Synthèse autonome de chloroquine
+
+→ Planification de synthèses complexes
+
+[.agent-example]
+*Autonomous Chemical Research (Nature, 2023)* :
+
+Agent couplé à bases chimiques, exécution de code et réactions robotisées
+
+[.key-insight]
+Agent IA + Self-Driving Lab : potentiel de chercheur semi-autonome (avec supervision humaine)
+
+[NOTE.speaker]
+--
+ChemCrow a planifié la synthèse de DEET (répulsif moustiques) et d'aspirine de façon autonome. Les agents multi-modaux peuvent aussi "lire" des spectres et des images de molécules.
+--
+
+== L'AGI : mythe ou horizon proche ?
+
+[.columns]
+--
+[.column]
+====
+[discrete]
+=== Définitions en débat
+
+*AGI* = Artificial General Intelligence
+→ Un système capable d'accomplir toute tâche cognitive que peut accomplir un humain, dans n'importe quel domaine, sans entraînement spécifique.
+
+*Attention* : ce n'est pas le même concept pour tous !
+
+[.quote]
+"AGI est la capacité d'un système à apprendre n'importe quelle tâche aussi bien qu'un humain."
+-- OpenAI
+
+[.quote]
+"AGI, c'est quand une IA peut générer suffisamment de valeur économique pour payer sa propre R&D."
+-- Sam Altman (pragmatique ?)
+
+====
+[.column]
+====
+[discrete]
+=== Ce qui manque encore (probablement)
+
+[.gaps-list]
+* *Compréhension causale* : "corrélation ≠ causalité" — les LLMs confondent encore facilement
+* *Embodiment* : comprendre le monde physique via l'expérience directe
+* *Efficacité des données* : un enfant apprend en 1000× moins d'exemples
+* *Robustesse* : distribution shift, adversarial examples
+* *Long-term planning* : cohérence sur des tâches multi-jours
+
+[.timeline-box]
+*Prédictions d'experts* : 2030 à "jamais" selon les experts...
+
+→ La vraie question n'est peut-être pas "quand" mais "comment nous y préparer"
+====
+--
+
+[NOTE.speaker]
+Quel effet cela fait-il d’être une chauve-souris ? est un article du philosophe Thomas Nagel écrit en octobre 1974
+
+
+== Défis et limites actuelles
+
+[.columns.challenges]
+--
+[.column]
+====
+[discrete]
+=== Limites techniques
+
+*Hallucinations* : génèrent des informations fausses avec confiance → risque critique en science
+
+*Contexte limité* : même avec 1M tokens (Gemini), les modèles "oublient" en dehors du contexte
+
+*Coût énergétique* : GPT-4 query ~0.001-0.01 kWh → ~10× une recherche Google. À l'échelle mondiale...
+
+*Biais* : héritent des biais des données d'entraînement — corpus scientifique anglophone dominant
+
+====
+[.column]
+====
+[discrete]
+=== Défis éthiques et réglementaires
+
+*Droits d'auteur* : les modèles entraînés sur des articles scientifiques — légal ?
+
+*Reproductibilité* : les modèles propriétaires ne sont pas auditables
+
+*Impact emploi* : automation de tâches cognitives qualifiées
+
+*IA Act (EU 2024)* : premier cadre réglementaire mondial pour l'IA à haut risque
+
+[.key-insight]
+Pour la chimie : les CBRN (chimique, biologique, radiologique, nucléaire) sont un risque identifié des LLMs mal encadrés. Des garde-fous sont en place mais imparfaits.
+====
+--

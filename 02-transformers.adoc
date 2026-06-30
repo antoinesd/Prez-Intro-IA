@@ -1,0 +1,313 @@
+// ===========================================================
+// PARTIE 2 : LES TRANSFORMERS
+// ===========================================================
+
+[.part-slide]
+== Partie 2 +
+Comment fonctionnent les Transformers
+
+[.part-subtitle]
+Plongée dans le mécanisme qui révolutionne l'IA
+
+== Intuition : prédire le prochain mot
+
+[.prediction-demo]
+--
+*Exercice mental* :
+
+> Pour faire une omelette, il faut d'abord casser des **___**
+
+Vous avez deviné : *œufs* — et probablement avec un haut degré de confiance.
+
+*C'est exactement ce que fait un LLM* — mais sur des milliards d'exemples de texte.
+
+[.key-insight]
+Un modèle entraîné uniquement à prédire le prochain token apprend implicitement la syntaxe, la sémantique, les faits du monde... et même le raisonnement.
+
+*Pourquoi ?* Parce que pour prédire correctement, il faut comprendre.
+--
+
+== Les embeddings : les mots dans l'espace vectoriel
+
+[.key-insight]
+En pratique :
+
+* Chaque token devient un vecteur dense (appris)
+* La proximité géométrique approxime la proximité de sens
+* Les relations sémantiques émergent des données
+
+=== Embeddings : représentation vectorielle
+
+--
+Chaque mot est projeté dans un espace de grande dimension (N = 768, 1024, 4096...).
+
+[stem]
+++++
+\begin{aligned}
+\text{chat}    &\mapsto [0.23, -0.87, 0.41, \ldots] \\
+\text{chien}   &\mapsto [0.25, -0.84, 0.39, \ldots] && (\text{proche}) \\
+\text{voiture} &\mapsto [-0.71, 0.12, -0.55, \ldots] && (\text{loin})
+\end{aligned}
+++++
+
+Ces vecteurs sont *appris* automatiquement pendant l'entraînement.
+--
+
+=== Embeddings : relations et visualisation
+
+*Propriété remarquable* : certaines relations s'expriment comme des déplacements vectoriels.
+
+[stem]
+++++
+\begin{aligned}
+\text{roi} - \text{homme} + \text{femme} &\approx \text{reine} \\
+\text{Paris} - \text{France} + \text{Italie} &\approx \text{Rome}
+\end{aligned}
+++++
+
+image::embeddings_2d.svg[Embeddings en 2D, 700]
+[.caption]
+Projection 2D d'embeddings (t-SNE) : les mots sémantiquement proches sont proches dans l'espace vectoriel
+
+[NOTE.speaker]
+--
+Les embeddings sont la première couche du transformer. Ils transforment chaque token (mot ou sous-mot) en vecteur dense. Ces vecteurs encodent le sens de façon distribuée sur toutes les dimensions — pas une dimension = une feature.
+--
+
+== L'attention : "qui regarde qui" ?
+
+[.key-insight]
+L'attention répond à une question simple :
+
+* Pour chaque token, quels autres tokens sont pertinents ici ?
+
+* Avant les Transformers, les RNN traitaient le texte séquentiellement.
+Avec la self-attention, tous les tokens sont traités en parallèle.
+
+[.example-box]
+====
+> "Le **chat** s'est endormi dans le fauteuil parce qu'**il** était fatigué"
+
+* Pour résoudre "il" → forte attention sur "chat"
+* Pour comprendre "fatigué" → attention sur "chat" et "endormi"
+====
+
+== L'attention multi-têtes : regarder sous différents angles
+
+[.key-insight]
+Une seule tête = une seule perspective.
+Le multi-head combine plusieurs perspectives en parallèle.
+
+=== Multi-Head : principe
+
+Au lieu d'une seule attention, le Transformer utilise H têtes en parallèle.
+
+Chaque tête apprend une projection différente de la séquence.
+
+Les sorties de toutes les têtes sont *concaténées* puis reprojetées.
+
+=== Multi-Head : ce que les têtes capturent
+
+Exemples typiques de spécialisations :
+
+* syntaxe (sujet-verbe)
+* co-références (il/le chat)
+* dépendances longues distance
+* relations temporelles (avant/après)
+
+=== Multi-Head : ordre de grandeur
+
+[.key-insight]
+stem:[\text{GPT-4} : 96\ \text{têtes/couche} \times 96\ \text{couches} \approx 9\,216\ \text{regards simultanés}]
+
+image::multihead_attention.svg[Multi-head attention, 700]
+[.caption]
+Multi-Head Attention : projections parallèles puis concaténation
+
+
+== Génération de texte : chercher le meilleur token
+
+[.key-insight]
+Trois idées pour lire cette partie :
+
+* Le décodage choisit une séquence, pas seulement un mot
+* La température et le sampling contrôlent le style de sortie
+* Le pré-entraînement + alignment expliquent le comportement final
+
+=== Décodage : greedy vs beam search
+
+*Greedy search* : choisir à chaque étape le token le plus probable.
+
+[.warning-box]
+Limite : un choix local optimal peut produire une phrase globale moins bonne.
+
+*Beam search* : explorer N séquences en parallèle, puis garder la meilleure séquence globale.
+
+image::beam_search.svg[Beam search, 1000]
+
+=== Sampling : température, top-k, top-p
+
+*Température* (créativité) :
+
+* T → 0 : déterministe
+* T = 1 : distribution naturelle
+* T > 1 : plus créatif, plus risqué
+
+*Top-k sampling* : tirage aléatoire parmi les k tokens les plus probables.
+
+*Top-p (nucleus) sampling* : tirage dans le plus petit ensemble couvrant p% de probabilité cumulée.
+
+=== Entraînement : 3 phases + scaling laws
+
+*Phase 1 — Pre-training* : prédire le prochain token sur un très grand corpus.
+
+*Phase 2 — SFT* : apprendre à suivre des consignes.
+
+*Phase 3 — RLHF* : aligner les réponses sur les préférences humaines.
+
+[.key-insight]
+stem:[\text{Performance} \approx f\!\left(N_{\text{params}} \times N_{\text{tokens}} \times \text{compute}\right)]
+
+image::scaling_laws.svg[Scaling laws, 600]
+[.caption]
+La performance améliore de façon prévisible (loi puissance) avec le compute
+
+[NOTE.speaker]
+--
+La température est l'un des paramètres les plus importants pour contrôler le comportement d'un LLM en production. T faible pour les sorties structurées, T plus élevée pour la génération créative.
+
+Le pre-training reste la phase la plus coûteuse ; SFT + RLHF permettent ensuite une adaptation domaine plus abordable.
+--
+
+== Limites et hallucinations
+
+[.key-insight]
+Les LLMs peuvent être impressionnants *et* se tromper avec assurance.
+
+[discrete]
+=== Pourquoi les hallucinations existent ?
+
+Un LLM n'est pas un moteur de recherche : il prédit la suite la plus probable.
+
+Conséquence : il peut produire des faits inventés, sources fictives ou chiffres erronés.
+
+=== Réduction du risque (sans garantie totale)
+
+* grounding par sources vérifiées (RAG)
+* alignment via feedback humain (RLHF)
+* contrôles applicatifs (validation, citations, garde-fous)
+
+[.warning-box]
+Règle opérationnelle : vérifier systématiquement faits, dates, chiffres et références.
+
+=== Capacités émergentes
+
+À grande échelle apparaissent aussi :
+
+* raisonnement en chaîne
+* analogies inter-domaines
+* génération de code
+* traduction sans supervision explicite
+
+[.key-insight]
+Ces capacités n'ont pas été codées explicitement : elles émergent de l'entraînement prédictif.
+
+== Au-delà du texte : les Transformers partout
+
+[discrete]
+=== Le Transformer est devenu une architecture générale de modélisation de séquences.
+
+→ Un principe commun pour des domaines très différents.
+
+[.key-insight]
+Image, mélodie, ADN, code : tout peut devenir une séquence de tokens.
+
+
+
+[NOTE.speaker]
+--
+C'est pourquoi AlphaFold2 est essentiellement un Transformer : l'Evoformer traite des séquences d'acides aminés exactement comme GPT traite du texte. De même, GitHub Copilot et les modèles de génération d'images partagent la même architecture de base — seul le vocabulaire change.
+--
+
+=== Exemples concrets hors texte
+
+[.domain-grid]
+|===
+| Domaine | Modèle | Input | Output
+
+| Images | DALL-E, Midjourney | Texte | Image
+| Code | GitHub Copilot | Code incomplet | Complétion
+| Musique | MusicLM, Suno | Texte | Audio
+| *Protéines* | *AlphaFold* | *Séquence AA* | *Structure 3D*
+| *Molécules* | *ChemBERTa* | *SMILES* | *Propriétés*
+| Science | Galactica | Question | Réponse scientifique
+|===
+
+== RAG : donner une "mémoire externe" au LLM
+
+[.key-insight]
+RAG = *Retrieval-Augmented Generation* : on fait d'abord une recherche dans une base de connaissances, puis on demande au LLM de répondre avec ce contexte.
+
+Version vulgarisée :
+
+* Un LLM seul répond de mémoire (parfois bien, parfois faux)
+* Un système RAG lui "ouvre le classeur" avant qu'il réponde
+* La réponse est plus fiable et plus traçable
+
+=== RAG : fonctionnement en 4 étapes
+
+[.columns]
+--
+[.column]
+====
+[discrete]
+=== 1) Préparer la base
+
+On découpe les documents en petits morceaux (_chunks_), puis on les convertit en vecteurs (_embeddings_).
+
+[discrete]
+=== 2) Chercher les passages utiles
+
+La question utilisateur est vectorisée, puis on récupère les *k* passages les plus proches dans la base vectorielle.
+====
+[.column]
+====
+[discrete]
+=== 3) Construire le prompt
+
+On injecte question + passages retrouvés dans le prompt envoyé au LLM.
+
+[discrete]
+=== 4) Générer la réponse
+
+Le LLM répond en s'appuyant sur le contexte fourni (et idéalement avec citations de sources).
+====
+--
+
+=== Architecture type d'un RAG
+
+image::rag_pipeline.svg[Pipeline RAG]
+
+[.caption]
+Pipeline simplifié : indexation des documents, retrieval, prompt augmenté, génération de réponse.
+
+=== RAG : ce que ça améliore... et ses limites
+
+[.key-insight]
+Le RAG *réduit* les hallucinations, mais ne les supprime pas totalement.
+
+Ce que ça améliore :
+
+* Réponses plus factuelles sur un domaine précis
+* Possibilité de citer les sources utilisées
+* Mise à jour des connaissances sans réentraîner le modèle
+
+Limites à garder en tête :
+
+* Mauvais retrieval = mauvaise réponse
+* Contexte trop long ou bruité = confusion
+* Toujours besoin de validation humaine pour les cas critiques
+
+[.warning-box]
+Règle pratique : qualité d'un RAG = qualité des documents + qualité de l'indexation + qualité du retrieval.
+
